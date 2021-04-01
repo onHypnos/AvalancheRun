@@ -13,13 +13,8 @@ public class PlayerController : BaseController, IExecute
     private Vector2 _positionDelta = Vector2.zero;
     private Vector2 _positionBegan = Vector2.zero;
     private Vector3 _temp;
-
-    private int _warpRaycastLayerMask = 1;
-    private RaycastHit _warpRaycastHit;
-    private float _warpObstacleDelta = 0;
-
-    private int _movementForwardRaycastLayerMask = 1;
-    private RaycastHit _movementForwardRaycastHit;
+    
+    
     //private int _movementDownRaycastLayerMask = 1;
     //private RaycastHit _movementDownRaycastHit;
     #endregion
@@ -37,8 +32,7 @@ public class PlayerController : BaseController, IExecute
         _stateList.Add(PlayerState.Moving, new PlayerMovingStateModel());
         _stateList.Add(PlayerState.Dead, new PlayerDeadStateModel());
 
-        _warpRaycastLayerMask = LayerMasksConsts.WarpCheckLayerMask;
-        _movementForwardRaycastLayerMask = LayerMasksConsts.MovementRaycastLayerMask;
+       
     }
 
     #endregion
@@ -51,12 +45,8 @@ public class PlayerController : BaseController, IExecute
         InputEvents.current.OnTouchMovedEvent += SetMoving;
         //GameEvents.current.OnTouchStationaryEvent += SetIdle;
         InputEvents.current.OnTouchEndedEvent += SetIdle;
-        InputEvents.current.OnTouchCancelledEvent += SetIdle;
-        InputEvents.current.OnDoubleTouchEvent += CheckWarping;
-        InputEvents.current.OnTriggerWarpWall += OnTriggerWarpZoneEnter;
-        InputEvents.current.OnTeleportEvent += WarpPlayer;
-        GameEvents.current.OnPlayerCollideEnemy += OnPlayerCollideEnemy;
-        GameEvents.current.OnPlayerGlideEvent += OnPlayerGlide;
+        InputEvents.current.OnTouchCancelledEvent += SetIdle;       
+        
         GameEvents.current.OnLevelEnd += PlayerWinningDance;
         GameEvents.current.OnSceneChanged += ResetPlayerState;
     }
@@ -69,7 +59,7 @@ public class PlayerController : BaseController, IExecute
         {
             return;
         }
-        DrawWarpRaycast();
+        
         switch (_player.State)
         {
             case PlayerState.Idle:
@@ -79,8 +69,7 @@ public class PlayerController : BaseController, IExecute
                 }
             case PlayerState.Moving:
                 {
-                    state = _stateList[PlayerState.Moving];
-                    CheckRunningForward();
+                    state = _stateList[PlayerState.Moving];                    
                     break;
                 }
             case PlayerState.Dead:
@@ -95,26 +84,8 @@ public class PlayerController : BaseController, IExecute
         }
     }
 
-    #endregion
-    /// <summary>
-    /// Called in frame where player gliding
-    /// </summary>
-    public void OnPlayerGlide()
-    {
-        _player.transform.Translate(Vector3.forward * Time.deltaTime);
-    }
-    /// <summary>
-    /// Called on player have collision with enemy tagged gameobject
-    /// </summary>
-    /// <param name="enemy"></param>
-    public void OnPlayerCollideEnemy(Collider enemy)
-    {
-        if (_player.AttackReady)
-        {
-            _player.Animator.SetTrigger($"Attack {UnityEngine.Random.Range(0, _player.AttackAmount)}");
-            _player.SetAttackOnCooldown();
-        }
-    }
+    #endregion    
+    
     /// <summary>
     /// Set player instance if it wasn't setted
     /// </summary>
@@ -171,78 +142,7 @@ public class PlayerController : BaseController, IExecute
     public void SetDead()
     {
         SetPlayerState(PlayerState.Dead);
-    }
-    /// <summary>
-    /// Warp Player if player can warping
-    /// </summary>
-    /// <param name="delta"></param>
-    public void CheckWarping()
-    {
-        if (PlayerIsActive)
-        {
-            if (_player.CanWarping && _player.State != PlayerState.Dead)
-            {
-                WarpPlayer();
-            }
-        }
-    }
-    /// <summary>
-    /// Called when player warp collider have collision with object that cannot been throwed
-    /// </summary>
-    /// <param name="warpObstacleDelta"></param>
-    public void OnTriggerWarpZoneEnter(float warpObstacleDelta)
-    {
-        _warpObstacleDelta = warpObstacleDelta;
-    }
-    /// <summary>
-    /// Check player's ability to run forward
-    /// </summary>
-    public bool CheckRunningForward()
-    {
-        if (Physics.Raycast(Transform.position + Vector3.up, Transform.TransformDirection(Vector3.forward),
-            out _movementForwardRaycastHit, 0.3f, _movementForwardRaycastLayerMask))
-        {
-            Debug.DrawRay(Transform.position + Vector3.up, Transform.TransformDirection(Vector3.forward) * 0.3f, Color.blue);
-            return false;
-        }
-        return true;
-    }
-    /// <summary>
-    /// Warp player to Warping location
-    /// </summary>
-    private void WarpPlayer()
-    {
-        if (PlayerIsActive)
-        {
-            _player.Animator.SetTrigger("Warping");
-            _player.Position = _player.WarpZone.transform.position;
-            _player.SetWarpingOnCD();
-            GameEvents.current.PlayerWarpEvent();
-        }
-    }
-    /// <summary>
-    /// Drawing Raycast for Warp Distance and check hits
-    /// </summary>
-    private void DrawWarpRaycast()
-    {
-        _temp.x = 0f;
-        _temp.y = 0f;
-        if (Physics.Raycast(Transform.position + Vector3.up, Transform.TransformDirection(Vector3.forward),
-            out _warpRaycastHit, _player.BaseWarpingDistance + 0.5f, _warpRaycastLayerMask))
-        {
-            Debug.DrawRay(Transform.position + Vector3.up, Transform.TransformDirection(Vector3.forward) * _warpRaycastHit.distance, Color.red);
-            _temp.z = _warpRaycastHit.distance - _player.WarpZone.transform.localScale.z * 0.5f;
-        }
-        else
-        {
-            Debug.DrawRay(Transform.position + Vector3.up, Transform.TransformDirection(Vector3.forward) * (_player.BaseWarpingDistance + 0.5f), Color.white);
-            _temp.z = _player.BaseWarpingDistance;// + _warpObstacleDelta;
-        }
-        _player.WarpZone.transform.localPosition = _temp;
-        //исправить
-        _player.WarpZoneColliderDelta.transform.localPosition = new Vector3(0, 0, _player.BaseWarpingDistance);
-
-    }
+    }     
 
     public void ResetPlayerState()
     {

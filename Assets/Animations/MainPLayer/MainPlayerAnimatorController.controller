@@ -165,21 +165,6 @@ AnimatorStateMachine:
     m_State: {fileID: 1612160049018778650}
     m_Position: {x: 400, y: 160, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 3647973315674204612}
-    m_Position: {x: 150, y: 60, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -7660278728292818026}
-    m_Position: {x: 630, y: 260, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -5072529987316777068}
-    m_Position: {x: 400, y: -40, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -3373521247393116926}
-    m_Position: {x: 600, y: 60, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -8905620806798514376}
-    m_Position: {x: 150, y: 320, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: -7239095870363074374}
     m_Position: {x: 30, y: -150, z: 0}
   - serializedVersion: 1
@@ -822,12 +807,7 @@ AnimatorState:
   m_Name: Idle-Moving
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 767959828615894492}
-  - {fileID: -6013385958710061194}
-  - {fileID: 4315378808060824044}
-  - {fileID: 6518731123634787232}
-  - {fileID: 6448603469345843777}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0

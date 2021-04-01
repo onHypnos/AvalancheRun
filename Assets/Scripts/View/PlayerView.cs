@@ -7,14 +7,10 @@ public class PlayerView : BaseObjectView
     [SerializeField, Range(1, 5)] private float _warpingCooldown = 2.0f;
     [SerializeField, Range(2, 8)] private float _baseWarpingDistance = 4.0f;
     [SerializeField, Range(5f, 10f)] private float _movementSpeed = 5.0f;
-    [SerializeField] private float _baseAttackCooldown = 1f;
-    [SerializeField] private GameObject _warpZone;
-    [SerializeField] private GameObject _warpZoneColliderDelta;
+    [SerializeField] private float _baseAttackCooldown = 1f;    
     [SerializeField] private Animator _animator;
     [SerializeField] private int _attackAmount = 3;
-    [SerializeField] private GameObject _rightHand;
-    [SerializeField] private GameObject _rightLegTrail;
-    [SerializeField] private GameObject _leftLegTrail;
+    [SerializeField] private Rigidbody _playerRigidbody;
     [SerializeField] public GameObject AttackingCollider;
     private float _animationBlend;
     private bool _canWarping = true;
@@ -28,39 +24,23 @@ public class PlayerView : BaseObjectView
     public bool CanWarping => _canWarping;
     public float BaseWarpingDistance => _baseWarpingDistance;
     public PlayerState State => _state;
-    public GameObject WarpZone => _warpZone;
-    public GameObject WarpZoneColliderDelta => _warpZoneColliderDelta;
+   
     public Animator Animator => _animator;
-    public int AttackAmount => _attackAmount;
-    public GameObject RightHand => _rightHand;
-    public GameObject LeftLegTrail => _leftLegTrail;
-    public GameObject RightLegTrail => _rightLegTrail;
+    public int AttackAmount => _attackAmount;    
     public bool AttackReady => _attackReady;
+
+    public Rigidbody Rigidbody => _playerRigidbody;
 
     #endregion
     public void Start()
     {
-        GameEvents.current.OnPlayerAttackStart += OnPlayerAttackStartEvent;
-        GameEvents.current.OnPlayerAttackEnd += OnPlayerAttackEndEvent;
+        if (_playerRigidbody == null)
+            _playerRigidbody = GetComponent<Rigidbody>();
     }
 
     public void OnDestroy()
     {
-        GameEvents.current.OnPlayerAttackStart -= OnPlayerAttackStartEvent;
-        GameEvents.current.OnPlayerAttackEnd -= OnPlayerAttackEndEvent;
-    }
-
-    private void OnPlayerAttackStartEvent()
-    {
-        AttackingCollider?.SetActive(true);
-        _rightLegTrail?.SetActive(true);
-        _leftLegTrail?.SetActive(true);
-    }
-    private void OnPlayerAttackEndEvent()
-    {
-        AttackingCollider?.SetActive(false);
-        _rightLegTrail?.SetActive(false);
-        _leftLegTrail?.SetActive(false);
+        
     }
 
     public void SetState(PlayerState state)

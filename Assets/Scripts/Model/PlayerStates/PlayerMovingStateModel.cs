@@ -17,11 +17,8 @@ public class PlayerMovingStateModel : BasePlayerStateModel
         _movingVector.z = _movingVector2D.y;
         _movingVector.y = 0;
         player.Rotation = Quaternion.LookRotation(_movingVector, Vector3.up);
-
-        if (controller.CheckRunningForward())
-        {
-            player.Transform.Translate(Vector3.forward * _magnitude * 0.01f * player.MovementSpeed * Time.deltaTime);
-        }
+        player.Transform.Translate(Vector3.forward * _magnitude * 0.01f * player.MovementSpeed * Time.deltaTime);
+        
         player.Animator.SetFloat("VectorSpeedMagnitude", _magnitude * 0.01f);
     }
 
