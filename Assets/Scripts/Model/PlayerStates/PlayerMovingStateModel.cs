@@ -20,10 +20,10 @@ public class PlayerMovingStateModel : BasePlayerStateModel
         player.Rotation = Quaternion.LookRotation(_movingVector, Vector3.up);
 
         //player.Transform.Translate(Vector3.forward * _magnitude * 0.01f * player.MovementSpeed * Time.deltaTime);
-        player.Rigidbody.AddForce(new Vector3(0, 10, 0));
+
         player.GetComponent<CharacterController>().SimpleMove(player.transform.forward * _magnitude * 0.01f * player.MovementSpeed);
-        
-        
+
+
         player.Animator.SetFloat("VectorSpeedMagnitude", _magnitude * 0.01f);
     }
 
