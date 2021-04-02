@@ -8,7 +8,8 @@ public class PlayerMovingStateModel : BasePlayerStateModel
 
     private RaycastHit _hit;
     private float _footDistance = 1f;
-    private Vector3 _targetVelocity;
+    private Vector3 _raycastOffset = new Vector3(0, 1, 0);
+
     public override void Execute(PlayerController controller, PlayerView player)
     {
         _movingVector2D = controller.PositionDelta - controller.PositionBegan;
@@ -25,21 +26,11 @@ public class PlayerMovingStateModel : BasePlayerStateModel
 
         player.Transform.Translate(Vector3.forward * _magnitude * 0.01f * player.MovementSpeed * Time.deltaTime);
 
-
-        player.Rigidbody.useGravity = false;
-        //player.Rigidbody.AddForce(player.transform.forward * 0.1f * player.MovementSpeed, ForceMode.VelocityChange);
-        //player.Rigidbody.velocity = Vector3.ClampMagnitude(player.Rigidbody.velocity, player.MovementSpeed);
-        if (Physics.Raycast(player.transform.position + new Vector3(0, 1, 0), Vector3.down, out _hit, 5f))
+        if (Physics.Raycast(player.transform.position + _raycastOffset, Vector3.down, out _hit, 5f))
         {
             player.transform.position += new Vector3(0, (_footDistance - _hit.distance), 0);
-        }
-        else
-        {
-            player.Rigidbody.useGravity = true;
         }
 
         player.Animator.SetFloat("VectorSpeedMagnitude", _magnitude * 0.01f);
     }
-
-
 }
