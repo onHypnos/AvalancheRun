@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 5fd777be71aac0a46bc78694d69faad2
+guid: 18a5e896e93a93f458a16da5471593d1
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -5252816984213320552
-    second: idle
+      74: 3198764728475207316
+    second: front_run
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: idle
-      takeName: idle
+      name: front_run
+      takeName: front_run
       internalID: 0
-      firstFrame: 0
-      lastFrame: 296
+      firstFrame: 610
+      lastFrame: 626
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -64,7 +64,7 @@ ModelImporter:
           curve:
           - serializedVersion: 3
             time: 0
-            value: 1
+            value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -72,8 +72,44 @@ ModelImporter:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
-            time: 1
+            time: 0.28
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.35
             value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.59
+            value: 1
+            inSlope: -0.06289079
+            outSlope: -0.06289079
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.11702394
+          - serializedVersion: 3
+            time: 0.65
+            value: 0
+            inSlope: -0.02442887
+            outSlope: -0.02442887
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.12391213
+          - serializedVersion: 3
+            time: 1
+            value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -97,6 +133,42 @@ ModelImporter:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
+            time: 0.1
+            value: 1
+            inSlope: 0.0054813293
+            outSlope: 0.0054813293
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.3824405
+            outWeight: 0.0066211326
+          - serializedVersion: 3
+            time: 0.13
+            value: 0
+            inSlope: 0.03165226
+            outSlope: 0.03165226
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.35493705
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.76
+            value: 0
+            inSlope: -0.010259479
+            outSlope: -0.010259479
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.82
+            value: 1
+            inSlope: -0.003368081
+            outSlope: -0.003368081
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
             time: 1
             value: 1
             inSlope: 0
@@ -112,7 +184,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 610
     isReadable: 0
   meshes:
     lODScreenPercentages: []
