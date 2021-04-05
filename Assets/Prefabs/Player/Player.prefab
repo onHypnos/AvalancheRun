@@ -128,7 +128,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _rayLenght: 0
-  _distanceToGround: 0.5
+  _distanceToGround: 0.1
 --- !u!114 &7355200616685129740
 MonoBehaviour:
   m_ObjectHideFlags: 0
