@@ -36,6 +36,16 @@ public class PlayerView : BaseObjectView
     {
         if (_playerRigidbody == null)
             _playerRigidbody = GetComponent<Rigidbody>();
+
+        SetRagdoll(false);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            GameEvents.current.OnPlayerGetHit();
+        }
     }
 
     public void OnDestroy()
@@ -69,5 +79,18 @@ public class PlayerView : BaseObjectView
     }
     #endregion
 
+    public void SetRagdoll(bool value)
+    {
+        Rigidbody[] bodies = GetComponentsInChildren<Rigidbody>();
 
+        foreach(Rigidbody body in bodies)
+        {
+            body.isKinematic = !value;
+            body.transform.GetComponent<Collider>().enabled = value;
+        }
+
+        GetComponent<CapsuleCollider>().enabled = !value;
+        _playerRigidbody.isKinematic = true;
+        _animator.enabled = !value;
+    }
 }

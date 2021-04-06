@@ -19,6 +19,12 @@ public class GameEvents : MonoBehaviour
         OnPlayerCollideEnemy?.Invoke(collider);
     }
 
+    public Action OnPlayerGetHit;
+    public void PlayerGetHit()
+    {
+        OnPlayerGetHit?.Invoke();
+    }
+
     public Action OnPlayerGlideEvent;
     public void PlayerGlideEvent()
     {

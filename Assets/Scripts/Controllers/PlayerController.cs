@@ -15,8 +15,6 @@ public class PlayerController : BaseController, IExecute
     private Vector3 _temp;
     
     
-    //private int _movementDownRaycastLayerMask = 1;
-    //private RaycastHit _movementDownRaycastHit;
     #endregion
     #region Access Modifyers
     public Vector2 PositionDelta => _positionDelta;
@@ -31,8 +29,6 @@ public class PlayerController : BaseController, IExecute
         _stateList.Add(PlayerState.Idle, new PlayerIdleStateModel());
         _stateList.Add(PlayerState.Moving, new PlayerMovingStateModel());
         _stateList.Add(PlayerState.Dead, new PlayerDeadStateModel());
-
-       
     }
 
     #endregion
@@ -49,6 +45,7 @@ public class PlayerController : BaseController, IExecute
         
         GameEvents.current.OnLevelEnd += PlayerWinningDance;
         GameEvents.current.OnSceneChanged += ResetPlayerState;
+        GameEvents.current.OnPlayerGetHit += SetDead;
     }
     #endregion
     #region IExecute
@@ -122,7 +119,9 @@ public class PlayerController : BaseController, IExecute
     public void SetIdle()
     {
         if (PlayerIsActive)
+        {
             SetPlayerState(PlayerState.Idle);
+        }
     }
     /// <summary>
     /// Set Player state to Moving state and get next input Delta position
@@ -141,7 +140,12 @@ public class PlayerController : BaseController, IExecute
     /// </summary>
     public void SetDead()
     {
-        SetPlayerState(PlayerState.Dead);
+        if (PlayerIsActive)
+        {
+            SetPlayerState(PlayerState.Dead);
+            _player.SetRagdoll(true);
+            SetState(false);
+        }
     }     
 
     public void ResetPlayerState()
