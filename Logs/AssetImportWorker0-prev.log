@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.0f1 (c7b5465681fb) revision 13088070'; Using compiler version '192528614'; Build Type 'Release'
 OS: 'Windows 7  (6.1.0) 64bit' Language: 'ru' Physical Memory: 16271 MB
@@ -957,3 +958,5 @@ System memory in use after: 88.3 MB.
 Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 2117.
 Total: 2.280993 ms (FindLiveObjects: 0.236474 ms CreateObjectMapping: 0.218410 ms MarkObjects: 1.803939 ms  DeleteObjects: 0.020938 ms)
 
+=======
+>>>>>>> Stashed changes
