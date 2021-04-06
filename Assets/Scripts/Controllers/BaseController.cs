@@ -12,9 +12,7 @@ public abstract class BaseController : IInitialize
         _main = main;
         //Debug.Log($"{this.GetType()} added in controller list");
     }
-
     public bool IsActive => _isActive;
-
     protected virtual void SetState(bool state)
     {
         _isActive = state;
@@ -35,10 +33,8 @@ public abstract class BaseController : IInitialize
     {
         SetState(true);
     }
-
     public virtual void Disable()
     {
         SetState(false);
     }
-
 }

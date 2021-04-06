@@ -6,9 +6,11 @@ public class GameModeController : BaseController, IExecute
     #region Fields
     private GameMode _gameMode;
     #endregion
+
     #region Acсess Modifyers
     public GameMode GameMode => _gameMode;
     #endregion
+
     private Dictionary<string, bool> _scenesList = new Dictionary<string, bool>();
     public GameModeController(MainController main) : base(main)
     {
@@ -22,37 +24,6 @@ public class GameModeController : BaseController, IExecute
             return;
         }
     }
-    /*
-    private void OnChangeMode(GameMode mode)
-    {
-        switch (mode)
-        {
-            case GameMode.Level:
-                {
-                    break;
-                }
-            case GameMode.Loading:
-                {
-                    break;
-                }
-            case GameMode.Advertise:
-                {
-                    break;
-                }
-            case GameMode.Pause:
-                {
-                    break;
-                }
-            case GameMode.Menu:
-                {
-                    break;
-                }
-        }
-    }
-    public void ChangeModeToLevel()
-    {
-        OnChangeMode(GameMode.Level);
-    }*/
 
     public void LoadAsyncScene(string sceneName)
     {
@@ -75,10 +46,7 @@ public class GameModeController : BaseController, IExecute
             LoadAsyncScene(sceneName);
         }
     }
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sceneName"></param>
+    
     public void UnloadAsyncScene(string sceneName)
     {
         if (_scenesList.ContainsKey(sceneName))
@@ -118,7 +86,8 @@ public class GameModeController : BaseController, IExecute
             }
         }
         LoadAsyncScene(sceneName);
-        GameEvents.current.SetActiveCamera("BaseVirtualCamera");
+        GameEvents.current.SetActiveCamera("Up-to-up Virtual Camera");
         GameEvents.current.SceneChanged();
+        GameEvents.current.SetActiveCamera("BaseVirtualCamera");
     }
 }

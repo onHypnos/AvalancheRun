@@ -50,3 +50,6 @@ Logs/AssetImportWorker0.log
 Logs/shadercompiler-AssetImportWorker0.log
 Logs/shadercompiler-UnityShaderCompiler.exe2.log
 Logs/shadercompiler-AssetImportWorker0.log
+Logs/shadercompiler-AssetImportWorker0.log
+Logs/
+Logs/**
