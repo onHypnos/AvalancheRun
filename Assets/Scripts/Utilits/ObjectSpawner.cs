@@ -6,7 +6,7 @@ public class ObjectSpawner : MonoBehaviour
     public static ObjectSpawner current;
     [SerializeField]private GameObject _coinObject;
     
-    public void Awake()
+    private void Awake()
     {
         DontDestroyOnLoad(this);
         current = this;
@@ -14,5 +14,8 @@ public class ObjectSpawner : MonoBehaviour
 
 
     public GameObject CreateCoin(Vector3 position) => Instantiate(_coinObject, position, Quaternion.identity);
-    
+    public GameObject CreateObject(Vector3 position, GameObject example)
+    {
+        return Instantiate(example, position, Quaternion.identity);
+    }
 }

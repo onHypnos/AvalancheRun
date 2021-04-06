@@ -7,8 +7,7 @@ public class MainController : MonoBehaviour
 {
     private List<BaseController> _controllers = new List<BaseController>();
     private InputController _input;
-    private PlayerController _playerController;
-    private LevelController _levelController;
+    private PlayerController _playerController;   
     private CameraController _cameraMain;
     private EnemyController _enemyController;
     private GameModeController _gameMode;
@@ -29,8 +28,7 @@ public class MainController : MonoBehaviour
         //SceneManager.UnloadSceneAsync(_starterSceneName);
 
         _gameMode = new GameModeController(this);
-        _input = new InputController(this);
-        _levelController = new LevelController(this);
+        _input = new InputController(this);        
         _playerController = new PlayerController(this);
         if (_playerStarterPoint == null)
         {
