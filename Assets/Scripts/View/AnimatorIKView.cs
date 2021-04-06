@@ -33,7 +33,6 @@ public class AnimatorIKView : BaseObjectView
             _ray = new Ray(_animator.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down);
             if (Physics.Raycast(_ray, out _hit, _distanceToGround + _rayOffset, _layerMask))
             {
-                Debug.Log("Cyka");
                 Vector3 footPosition = _hit.point;
                 footPosition.y += _distanceToGround;
                 _animator.SetIKPosition(AvatarIKGoal.LeftFoot, footPosition);
@@ -45,7 +44,6 @@ public class AnimatorIKView : BaseObjectView
             _ray = new Ray(_animator.GetIKPosition(AvatarIKGoal.RightFoot) + Vector3.up, Vector3.down);
             if (Physics.Raycast(_ray, out _hit, _distanceToGround + _rayOffset, _layerMask))
             {
-                Debug.Log("Blyat");
                 Vector3 footPosition = _hit.point;
                 footPosition.y += _distanceToGround;
                 _animator.SetIKPosition(AvatarIKGoal.RightFoot, footPosition);
