@@ -6,16 +6,16 @@ public class GameModeController : BaseController, IExecute
     #region Fields
     private GameMode _gameMode;
     #endregion
-
     #region Acсess Modifyers
     public GameMode GameMode => _gameMode;
     #endregion
 
     private Dictionary<string, bool> _scenesList = new Dictionary<string, bool>();
     public GameModeController(MainController main) : base(main)
-    {
-        //GameEvents.current.LevelEnd
-    }    
+    {      
+        
+    }
+
     public override void Execute()
     {
         base.Execute();
@@ -89,5 +89,6 @@ public class GameModeController : BaseController, IExecute
         GameEvents.current.SetActiveCamera("Up-to-up Virtual Camera");
         GameEvents.current.SceneChanged();
         GameEvents.current.SetActiveCamera("BaseVirtualCamera");
-    }
+        _main.StartLevel();
+    }    
 }

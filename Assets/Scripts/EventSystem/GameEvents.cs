@@ -18,44 +18,36 @@ public class GameEvents : MonoBehaviour
     {
         OnPlayerCollideEnemy?.Invoke(collider);
     }
-
     public Action OnPlayerGetHit;
     public void PlayerGetHit()
     {
         OnPlayerGetHit?.Invoke();
     }
-
     public Action OnPlayerGlideEvent;
     public void PlayerGlideEvent()
     {
         OnPlayerGlideEvent?.Invoke();
     }
-
     public Action OnPlayerWarpEvent;
     public void PlayerWarpEvent()
     {
         OnPlayerWarpEvent?.Invoke();
     }
-
     public Action<EnemyView> OnEnemyInWarpZoneCollider;
     public void EnemyInWarpZoneCollider(EnemyView enemy)
     {
         OnEnemyInWarpZoneCollider?.Invoke(enemy);
     }
-
     public Action<EnemyView> OnEnemyLeaveWarpZoneCollider;
     public void EnemyLeaveWarpZoneCollider(EnemyView enemy)
     {
         OnEnemyLeaveWarpZoneCollider?.Invoke(enemy);
     }
-
     public Action<EnemyView> OnEnemyGetDamage;
     public void EnemyGetDamage(EnemyView enemy)
     {
         OnEnemyGetDamage?.Invoke(enemy);
     }
-
-
     public Action<int> OnAddMoney;
     public void AddMoney(int value)
     {
@@ -66,7 +58,6 @@ public class GameEvents : MonoBehaviour
     {
         OnRemoveMoney?.Invoke(value);
     }
-
     public Action<EnemyView> OnEnemyKilled;
     public void EnemyKilled(EnemyView enemy)
     {
@@ -111,5 +102,17 @@ public class GameEvents : MonoBehaviour
     public void SetActiveCamera(string cameraName)
     {
         OnSettingActiveCamera?.Invoke(cameraName);
+    }
+
+    public Action OnLevelStart;
+    public void LevelStart()
+    {
+        OnLevelStart?.Invoke();
+    }
+
+    public Action<EnemyView> OnMemberFinish;
+    public void MemberFinish(EnemyView enemy)
+    {
+        OnMemberFinish?.Invoke(enemy);
     }
 }

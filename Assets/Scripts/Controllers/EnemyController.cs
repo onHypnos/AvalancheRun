@@ -11,17 +11,16 @@ public class EnemyController : BaseController, IExecute
         _stateList.Add(EnemyStates.Idle, new EnemyIdleStateModel());
         _stateList.Add(EnemyStates.Downed, new EnemyDownedStateModel());
         _stateList.Add(EnemyStates.Dead, new EnemyDeadStateModel());
-        _stateList.Add(EnemyStates.Allert, new EnemyAllertStateModel());
+        _stateList.Add(EnemyStates.Moving, new EnemyMovingStateModel());
     }
-
     public PlayerView Player => _player;
     public override void Initialize()
     {
         base.Initialize();
         _player = Main.GetController<PlayerController>().GetPlayer;
-        GameEvents.current.OnEnemyInWarpZoneCollider += EnableEnemyVisualTrigger;
-        GameEvents.current.OnEnemyLeaveWarpZoneCollider += DisableEnemyVisualTrigger;
+        
         GameEvents.current.OnEnemyGetDamage += KillEnemy;
+        GameEvents.current.OnLevelStart += SetAllEnemiesStatesMoving;
     }
     public override void Execute()
     {
@@ -39,21 +38,28 @@ public class EnemyController : BaseController, IExecute
         }
     }
 
-    public bool PlayerInFieldOfView(EnemyView enemy,PlayerView player)
+    public void SetAllEnemiesStatesMoving()
     {
-        if ((player.Position - enemy.Position).magnitude < enemy.DistanceOfView)
+        foreach (EnemyView enemy in _enemyList)
         {
-            if (Vector3.Angle((enemy.transform.forward).normalized, (player.Transform.position - enemy.Position).normalized) < enemy.FieldOfView)
+            if (enemy != null && enemy.State != EnemyStates.Dead)
             {
-                return true;
+                enemy.SetState(EnemyStates.Moving);
             }
         }
-        return false;
     }
     
     public void SetEnemyState(EnemyView enemy, EnemyStates state)
     {
         enemy.SetState(state);
+        if (enemy.State == EnemyStates.Dead)
+        {
+            enemy.Rigidbody.useGravity = true;
+        }
+        else
+        {
+            enemy.Rigidbody.useGravity = false;
+        }
     }
     /// <summary>
     /// Add enemy to list 
@@ -65,6 +71,7 @@ public class EnemyController : BaseController, IExecute
         {
             _enemyList.Add(enemy);
             SetEnemyState(enemy, EnemyStates.Idle);
+            Debug.Log($"{enemy} was added to update list");
         }
     }
     /// <summary>
@@ -78,20 +85,7 @@ public class EnemyController : BaseController, IExecute
             _enemyList.Remove(enemy);
         }
     }
-    public void EnableEnemyVisualTrigger(EnemyView enemy)
-    {
-        if (_enemyList.Contains(enemy))
-        {
-            enemy.EnableVisualTrigger();
-        }
-    }
-    public void DisableEnemyVisualTrigger(EnemyView enemy)
-    {
-        if (_enemyList.Contains(enemy))
-        {
-            enemy.DisableVisualTrigger();
-        }
-    }
+    
     public void KillEnemy(EnemyView enemy)
     {
         if (_enemyList.Contains(enemy))

@@ -16,7 +16,7 @@ public class CollectableController : BaseController, IExecute
         _player = main.GetController<PlayerController>().GetPlayer;
         GameEvents.current.OnAddMoney += AddMoney;
         GameEvents.current.OnRemoveMoney += RemoveMoney;
-        GameEvents.current.OnEnemyKilled += SpawnRewardForKillingEnemy;
+        //GameEvents.current.OnEnemyKilled += SpawnRewardForKillingEnemy;
     }
 
     public override void Execute()
@@ -75,7 +75,5 @@ public class CollectableController : BaseController, IExecute
             obj.GetComponent<Rigidbody>().AddForce(new Vector3(UnityEngine.Random.Range(-1f, 1f), 1f, UnityEngine.Random.Range(-1f, 1f)) * 2f, ForceMode.Impulse);
             obj.GetComponent<CollectableView>().SetCollected(1f);
         }
-
-
     }
 }

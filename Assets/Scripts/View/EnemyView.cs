@@ -8,22 +8,21 @@ public class EnemyView : BaseObjectView
 
     #region Fields
     private bool _dead = false;
-    private EnemyStates _state = EnemyStates.Idle;
+    [SerializeField] private EnemyStates _state = EnemyStates.Idle;
     private Rigidbody[] _ragBones;
     private Collider[] _colliders;
-    [SerializeField,Range(30f,90f)] private float _fieldOfView = 90.0f;
-    [SerializeField, Range(3f,15f)] private float _distanceOfView = 3f;
     [SerializeField] private Animator _animator;
-
-    [SerializeField] private GameObject _visualTrigger;
-    [SerializeField] private GameObject _visualAllertTrigger;
+    [SerializeField] private GameObject _finishPoint;
+    [SerializeField] private float _movementSpeed = 5.0f;
+    [SerializeField] private Rigidbody _rigidbody;
     #endregion
     #region Access modifiers
     public Animator Animator => _animator;
     public EnemyStates State => _state;
     public bool IsDead => _dead;
-    public float FieldOfView => _fieldOfView;
-    public float DistanceOfView => _distanceOfView;
+    public GameObject FinishPoint => _finishPoint;
+    public float MovementSpeed => _movementSpeed;
+    public Rigidbody Rigidbody => _rigidbody;
     #endregion
 
 
@@ -38,8 +37,13 @@ public class EnemyView : BaseObjectView
         }
     }
     public void Awake()
-    {        
+    {
+        if (_rigidbody == null)
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+        }
         RagdollState(false);
+
     }
     public void Start()
     {
@@ -55,77 +59,11 @@ public class EnemyView : BaseObjectView
         {
             _controller = FindObjectOfType<MainController>().GetController<EnemyController>();
         }
+
         _controller.AddEnemyToList(this);
-    }
-    #region Visual Trigger
-    public void EnableVisualTrigger()
-    {
-        if (_visualTrigger != null)
-        {
-            if (!_visualTrigger.activeSelf)
-            {
-                _visualTrigger.SetActive(true);
-            }
-        }
-    }
-    public void DisableVisualTrigger()
-    {
-        if (_visualTrigger != null)
-        {
-            if (_visualTrigger.activeSelf)
-            {
-                _visualTrigger.SetActive(false);
-            }
-        }
-    }
-    public void RotateVisualTrigger()
-    {
-        if (_visualTrigger.activeSelf)
-        { 
-            _visualTrigger.transform.Rotate(0, 1, 0);        
-        }
-    }
-    #endregion
-    #region Visual Alert Trigger
-    public void EnableAllertTrigger()
-    {
-        if (_visualAllertTrigger != null)
-        { 
-            if(!_visualAllertTrigger.activeSelf)
-            {
-                _visualAllertTrigger.SetActive(true);
-            }
-        }
-    }
-    public void DisableAllertTrigger()
-    {
-        if (_visualAllertTrigger != null)
-        {
-            if (_visualAllertTrigger.activeSelf)
-            {
-                _visualAllertTrigger.SetActive(false);
-            }
-        }
-    }
-#endregion
-    public void OnTriggerEnter(Collider other)
-    {
         
     }
-    public void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("WarpZoneCollider"))
-        {
-            GameEvents.current.EnemyInWarpZoneCollider(this);
-        }
-    }
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("WarpZoneCollider"))
-        {
-            GameEvents.current.EnemyLeaveWarpZoneCollider(this);
-        }
-    }
+    
     public void RagdollState(bool state)
     {        
         _ragBones = GetComponentsInChildren<Rigidbody>();
@@ -133,10 +71,25 @@ public class EnemyView : BaseObjectView
         {
             bone.isKinematic = !state;
         }
+
         _colliders = GetComponentsInChildren<Collider>();
         foreach (var collider in _colliders)
         {
-            collider.enabled = true;
+            collider.enabled = state;
         }
+        GetComponent<CapsuleCollider>().enabled = !state;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            GameEvents.current.EnemyGetDamage(this);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        _controller.RemoveEnemyFromList(this);
     }
 }

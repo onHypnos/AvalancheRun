@@ -3,5 +3,6 @@
     Idle,
     Downed,
     Allert,
-    Dead
+    Dead,
+    Moving
 }

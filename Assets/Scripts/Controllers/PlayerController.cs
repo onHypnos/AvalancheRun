@@ -80,9 +80,7 @@ public class PlayerController : BaseController, IExecute
             state.Execute(this, _player);
         }
     }
-
-    #endregion    
-    
+    #endregion
     /// <summary>
     /// Set player instance if it wasn't setted
     /// </summary>
