@@ -4,6 +4,7 @@ public class PlayerIdleStateModel : BasePlayerStateModel
 {
     public override void Execute(PlayerController controller, PlayerView player)
     {
+        base.Execute(controller, player);
         player.Animator.SetFloat("VectorSpeedMagnitude", 0);
         player.Rigidbody.velocity = Vector3.zero;
     }    

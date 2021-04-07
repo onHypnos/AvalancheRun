@@ -12,6 +12,7 @@ public class PlayerMovingStateModel : BasePlayerStateModel
 
     public override void Execute(PlayerController controller, PlayerView player)
     {
+        base.Execute(controller, player);
         _movingVector2D = controller.PositionDelta - controller.PositionBegan;
         _magnitude = _movingVector2D.magnitude;
         if (_magnitude > 100)
@@ -26,6 +27,7 @@ public class PlayerMovingStateModel : BasePlayerStateModel
 
         player.Transform.Translate(Vector3.forward * _magnitude * 0.01f * player.MovementSpeed * Time.deltaTime);
 
+        //Перенести определение высоты в execute BaseEnemyStateModel с обработкой прыжка и падения
         if (Physics.Raycast(player.transform.position + _raycastOffset, Vector3.down, out _hit, 5f))
         {
             player.transform.position += new Vector3(0, (_footDistance - _hit.distance), 0);

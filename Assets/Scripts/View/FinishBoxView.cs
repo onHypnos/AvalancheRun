@@ -10,5 +10,9 @@ public class FinishBoxView : MonoBehaviour
         {
             GameEvents.current.LevelEnd();
         }
+        if (other.CompareTag("Member"))
+        {
+            GameEvents.current.MemberFinish(other.gameObject.GetComponent<EnemyView>());
+        }
     }
 }

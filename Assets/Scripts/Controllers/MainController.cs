@@ -67,9 +67,7 @@ public class MainController : MonoBehaviour
             {
                 controller.Execute();
             }            
-        }
-
-        
+        }        
     }
 
     private void LateUpdate()
@@ -124,7 +122,9 @@ public class MainController : MonoBehaviour
         }
         return null;
     }
-    
+
+    #region Will Replaced or Deleted
+
     /// <summary>
     /// don't forget syntaxis
     /// </summary>
@@ -133,8 +133,16 @@ public class MainController : MonoBehaviour
         GetController<BaseController>();
         InputController a = new InputController(this);
         a = GetController<InputController>();
+    }   
+
+    public void StartLevel()
+    {
+        Invoke("AfterSeconds", 2.0f);
     }
 
-    
+    private void AfterSeconds()
+    {
+        GameEvents.current.LevelStart();
+    }
+    #endregion
 }
-

@@ -10,6 +10,7 @@ TagManager:
   - AnimatedWall
   - WarpZoneCollider
   - FinishCounter
+  - Member
   layers:
   - Default
   - TransparentFX

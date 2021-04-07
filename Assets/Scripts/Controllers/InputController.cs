@@ -76,7 +76,6 @@ public class InputController : BaseController, IExecute
                         }
                     default: break;
                 }
-
             }
         }
         else
