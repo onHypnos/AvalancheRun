@@ -88,7 +88,6 @@ public class GameModeController : BaseController, IExecute
         LoadAsyncScene(sceneName);
         GameEvents.current.SetActiveCamera("Up-to-up Virtual Camera");
         GameEvents.current.SceneChanged();
-        GameEvents.current.SetActiveCamera("BaseVirtualCamera");
         _main.StartLevel();
     }    
 }
