@@ -1,0 +1,235 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.0f1 (c7b5465681fb) revision 13088070'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19041.804; Version 2004; 64bit' Language: 'ru' Physical Memory: 16327 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\2020.3.0f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/User/Documents/GitHub/AvalancheRun
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+59738
+Successfully changed project path to: C:/Users/User/Documents/GitHub/AvalancheRun
+C:/Users/User/Documents/GitHub/AvalancheRun
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 43.95 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.0f1 (c7b5465681fb)
+[Subsystems] Discovering subsystems at path C:/Program Files/2020.3.0f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/User/Documents/GitHub/AvalancheRun/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 760 (ID=0x1187)
+    Vendor:   
+    VRAM:     2007 MB
+    Driver:   27.21.14.5671
+Initialize mono
+Mono path[0] = 'C:/Program Files/2020.3.0f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/2020.3.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/2020.3.0f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56312
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/2020.3.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001661 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 31.29 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.006 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001311 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.47 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.859 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Refreshing native plugins compatible for Editor in 0.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1591 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 72.6 MB.
+System memory in use after: 72.7 MB.
+
+Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 2016.
+Total: 2.000700 ms (FindLiveObjects: 0.182200 ms CreateObjectMapping: 0.075500 ms MarkObjects: 1.673300 ms  DeleteObjects: 0.068400 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Models/tank.FBX
+  artifactKey: Guid(6d89409fa960b5f4c8af21f93eac176c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/tank.FBX using Guid(6d89409fa960b5f4c8af21f93eac176c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ca02157d597fd38b284ca37e1f59214') in 0.160012 seconds
+  Import took 0.163159 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.309144 seconds.
+  path: Assets/Models/New Models/pong_stick.FBX
+  artifactKey: Guid(ae2f5facadb735440935a6f37409b78e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/New Models/pong_stick.FBX using Guid(ae2f5facadb735440935a6f37409b78e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fcb33ef0fe97efd5adcd18029614be52') in 0.038760 seconds
+  Import took 0.041951 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.900221 seconds.
+  path: Assets/Materials/Textures/pong_stick.png
+  artifactKey: Guid(425b400a9a4561147b58877d3ff2ca11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Textures/pong_stick.png using Guid(425b400a9a4561147b58877d3ff2ca11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f225a686a14a62c532fc0a574e7c3cd') in 0.040054 seconds
+  Import took 0.043438 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.291291 seconds.
+  path: Assets/Materials/Textures/pong_stick.mat
+  artifactKey: Guid(9c5c1f06157784b49b9516baf37cf11b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Textures/pong_stick.mat using Guid(9c5c1f06157784b49b9516baf37cf11b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4a18c422a52c45b90d2fa2bad25fd81') in 0.017077 seconds
+  Import took 0.021043 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 22.335588 seconds.
+  path: Assets/Models/New Models/pong_stick.FBX
+  artifactKey: Guid(ae2f5facadb735440935a6f37409b78e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/New Models/pong_stick.FBX using Guid(ae2f5facadb735440935a6f37409b78e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2fd4e672197efa177ac4d92492cf5d5') in 0.021863 seconds
+  Import took 0.025560 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 69.116391 seconds.
+  path: Assets/Materials/Textures/pong_stick 1.png
+  artifactKey: Guid(c751aafb2249a56468df55003700f9b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Textures/pong_stick 1.png using Guid(c751aafb2249a56468df55003700f9b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e65293c9a7f0c7815f6c0c49c49ec126') in 0.015381 seconds
+  Import took 0.018928 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 642.693163 seconds.
+  path: Assets/Models/New Models/pong_stick.FBX
+  artifactKey: Guid(ae2f5facadb735440935a6f37409b78e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/New Models/pong_stick.FBX using Guid(ae2f5facadb735440935a6f37409b78e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff71c72de16a97ed51722ea2c9a32311') in 0.022744 seconds
+  Import took 0.027199 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 20.469579 seconds.
+  path: Assets/Materials/Textures/pong_stick.png
+  artifactKey: Guid(425b400a9a4561147b58877d3ff2ca11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Textures/pong_stick.png using Guid(425b400a9a4561147b58877d3ff2ca11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a47386ca6405e460a4103a61dccdd12f') in 0.011841 seconds
+  Import took 0.014853 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.002478 seconds.
+  path: Assets/Materials/Textures/pong_stick.png
+  artifactKey: Guid(425b400a9a4561147b58877d3ff2ca11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Textures/pong_stick.png using Guid(425b400a9a4561147b58877d3ff2ca11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a47386ca6405e460a4103a61dccdd12f') in 0.006890 seconds
+  Import took 0.010089 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.011083 seconds.
+  path: Assets/Models/New Models/pong_stick.FBX
+  artifactKey: Guid(ae2f5facadb735440935a6f37409b78e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/New Models/pong_stick.FBX using Guid(ae2f5facadb735440935a6f37409b78e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5f00148a21caa12e9f4c7303b5c3326') in 0.018898 seconds
+  Import took 0.022233 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.831165 seconds.
+  path: Assets/Models/New Models/pong_stick.FBX
+  artifactKey: Guid(ae2f5facadb735440935a6f37409b78e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/New Models/pong_stick.FBX using Guid(ae2f5facadb735440935a6f37409b78e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '831401d4dde41315b47a71aa01838a43') in 0.027315 seconds
+  Import took 0.031938 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.716519 seconds.
+  path: Assets/Models/New Models/pong_stick.FBX
+  artifactKey: Guid(ae2f5facadb735440935a6f37409b78e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/New Models/pong_stick.FBX using Guid(ae2f5facadb735440935a6f37409b78e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73a5e997c401feda4a35ee0def381f0d') in 0.018687 seconds
+  Import took 0.021826 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.417961 seconds.
+  path: Assets/Models/New Models/pong_stick.FBX
+  artifactKey: Guid(ae2f5facadb735440935a6f37409b78e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/New Models/pong_stick.FBX using Guid(ae2f5facadb735440935a6f37409b78e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b37d3c2542e9b30f5a480ab1e7e64e90') in 0.019077 seconds
+  Import took 0.022636 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 24.364164 seconds.
+  path: Assets/Prefabs/Falling Items/pong_stick.prefab
+  artifactKey: Guid(f401da9b244daeb49b3c102e017876da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Falling Items/pong_stick.prefab using Guid(f401da9b244daeb49b3c102e017876da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '797d3dcababcb0689b931817f9ec93b3') in 0.016672 seconds
+  Import took 0.020066 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.528674 seconds.
+  path: Assets/Prefabs/Falling Items/pong_stick.prefab
+  artifactKey: Guid(f401da9b244daeb49b3c102e017876da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Falling Items/pong_stick.prefab using Guid(f401da9b244daeb49b3c102e017876da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7baa10d42bb542e85edabeba6a00a51') in 0.009520 seconds
+  Import took 0.012556 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.005522 seconds.
+  path: Assets/Prefabs/Falling Items/pong_stick.prefab
+  artifactKey: Guid(f401da9b244daeb49b3c102e017876da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Falling Items/pong_stick.prefab using Guid(f401da9b244daeb49b3c102e017876da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7baa10d42bb542e85edabeba6a00a51') in 0.010125 seconds
+  Import took 0.013780 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.642036 seconds.
+  path: Assets/Prefabs/Falling Items/pong_stick.prefab
+  artifactKey: Guid(f401da9b244daeb49b3c102e017876da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Falling Items/pong_stick.prefab using Guid(f401da9b244daeb49b3c102e017876da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7534626a9f371f1400288a8c968e745') in 0.009158 seconds
+  Import took 0.012423 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001689 seconds.
+  path: Assets/Prefabs/Falling Items/pong_stick.prefab
+  artifactKey: Guid(f401da9b244daeb49b3c102e017876da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Falling Items/pong_stick.prefab using Guid(f401da9b244daeb49b3c102e017876da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7534626a9f371f1400288a8c968e745') in 0.009474 seconds
+  Import took 0.012595 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.338228 seconds.
+  path: Assets/Prefabs/Falling Items/pong_stick.prefab
+  artifactKey: Guid(f401da9b244daeb49b3c102e017876da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Falling Items/pong_stick.prefab using Guid(f401da9b244daeb49b3c102e017876da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c16b18f2aa8f9f04c3425d8b6f9c3a65') in 0.009021 seconds
+  Import took 0.013826 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.489565 seconds.
+  path: Assets/Materials/start_stage.mat
+  artifactKey: Guid(915c642bd6513aa4d885e7bc72b76247) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/start_stage.mat using Guid(915c642bd6513aa4d885e7bc72b76247) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d39ab74912db297e06ed9c85cd926db') in 0.022235 seconds
+  Import took 0.026689 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
