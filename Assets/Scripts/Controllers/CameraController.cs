@@ -8,12 +8,13 @@ public class CameraController : BaseController, IExecute
     private Vector3 _position;
     public CameraController(MainController main) : base(main)
     {
-        
+
     }
     public override void Initialize()
     {
         base.Initialize();
         //GameEvents.current.OnPlayerWarpEvent += SetCameraChanging;
+        GameEvents.current.OnLevelStart += ActivateBaseCamera;
     }
     public override void Execute()
     {
@@ -35,7 +36,7 @@ public class CameraController : BaseController, IExecute
             _position.z = _camera.PursuedObject.transform.position.z; // сохраняем Z координату камеры
             _camera.transform.position = Vector3.Lerp(_camera.transform.position, _position, _camera.Smooth);
         }
-        
+
     }
     public void SetCameraChanging()
     {
@@ -44,7 +45,12 @@ public class CameraController : BaseController, IExecute
 
     public override void LateExecute()
     {
-        
+
+    }
+
+    public void ActivateBaseCamera()
+    {
+        GameEvents.current.SetActiveCamera("BaseVirtualCamera");
     }
 
     public void SetCamera(CameraView camera)
