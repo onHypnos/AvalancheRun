@@ -34,4 +34,14 @@ public static class Utilits
             yield return new WaitForSecondsRealtime(deltaTime);
         }
     }
+
+    public static IEnumerator BombShieldBehavior(GameObject bombShield)
+    {
+        for (int i = 0; i < 500; i++)
+        {
+            bombShield.transform.localScale = Vector3.one * i * .1f;
+            yield return null;
+        }
+        bombShield.SetActive(false);
+    }
 }
