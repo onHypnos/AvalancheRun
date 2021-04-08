@@ -10,7 +10,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         current = this;
-        GameEvents.current.OnSetObjectSpawnerPosition += SetPosition;
+        //GameEvents.current.OnSetObjectSpawnerPosition += SetPosition;
     }
 
 

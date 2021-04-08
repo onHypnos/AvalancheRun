@@ -47,8 +47,7 @@ public class InputEvents : MonoBehaviour
     #region DoubleTouchEvent
     public Action OnDoubleTouchEvent;
     public void DoubleTouchEvent()
-    {
-        
+    {        
         OnDoubleTouchEvent?.Invoke();
     }
     #endregion

@@ -46,6 +46,7 @@ public class PlayerController : BaseController, IExecute
         GameEvents.current.OnLevelEnd += PlayerWinningDance;
         GameEvents.current.OnSceneChanged += ResetPlayerState;
         GameEvents.current.OnPlayerGetHit += SetDead;
+        InputEvents.current.OnDoubleTouchEvent += OnDoubleTouchEvent;
     }
     #endregion
     #region IExecute
@@ -145,6 +146,15 @@ public class PlayerController : BaseController, IExecute
             SetState(false);
         }
     }     
+
+
+    public void OnDoubleTouchEvent()
+    {
+        if (_player.BombShieldReady)
+        {
+            _player.ActivateBombShield();
+        }
+    }
 
     public void ResetPlayerState()
     {
