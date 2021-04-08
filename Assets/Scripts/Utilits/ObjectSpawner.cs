@@ -4,12 +4,13 @@ using UnityEngine;
 public class ObjectSpawner : MonoBehaviour
 {
     public static ObjectSpawner current;
-    [SerializeField]private GameObject _coinObject;
+    [SerializeField]private GameObject _coinObject;    
     
     private void Awake()
     {
         DontDestroyOnLoad(this);
         current = this;
+        GameEvents.current.OnSetObjectSpawnerPosition += SetPosition;
     }
 
 
@@ -17,5 +18,17 @@ public class ObjectSpawner : MonoBehaviour
     public GameObject CreateObject(Vector3 position, GameObject example)
     {
         return Instantiate(example, position, Quaternion.identity);
+    }    
+
+    public void CreateObjectsInTime(GameObject[] objects, float deltaTime)
+    {
+        StartCoroutine(Utilits.CreatingObjects(objects, transform.position, deltaTime)); 
     }
+
+    private void SetPosition(Vector3 position)
+    {
+        transform.position = position;
+    }
+
+    
 }
