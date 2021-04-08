@@ -7,12 +7,14 @@ public class CollectableController : BaseController, IExecute
 {
     private PlayerView _player;
     private List<CollectableView> _collectables = new List<CollectableView>();
+    private SaveDataRepo _save;
 
     public int Money { get; private set; }
     public CollectableController(MainController main) : base(main)
     {
-        ///Здесь присваиваем money из playerprefs
-        ///
+        _save = new SaveDataRepo();
+        Money = _save.LoadInt(SaveKeyManager.Money);
+
         _player = main.GetController<PlayerController>().GetPlayer;
         GameEvents.current.OnAddMoney += AddMoney;
         GameEvents.current.OnRemoveMoney += RemoveMoney;
