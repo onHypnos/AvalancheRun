@@ -115,4 +115,16 @@ public class GameEvents : MonoBehaviour
     {
         OnMemberFinish?.Invoke(enemy);
     }
+
+    public Action<GameObject> OnCreatingNewFallingItem;
+    public void CreatingNewFallingItem(GameObject obj)
+    {
+        OnCreatingNewFallingItem?.Invoke(obj);
+    }
+
+    public Action<Vector3> OnSetObjectSpawnerPosition;
+    public void SetObjectSpawnerPosition(Vector3 position)
+    {
+        OnSetObjectSpawnerPosition?.Invoke(position);
+    }
 }

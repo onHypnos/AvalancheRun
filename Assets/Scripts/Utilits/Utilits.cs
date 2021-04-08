@@ -2,7 +2,9 @@
 using UnityEngine;
 
 public static class Utilits
-{    
+{
+    private static Vector3 _temp;
+
     public static IEnumerator MoveToTarget(Transform obj, Vector3 target)
     {        
         if (obj == null) yield break;
@@ -23,4 +25,13 @@ public static class Utilits
         yield break;
     }
     */
+    public static IEnumerator CreatingObjects(GameObject[] objects, Vector3 position, float deltaTime)
+    {
+        for (int i = 0; i < objects.Length; i++)
+        {
+            _temp = position + Vector3.up*i + Vector3.right * i * 0.2f;
+            GameEvents.current.CreatingNewFallingItem(GameObject.Instantiate(objects[i], position, Quaternion.identity));
+            yield return new WaitForSecondsRealtime(deltaTime);
+        }
+    }
 }
