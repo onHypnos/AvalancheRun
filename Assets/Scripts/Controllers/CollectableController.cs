@@ -5,33 +5,30 @@ using UnityEngine;
 
 public class CollectableController : BaseController, IExecute
 {
-    private PlayerView _player;
     private List<CollectableView> _collectables = new List<CollectableView>();
     private SaveDataRepo _save;
 
-    public int Money { get; private set; }
+    private int _bank;
+    private int _money;
+
+
+    public int Bank => _bank;
+    public int Money => _money;
+
     public CollectableController(MainController main) : base(main)
     {
         _save = new SaveDataRepo();
-        Money = _save.LoadInt(SaveKeyManager.Money);
+        _bank = _save.LoadInt(SaveKeyManager.Bank);
 
-        _player = main.GetController<PlayerController>().GetPlayer;
         GameEvents.current.OnAddMoney += AddMoney;
         GameEvents.current.OnRemoveMoney += RemoveMoney;
-        //GameEvents.current.OnEnemyKilled += SpawnRewardForKillingEnemy;
     }
 
     public override void Execute()
     {
         base.Execute();
-        foreach (CollectableView view in _collectables)
-        {
-            if (view.IsCollected)
-            {
-                if (!view.ColliderIsTrigger) view.SetColliderTrigger();
-                view.transform.position = Vector3.MoveTowards(view.transform.position, _player.Position + Vector3.up, 0.1f);                
-            }
-        }
+        // TODO
+        // Rotate money
     }
 
     public void AddView(CollectableView view)
@@ -66,16 +63,5 @@ public class CollectableController : BaseController, IExecute
     private void RemoveMoney(int value)
     {
 
-    }
-
-    private void SpawnRewardForKillingEnemy(EnemyView enemy)
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            var obj = ObjectSpawner.current.CreateCoin(enemy.Position);
-            AddView(obj.GetComponent<CollectableView>());
-            obj.GetComponent<Rigidbody>().AddForce(new Vector3(UnityEngine.Random.Range(-1f, 1f), 1f, UnityEngine.Random.Range(-1f, 1f)) * 2f, ForceMode.Impulse);
-            obj.GetComponent<CollectableView>().SetCollected(1f);
-        }
     }
 }
