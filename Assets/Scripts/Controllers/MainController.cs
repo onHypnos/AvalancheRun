@@ -12,6 +12,7 @@ public class MainController : MonoBehaviour
     private EnemyController _enemyController;
     private GameModeController _gameMode;
     private CollectableController _collectables;
+    private ObjectSpawnerController _objSpawnerController;
     [SerializeField] private Transform _playerStarterPoint;
     [SerializeField] private PlayerView _playerPrefab;
     [SerializeField] private PlayerView _playerView;
@@ -42,6 +43,7 @@ public class MainController : MonoBehaviour
         _cameraMain.SetPursuedObject(_playerView.gameObject);
         _enemyController = new EnemyController(this);
         _collectables = new CollectableController(this);
+        _objSpawnerController = new ObjectSpawnerController(this);
     }
 
     private void Start()

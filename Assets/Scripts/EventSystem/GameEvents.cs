@@ -150,6 +150,7 @@ public class GameEvents : MonoBehaviour
         OnCreatingNewFallingItem?.Invoke(obj);
     }
 
+
     public Action<ObjectSpawnerView> OnSetObjectSpawner;
     public void SetObjectSpawner(ObjectSpawnerView view)
     {
