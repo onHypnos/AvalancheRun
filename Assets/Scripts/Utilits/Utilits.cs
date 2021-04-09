@@ -29,8 +29,8 @@ public static class Utilits
     {
         for (int i = 0; i < objects.Length; i++)
         {
-            _temp = transform.position + Vector3.up*i;
-            GameEvents.current.CreatingNewFallingItem(GameObject.Instantiate(objects[i], transform.position, Quaternion.identity, transform));
+            _temp = transform.position + Vector3.right * (i % 4)* 1.6f * (Mathf.Pow(-1, i));
+            GameEvents.current.CreatingNewFallingItem(GameObject.Instantiate(objects[i], _temp, Quaternion.identity, transform));
             yield return new WaitForSecondsRealtime(deltaTime);
         }
     }

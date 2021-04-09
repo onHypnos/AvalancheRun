@@ -23,7 +23,7 @@ public class ObjectSpawnerController : BaseController
         {
             foreach (ObjectSpawnerView view in _spawners)
             {                
-                SpawnObjectsPool(view, view.ObjectList, 0.2f);
+                SpawnObjectsPool(view, view.ObjectList, 0.35f);
             }
         }
         else
