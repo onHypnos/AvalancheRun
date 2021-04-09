@@ -28,7 +28,9 @@ public class SaveDataRepo : ISaveDataRepo
         }
         else
         {
-            Debug.Log("Data has not been loaded");
+#if UNITY_EDITOR
+            Debug.LogWarning("Data has not been loaded");
+#endif
             return default;
         }
     }
@@ -40,7 +42,9 @@ public class SaveDataRepo : ISaveDataRepo
         }
         else
         {
-            Debug.Log("Data has not been loaded");
+#if UNITY_EDITOR
+            Debug.LogWarning("Data has not been loaded");
+#endif
             return default;
         }
     }
@@ -52,7 +56,9 @@ public class SaveDataRepo : ISaveDataRepo
         }
         else
         {
-            Debug.Log("Data has not been loaded");
+#if UNITY_EDITOR
+            Debug.LogWarning("Data has not been loaded");
+#endif
             return default;
         }
     }
@@ -65,7 +71,9 @@ public class SaveDataRepo : ISaveDataRepo
         }
         else
         {
-            Debug.Log("Key soes not exist");
+#if UNITY_EDITOR
+            Debug.LogWarning("Key soes not exist");
+#endif
         }
     }
     public void DeleteAllSaves()

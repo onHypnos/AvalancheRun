@@ -59,8 +59,14 @@ public class UIController : BaseController, IExecute
         SwitchUI(UIState.EndGame);
         _endGameMenu.ActivateState(false);
     }
+    private void NextLevel()
+    {
+        SwitchUI(UIState.MainMenu);
+        // Next level event
+    }
     private void RestartGame()
     {
+        SwitchUI(UIState.MainMenu);
         GameEvents.current.LevelRestart();
     }
 

@@ -7,4 +7,6 @@
     int LoadInt(string key);
     float LoadFloat(string key);
     string LoadString(string key);
+    void DeleteSave(string key);
+    void DeleteAllSaves();
 }
