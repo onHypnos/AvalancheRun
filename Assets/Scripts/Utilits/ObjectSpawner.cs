@@ -8,7 +8,7 @@ public class ObjectSpawner : MonoBehaviour
     
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
         current = this;
     }
 
@@ -21,7 +21,8 @@ public class ObjectSpawner : MonoBehaviour
 
     public void CreateObjectsInTime(GameObject[] objects, ObjectSpawnerView spawnerView, float deltaTime)
     {
-        StartCoroutine(Utilits.CreatingObjects(objects, transform.position, deltaTime)); 
+        
+        StartCoroutine(Utilits.CreatingObjects(objects, spawnerView.transform, deltaTime)); 
     }
 
     private void SetPosition(Vector3 position)
