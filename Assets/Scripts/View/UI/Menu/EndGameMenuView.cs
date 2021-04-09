@@ -7,7 +7,7 @@ public class EndGameMenuView : BaseMenuView
     [SerializeField] private GameObject _panel;
 
     [Header("Elements")]
-    [SerializeField] private TextMesh _headerText;
+    [SerializeField] private Text _headerText;
     [SerializeField] private Button _nextLevelButton;
     [SerializeField] private Button _restartButton;
 
@@ -50,7 +50,7 @@ public class EndGameMenuView : BaseMenuView
             case false:
                 _nextLevelButton.gameObject.SetActive(false);
                 _restartButton.gameObject.SetActive(true);
-                _headerText.text = "Failed :(";
+                _headerText.text = "Lose :(";
                 break;
         }
     }

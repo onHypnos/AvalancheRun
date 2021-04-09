@@ -21,20 +21,6 @@ public class CollectableView : BaseObjectView
         Invoke("GetSpawnDelay", 0.2f);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (_CanTouchDelay)
-        {
-            if (collision.gameObject.CompareTag("Player"))
-            {
-                GameEvents.current.AddMoney(Value);
-                GameObject.Destroy(this.gameObject, 0f);
-                Debug.Log($"Added {Value} dollars(why?)");
-                SetCollected();
-            }
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (_CanTouchDelay)
@@ -74,12 +60,6 @@ public class CollectableView : BaseObjectView
     private void CollectedStateTrue()
     {
         CollectedState(true);
-    }
-
-    private void GetSpawnDelay()
-    {
-        Rigidbody.AddForce(Vector3.up * 7, ForceMode.Impulse);
-        _CanTouchDelay = true;
     }
     private void OnDestroy()
     {

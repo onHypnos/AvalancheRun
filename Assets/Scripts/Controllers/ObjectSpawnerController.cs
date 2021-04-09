@@ -13,7 +13,8 @@ public class ObjectSpawnerController : BaseController
 
     public override void Initialize()
     {
-        GameEvents.current.OnSetObjectSpawner += AddSpawnerToList;
+        base.Initialize();        
+        GameEvents.current.OnLevelStart += CallSpawners;
     }
 
     public void CallSpawners()
@@ -21,7 +22,7 @@ public class ObjectSpawnerController : BaseController
         if (_spawners.Count > 0)
         {
             foreach (ObjectSpawnerView view in _spawners)
-            {
+            {                
                 SpawnObjectsPool(view, view.ObjectList, 0.2f);
             }
         }
@@ -33,6 +34,7 @@ public class ObjectSpawnerController : BaseController
 
     private void SpawnObjectsPool(ObjectSpawnerView view, FallingObjectsCSO objects, float deltaTime)
     {
+        
         ObjectSpawner.current.CreateObjectsInTime(objects.Objects, view, deltaTime);
     }
 
@@ -46,6 +48,7 @@ public class ObjectSpawnerController : BaseController
         if (!_spawners.Contains(view))
         {
             _spawners.Add(view);
+            Debug.Log($"{view.gameObject.name} was added in list");
         }
         else
         {
