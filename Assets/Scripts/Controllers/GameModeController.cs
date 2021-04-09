@@ -12,8 +12,9 @@ public class GameModeController : BaseController, IExecute
 
     private Dictionary<string, bool> _scenesList = new Dictionary<string, bool>();
     public GameModeController(MainController main) : base(main)
-    {      
-        
+    {
+        GameEvents.current.OnGamePaused += PauseGame;
+        GameEvents.current.OnGameResumed += ResumeGame;
     }
 
     public override void Execute()
@@ -89,5 +90,14 @@ public class GameModeController : BaseController, IExecute
         GameEvents.current.SetActiveCamera("Up-to-up Virtual Camera");
         GameEvents.current.SceneChanged();
         _main.StartLevel();
-    }    
+    }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+    private void ResumeGame()
+    {
+        Time.timeScale = 1f;
+    }
 }

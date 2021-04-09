@@ -10,44 +10,70 @@ public class GameEvents : MonoBehaviour
         current = this;
     }
 
+
+    #region General events
     /// <summary>
-    /// Called When Object with Tag "Enemy" Collide with Player
+    /// When added new scene to other
     /// </summary>
-    public Action<Collider> OnPlayerCollideEnemy;
-    public void PlayerCollideEnemy(Collider collider)
+    public Action OnSceneLoad;
+    public void SceneLoad()
     {
-        OnPlayerCollideEnemy?.Invoke(collider);
+        OnSceneLoad?.Invoke();
     }
-    public Action OnPlayerGetHit;
-    public void PlayerGetHit()
+
+    /// <summary>
+    /// when new level loaded
+    /// </summary>
+    public Action OnSceneChanged;
+    public void SceneChanged()
     {
-        OnPlayerGetHit?.Invoke();
+        OnSceneChanged?.Invoke();
     }
-    public Action OnPlayerGlideEvent;
-    public void PlayerGlideEvent()
+
+    public Action OnLevelStart;
+    public void LevelStart()
     {
-        OnPlayerGlideEvent?.Invoke();
+        OnLevelStart?.Invoke();
     }
-    public Action OnPlayerWarpEvent;
-    public void PlayerWarpEvent()
+
+    public Action OnLevelEnd;
+    public void LevelEnd()
     {
-        OnPlayerWarpEvent?.Invoke();
+        OnLevelEnd?.Invoke();
     }
-    public Action<EnemyView> OnEnemyInWarpZoneCollider;
-    public void EnemyInWarpZoneCollider(EnemyView enemy)
+
+    public Action OnLevelComplete;
+    public void LevelComplete()
     {
-        OnEnemyInWarpZoneCollider?.Invoke(enemy);
+        OnLevelComplete?.Invoke();
     }
-    public Action<EnemyView> OnEnemyLeaveWarpZoneCollider;
-    public void EnemyLeaveWarpZoneCollider(EnemyView enemy)
+
+    public Action OnLevelFailed;
+    public void LevelFailed()
     {
-        OnEnemyLeaveWarpZoneCollider?.Invoke(enemy);
+        OnLevelFailed?.Invoke();
     }
-    public Action<EnemyView> OnEnemyGetDamage;
-    public void EnemyGetDamage(EnemyView enemy)
+
+    public Action OnGamePaused;
+    public void GamePaused()
     {
-        OnEnemyGetDamage?.Invoke(enemy);
+        OnGamePaused?.Invoke();
     }
+
+    public Action OnGameResumed;
+    public void GameResumed()
+    {
+        OnGameResumed?.Invoke();
+    }
+
+    public Action OnLevelRestart;
+    public void LevelRestart()
+    {
+        OnLevelRestart?.Invoke();
+    }
+    #endregion
+
+    #region Currency events
     public Action<int> OnAddMoney;
     public void AddMoney(int value)
     {
@@ -58,10 +84,30 @@ public class GameEvents : MonoBehaviour
     {
         OnRemoveMoney?.Invoke(value);
     }
-    public Action<EnemyView> OnEnemyKilled;
-    public void EnemyKilled(EnemyView enemy)
+    #endregion
+
+    #region Camera events
+    public Action<string> OnSettingActiveCamera;
+    public void SetActiveCamera(string cameraName)
     {
-        OnEnemyKilled?.Invoke(enemy);
+        OnSettingActiveCamera?.Invoke(cameraName);
+    }
+    #endregion
+
+    #region Player events
+    public Action OnPlayerGetHit;
+    public void PlayerGetHit()
+    {
+        OnPlayerGetHit?.Invoke();
+    }
+
+    /// <summary>
+    /// Called When Object with Tag "Enemy" Collide with Player
+    /// </summary>
+    public Action<Collider> OnPlayerCollideEnemy;
+    public void PlayerCollideEnemy(Collider collider)
+    {
+        OnPlayerCollideEnemy?.Invoke(collider);
     }
 
     public Action OnPlayerAttackStart;
@@ -75,39 +121,19 @@ public class GameEvents : MonoBehaviour
     {
         OnPlayerAttackEnd?.Invoke();
     }
-    /// <summary>
-    /// when added new scene to other
-    /// </summary>
-    public Action OnSceneLoad;
-    public void SceneLoad()
+    #endregion
+
+    #region Enemy events
+    public Action<EnemyView> OnEnemyGetDamage;
+    public void EnemyGetDamage(EnemyView enemy)
     {
-        OnSceneLoad?.Invoke();
-    }
-    /// <summary>
-    /// when new level loaded
-    /// </summary>
-    public Action OnSceneChanged;
-    public void SceneChanged()
-    {
-        OnSceneChanged?.Invoke();
+        OnEnemyGetDamage?.Invoke(enemy);
     }
 
-    public Action OnLevelEnd;
-    public void LevelEnd()
+    public Action<EnemyView> OnEnemyKilled;
+    public void EnemyKilled(EnemyView enemy)
     {
-        OnLevelEnd?.Invoke();
-    }
-
-    public Action<string> OnSettingActiveCamera;
-    public void SetActiveCamera(string cameraName)
-    {
-        OnSettingActiveCamera?.Invoke(cameraName);
-    }
-
-    public Action OnLevelStart;
-    public void LevelStart()
-    {
-        OnLevelStart?.Invoke();
+        OnEnemyKilled?.Invoke(enemy);
     }
 
     public Action<EnemyView> OnMemberFinish;
@@ -115,7 +141,9 @@ public class GameEvents : MonoBehaviour
     {
         OnMemberFinish?.Invoke(enemy);
     }
+    #endregion
 
+    #region Spawner events
     public Action<GameObject> OnCreatingNewFallingItem;
     public void CreatingNewFallingItem(GameObject obj)
     {
@@ -127,4 +155,5 @@ public class GameEvents : MonoBehaviour
     {
         OnSetObjectSpawnerPosition?.Invoke(position);
     }
+    #endregion
 }

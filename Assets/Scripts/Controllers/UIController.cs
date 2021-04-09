@@ -12,8 +12,13 @@ public class UIController : BaseController, IExecute
 
     public UIController(MainController main) : base(main) 
     {
-        //TODO
-        //Podpiska on GameEvents
+        UIEvents.Current.OnButtonStartGame += StartGame;
+        UIEvents.Current.OnButtonPauseGame += PauseGame;
+        UIEvents.Current.OnButtonResumeGame += ResumeGame;
+        UIEvents.Current.OnButtonRestartGame += RestartGame;
+
+        GameEvents.current.OnLevelComplete += WinGame;
+        GameEvents.current.OnLevelFailed += LoseGame;
     }
 
     public override void Initialize()
@@ -31,10 +36,17 @@ public class UIController : BaseController, IExecute
     private void StartGame()
     {
         SwitchUI(UIState.InGame);
+        GameEvents.current.LevelStart();
     }
     private void PauseGame()
     {
         SwitchUI(UIState.Pause);
+        GameEvents.current.GamePaused();
+    }
+    private void ResumeGame()
+    {
+        SwitchUI(UIState.InGame);
+        GameEvents.current.GameResumed();
     }
     private void WinGame()
     {
@@ -45,6 +57,10 @@ public class UIController : BaseController, IExecute
     {
         SwitchUI(UIState.EndGame);
         _endGameMenu.ActivateState(false);
+    }
+    private void RestartGame()
+    {
+        GameEvents.current.LevelRestart();
     }
 
     public void AddView(MainMenuView view)
