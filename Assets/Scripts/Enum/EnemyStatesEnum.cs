@@ -4,5 +4,6 @@
     Downed,
     Allert,
     Dead,
-    Moving
+    Moving,
+    Finishing
 }
