@@ -5,43 +5,63 @@ using UnityEngine;
 public class ObjectSpawnerController : BaseController
 {
     private GameObject _temp;
-    private List<GameObject> _list = new List<GameObject>();
+    private List<ObjectSpawnerView> _spawners = new List<ObjectSpawnerView>();
     public ObjectSpawnerController(MainController main) : base(main)
     {
 
     }
 
-    public void SpawnObjectsPool(FallingObjectsCSO objects, float deltaTime)
+    public override void Initialize()
     {
-        ObjectSpawner.current.CreateObjectsInTime(objects.Objects, deltaTime);
+        GameEvents.current.OnSetObjectSpawner += AddSpawnerToList;
     }
 
-    public void SpawnObjectsPool(FallingObjectsCSO objects)
+    public void CallSpawners()
     {
-        SpawnObjectsPool(objects, 0);
-    }
-
-    public void AddObjectToList(GameObject obj)
-    {
-        if (!_list.Contains(obj))
+        if (_spawners.Count > 0)
         {
-            _list.Add(obj);
+            foreach (ObjectSpawnerView view in _spawners)
+            {
+                SpawnObjectsPool(view, view.ObjectList, 0.2f);
+            }
         }
         else
         {
-            Debug.LogWarning($"{obj} already in list");
+            Debug.LogWarning($"ObjectSpawnerController Haven't spawners available");
         }
     }
 
-    public void RemoveObjectToList(GameObject obj)
+    private void SpawnObjectsPool(ObjectSpawnerView view, FallingObjectsCSO objects, float deltaTime)
     {
-        if (_list.Contains(obj))
+        ObjectSpawner.current.CreateObjectsInTime(objects.Objects, view, deltaTime);
+    }
+
+    private void SpawnObjectsPool(ObjectSpawnerView view)
+    {
+        SpawnObjectsPool(view, view.ObjectList, 0);
+    }
+
+    public void AddSpawnerToList(ObjectSpawnerView view)
+    {
+        if (!_spawners.Contains(view))
         {
-            _list.Remove(obj);
+            _spawners.Add(view);
         }
         else
         {
-            Debug.LogWarning($"{obj} already not in list");
+            Debug.LogWarning($"{view.gameObject.name} already in list");
+        }
+    }
+
+    public void RemoveSpawnerFromList(ObjectSpawnerView view)
+    {
+        if (_spawners.Contains(view))
+        {
+            _spawners.Remove(view);
+        }
+        else
+        {
+            Debug.LogWarning($"{view.gameObject.name} already not in list");
         }
     }
 }
