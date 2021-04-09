@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3165603809491872849}
   m_Layer: 0
   m_Name: ladder
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8170598293710531362}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 31.238997, y: 0.0000004832118, z: -4.8863373}
-  m_LocalScale: {x: 2.1221821, y: 1, z: 1}
+  m_LocalPosition: {x: 30.833, y: 0.459, z: -4.6102}
+  m_LocalScale: {x: 0.74503446, y: 0.35107, z: 0.35107}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
