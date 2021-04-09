@@ -37,7 +37,13 @@ public class UIEvents : MonoBehaviour
     public Action OnButtonResumeGame;
     public void ButtonResumeGame()
     {
-        OnButtonPauseGame?.Invoke();
+        OnButtonResumeGame?.Invoke();
+    }
+
+    public Action OnButtonNextLevel;
+    public void ButtonNextLevel()
+    {
+        OnButtonNextLevel?.Invoke();
     }
 
     public Action OnButtonRestartGame;

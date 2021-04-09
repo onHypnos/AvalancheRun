@@ -17,6 +17,7 @@ public class MainMenuView : BaseMenuView
 
     private void Start()
     {
+        FindMyController();
         _startButton.onClick.AddListener(UIEvents.Current.ButtonStartGame);
         //TODO обновление текста количества монет
     }

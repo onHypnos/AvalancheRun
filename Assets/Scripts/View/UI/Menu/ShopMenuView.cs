@@ -9,6 +9,11 @@ public class ShopMenuView : BaseMenuView
     private UIController _controller;
 
 
+    private void Start()
+    {
+        FindMyController();
+    }
+
     public override void Hide()
     {
         if (!IsShow) return;
