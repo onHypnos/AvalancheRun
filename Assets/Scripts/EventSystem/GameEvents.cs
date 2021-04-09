@@ -150,10 +150,18 @@ public class GameEvents : MonoBehaviour
         OnCreatingNewFallingItem?.Invoke(obj);
     }
 
-    public Action<Vector3> OnSetObjectSpawnerPosition;
-    public void SetObjectSpawnerPosition(Vector3 position)
+
+    public Action<ObjectSpawnerView> OnSetObjectSpawner;
+    public void SetObjectSpawner(ObjectSpawnerView view)
     {
-        OnSetObjectSpawnerPosition?.Invoke(position);
+        OnSetObjectSpawner?.Invoke(view);
+    }
+
+
+    public Action<ObjectSpawnerView> OnDeleteObjectSpawner;
+    public void DeleteObjectSpawner(ObjectSpawnerView view)
+    {
+        OnDeleteObjectSpawner?.Invoke(view);
     }
     #endregion
 }

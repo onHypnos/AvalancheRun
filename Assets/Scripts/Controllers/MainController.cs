@@ -20,6 +20,7 @@ public class MainController : MonoBehaviour
     private GameModeController _gameMode;
     private CollectableController _collectables;
     private UIController _uiController;
+    private ObjectSpawnerController _objSpawnerController;  
 
     public bool UseMouse => _useMouse;
     public InputController Input => _input;
@@ -45,8 +46,9 @@ public class MainController : MonoBehaviour
         _cameraMain.SetPursuedObject(_playerView.gameObject);
         _enemyController = new EnemyController(this);
         _collectables = new CollectableController(this);
-
         _uiController = new UIController(this);
+        _objSpawnerController = new ObjectSpawnerController(this);
+
     }
 
     private void Start()
