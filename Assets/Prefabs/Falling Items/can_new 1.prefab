@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3317149072414025939
+--- !u!1 &1563797722527826564
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2685043873175138921}
-  - component: {fileID: 1363722865278352844}
-  - component: {fileID: 3821337207280404742}
-  - component: {fileID: 8477519880012417617}
-  - component: {fileID: -361257757098922178}
+  - component: {fileID: 2231649145106880574}
+  - component: {fileID: 2979045974026573723}
+  - component: {fileID: 1059267090331575121}
+  - component: {fileID: 3997934914692932898}
+  - component: {fileID: 4200027276109064904}
   m_Layer: 0
-  m_Name: pineapple
-  m_TagString: Enemy
+  m_Name: can_new 1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2685043873175138921
+--- !u!4 &2231649145106880574
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3317149072414025939}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -8.3592, y: 1.496, z: -17.295}
-  m_LocalScale: {x: 0.06978363, y: 0.06978363, z: 0.06978363}
+  m_GameObject: {fileID: 1563797722527826564}
+  m_LocalRotation: {x: 0.0000000116165095, y: -0.00000026606264, z: -0.043619253,
+    w: 0.99904823}
+  m_LocalPosition: {x: -170.86484, y: 64.35955, z: 27.533714}
+  m_LocalScale: {x: 0.53086054, y: 0.53086054, z: 0.53086054}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1363722865278352844
+--- !u!33 &2979045974026573723
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3317149072414025939}
-  m_Mesh: {fileID: 973877516759717424, guid: 4d268e244cdacff4b893efa33ed8dbd4, type: 3}
---- !u!23 &3821337207280404742
+  m_GameObject: {fileID: 1563797722527826564}
+  m_Mesh: {fileID: 3868671361854562809, guid: 49deb08fe436a564ea3bca48c32a7aca, type: 3}
+--- !u!23 &1059267090331575121
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3317149072414025939}
+  m_GameObject: {fileID: 1563797722527826564}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,8 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 907e0f9258a281547bb10b29a68e000c, type: 2}
-  - {fileID: 2100000, guid: 1a34f039ee9813a48946056f4fe96cd8, type: 2}
+  - {fileID: 2100000, guid: ee19e63325af0d9478e9b06b5c207059, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,13 +84,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &8477519880012417617
+--- !u!54 &3997934914692932898
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3317149072414025939}
+  m_GameObject: {fileID: 1563797722527826564}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -100,17 +100,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &-361257757098922178
+--- !u!64 &4200027276109064904
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3317149072414025939}
+  m_GameObject: {fileID: 1563797722527826564}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 973877516759717424, guid: 4d268e244cdacff4b893efa33ed8dbd4, type: 3}
+  m_Mesh: {fileID: 3868671361854562809, guid: 49deb08fe436a564ea3bca48c32a7aca, type: 3}
