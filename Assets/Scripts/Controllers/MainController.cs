@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainController : MonoBehaviour
 {
+    [SerializeField] private Transform _playerStarterPoint;
+    [SerializeField] private PlayerView _playerPrefab;
+    [SerializeField] private PlayerView _playerView;
+    [SerializeField] private CameraView _mainCameraPrefab;
+    [SerializeField] private bool _useMouse = true;
+    [SerializeField] private string _starterSceneName = "";
+
     private List<BaseController> _controllers = new List<BaseController>();
     private InputController _input;
     private PlayerController _playerController;   
@@ -12,13 +19,9 @@ public class MainController : MonoBehaviour
     private EnemyController _enemyController;
     private GameModeController _gameMode;
     private CollectableController _collectables;
-    private ObjectSpawnerController _objSpawnerController;
-    [SerializeField] private Transform _playerStarterPoint;
-    [SerializeField] private PlayerView _playerPrefab;
-    [SerializeField] private PlayerView _playerView;
-    [SerializeField] private CameraView _mainCameraPrefab;
-    [SerializeField] private bool _useMouse = true;
-    [SerializeField] private string _starterSceneName = "";
+    private UIController _uiController;
+    private ObjectSpawnerController _objSpawnerController;  
+
     public bool UseMouse => _useMouse;
     public InputController Input => _input;
     public GameModeController GameMode => _gameMode;
@@ -43,7 +46,9 @@ public class MainController : MonoBehaviour
         _cameraMain.SetPursuedObject(_playerView.gameObject);
         _enemyController = new EnemyController(this);
         _collectables = new CollectableController(this);
+        _uiController = new UIController(this);
         _objSpawnerController = new ObjectSpawnerController(this);
+
     }
 
     private void Start()
@@ -135,16 +140,6 @@ public class MainController : MonoBehaviour
         GetController<BaseController>();
         InputController a = new InputController(this);
         a = GetController<InputController>();
-    }   
-
-    public void StartLevel()
-    {
-        Invoke("AfterSeconds", 2.0f);
-    }
-
-    private void AfterSeconds()
-    {
-        GameEvents.current.LevelStart();
     }
     #endregion
 }

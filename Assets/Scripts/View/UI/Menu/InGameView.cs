@@ -15,6 +15,8 @@ public class InGameView : BaseMenuView
 
     private void Start()
     {
+        FindMyController();
+        _pauseButton.onClick.AddListener(UIEvents.Current.ButtonPauseGame);
         GameEvents.current.OnAddMoney += UpdateMoneyText;
     }
 

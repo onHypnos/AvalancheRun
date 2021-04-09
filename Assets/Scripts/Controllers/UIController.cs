@@ -24,6 +24,7 @@ public class UIController : BaseController, IExecute
     public override void Initialize()
     {
         base.Initialize();
+        SwitchUI(UIState.MainMenu);
     }
 
     public override void Execute()
@@ -58,8 +59,14 @@ public class UIController : BaseController, IExecute
         SwitchUI(UIState.EndGame);
         _endGameMenu.ActivateState(false);
     }
+    private void NextLevel()
+    {
+        SwitchUI(UIState.MainMenu);
+        // Next level event
+    }
     private void RestartGame()
     {
+        SwitchUI(UIState.MainMenu);
         GameEvents.current.LevelRestart();
     }
 
@@ -93,35 +100,35 @@ public class UIController : BaseController, IExecute
                 _inGame.Hide();
                 _pauseMenu.Hide();
                 _endGameMenu.Hide();
-                _shopMenu.Hide();
+                //_shopMenu.Hide();
                 break;
             case UIState.InGame:
                 _mainMenu.Hide();
                 _inGame.Show();
                 _pauseMenu.Hide();
                 _endGameMenu.Hide();
-                _shopMenu.Hide();
+                //_shopMenu.Hide();
                 break;
             case UIState.Pause:
                 _mainMenu.Hide();
                 _inGame.Hide();
                 _pauseMenu.Show();
                 _endGameMenu.Hide();
-                _shopMenu.Hide();
+                //_shopMenu.Hide();
                 break;
             case UIState.EndGame:
                 _mainMenu.Hide();
                 _inGame.Hide();
                 _pauseMenu.Hide();
                 _endGameMenu.Show();
-                _shopMenu.Hide();
+                //_shopMenu.Hide();
                 break;
             case UIState.Shop:
                 _mainMenu.Hide();
                 _inGame.Hide();
                 _pauseMenu.Hide();
                 _endGameMenu.Hide();
-                _shopMenu.Show();
+                //_shopMenu.Show();
                 break;
         }
     }

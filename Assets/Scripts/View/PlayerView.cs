@@ -42,6 +42,7 @@ public class PlayerView : BaseObjectView
         if (collision.gameObject.CompareTag("Enemy"))
         {
             GameEvents.current.OnPlayerGetHit();
+            Invoke("LevelFail", 1f);
         }
     }
 
@@ -62,7 +63,6 @@ public class PlayerView : BaseObjectView
         StartCoroutine(Utilits.BombShieldBehavior(_bombShield));
     }
     
-
     public void SetRagdoll(bool value)
     {
         Rigidbody[] bodies = GetComponentsInChildren<Rigidbody>();
@@ -74,5 +74,10 @@ public class PlayerView : BaseObjectView
         GetComponent<CapsuleCollider>().enabled = !value;
         _playerRigidbody.isKinematic = true;
         _animator.enabled = !value;
+    }
+
+    private void LevelFail()
+    {
+        GameEvents.current.LevelFailed();
     }
 }

@@ -7,11 +7,23 @@ public class EndGameMenuView : BaseMenuView
     [SerializeField] private GameObject _panel;
 
     [Header("Elements")]
-    [SerializeField] private TextMesh _headerText;
+    [SerializeField] private Text _headerText;
     [SerializeField] private Button _nextLevelButton;
     [SerializeField] private Button _restartButton;
 
+    // Will be needed later
+    //[SerializeField] private TextMesh _moneyByLevelText;
+    //[SerializeField] private Button _scaleForAdButton;
+
     private UIController _controller;
+
+
+    private void Start()
+    {
+        FindMyController();
+        _nextLevelButton.onClick.AddListener(UIEvents.Current.ButtonNextLevel);
+        _restartButton.onClick.AddListener(UIEvents.Current.ButtonRestartGame);
+    }
 
 
     public override void Hide()
@@ -28,7 +40,19 @@ public class EndGameMenuView : BaseMenuView
     }
     public void ActivateState(bool inLevelComplete)
     {
-        //TODO
+        switch (inLevelComplete)
+        {
+            case true:
+                _nextLevelButton.gameObject.SetActive(true);
+                _restartButton.gameObject.SetActive(false);
+                _headerText.text = "Complete!";
+                break;
+            case false:
+                _nextLevelButton.gameObject.SetActive(false);
+                _restartButton.gameObject.SetActive(true);
+                _headerText.text = "Lose :(";
+                break;
+        }
     }
 
     public void FindMyController()
