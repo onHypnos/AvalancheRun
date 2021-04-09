@@ -12,6 +12,7 @@ public class EnemyController : BaseController, IExecute
         _stateList.Add(EnemyStates.Downed, new EnemyDownedStateModel());
         _stateList.Add(EnemyStates.Dead, new EnemyDeadStateModel());
         _stateList.Add(EnemyStates.Moving, new EnemyMovingStateModel());
+        _stateList.Add(EnemyStates.Finishing, new EnemyFinishingStateModel());
     }
     public PlayerView Player => _player;
     public override void Initialize()
@@ -21,6 +22,7 @@ public class EnemyController : BaseController, IExecute
         
         GameEvents.current.OnEnemyGetDamage += KillEnemy;
         GameEvents.current.OnLevelStart += SetAllEnemiesStatesMoving;
+        GameEvents.current.OnMemberFinish += EnemyFinishLevel;
     }
     public override void Execute()
     {
@@ -52,13 +54,22 @@ public class EnemyController : BaseController, IExecute
     public void SetEnemyState(EnemyView enemy, EnemyStates state)
     {
         enemy.SetState(state);
-        if (enemy.State == EnemyStates.Dead)
+        if (enemy.State != EnemyStates.Dead)
         {
-            enemy.Rigidbody.useGravity = true;
+            enemy.Rigidbody.useGravity = false;
         }
         else
         {
-            enemy.Rigidbody.useGravity = false;
+            enemy.Rigidbody.useGravity = true;
+        }
+        switch (state)
+        {
+            case EnemyStates.Finishing:
+                { 
+                    enemy.Animator.SetTrigger($"Dance {Random.Range(0,6)}");
+                }
+                break;
+            default: break;
         }
     }
     /// <summary>
@@ -96,5 +107,10 @@ public class EnemyController : BaseController, IExecute
             enemy.tag = "DeadEnemy";
             GameEvents.current.EnemyKilled(enemy);
         }
+    }
+
+    public void EnemyFinishLevel(EnemyView enemy)
+    {
+        SetEnemyState(enemy, EnemyStates.Finishing);
     }
 }

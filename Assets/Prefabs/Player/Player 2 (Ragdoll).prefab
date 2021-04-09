@@ -521,7 +521,7 @@ MonoBehaviour:
   _animator: {fileID: 4824219045721432463}
   _playerRigidbody: {fileID: 0}
   _bombShield: {fileID: 8432760370505163937}
-  _bombShieldReady: 1
+  _bombShieldReady: 0
 --- !u!54 &4824219046830050260
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 3136564628662025269}
   m_Layer: 2
   m_Name: BanditEnemy RagDall
-  m_TagString: Untagged
+  m_TagString: Member
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -384,6 +384,7 @@ MonoBehaviour:
   _animator: {fileID: 8247582068792605343}
   _finishPoint: {fileID: 0}
   _movementSpeed: 5
+  _rigidbody: {fileID: 0}
 --- !u!54 &9114065282613565967
 Rigidbody:
   m_ObjectHideFlags: 0
