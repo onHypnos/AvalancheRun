@@ -10,7 +10,8 @@ public class PlayerView : BaseObjectView
     [SerializeField] private Rigidbody _playerRigidbody;
     [SerializeField] public GameObject _bombShield;
     [SerializeField] private bool _bombShieldReady = true;
-
+    [SerializeField] private bool _canSlowTime = true;
+    [SerializeField] private float _slowModeDuration = 3.0f;
     private float _animationBlend;
     private bool _attackReady = true;
 
@@ -18,6 +19,7 @@ public class PlayerView : BaseObjectView
 
     #region AccsessModifyers
     public bool BombShieldReady => _bombShieldReady;
+    public bool CanSlowTime => _canSlowTime;
     public float MovementSpeed => _movementSpeed;
     public float AnimationBlend => _animationBlend;
     
@@ -62,7 +64,13 @@ public class PlayerView : BaseObjectView
         _bombShield.SetActive(true);
         StartCoroutine(Utilits.BombShieldBehavior(_bombShield));
     }
-    
+
+    public void ActivateSlowMode()
+    {
+        _canSlowTime = false;
+        StartCoroutine(Utilits.CountSlowMode(_slowModeDuration));
+    }
+
     public void SetRagdoll(bool value)
     {
         Rigidbody[] bodies = GetComponentsInChildren<Rigidbody>();

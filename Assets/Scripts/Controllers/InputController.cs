@@ -47,7 +47,7 @@ public class InputController : BaseController, IExecute
                     case TouchPhase.Began:
                         {
                             InputEvents.current.TouchBeganEvent(_touch.position);
-                            if (Time.time - _firstTime < 0.3f)
+                            if (Time.time - _firstTime < 0.3f && Time.time - _firstTime > 0.1f)
                             {
                                 InputEvents.current.DoubleTouchEvent();
                             }

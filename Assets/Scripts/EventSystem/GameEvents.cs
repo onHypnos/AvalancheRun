@@ -144,12 +144,6 @@ public class GameEvents : MonoBehaviour
     #endregion
 
     #region Spawner events
-    public Action<GameObject> OnCreatingNewFallingItem;
-    public void CreatingNewFallingItem(GameObject obj)
-    {
-        OnCreatingNewFallingItem?.Invoke(obj);
-    }
-
 
     public Action<ObjectSpawnerView> OnSetObjectSpawner;
     public void SetObjectSpawner(ObjectSpawnerView view)
@@ -163,5 +157,28 @@ public class GameEvents : MonoBehaviour
     {
         OnDeleteObjectSpawner?.Invoke(view);
     }
+    #endregion
+
+    #region FallingObjects events
+
+    public Action OnStartSlowMode;
+    public void StartSlowMode()
+    {
+        OnStartSlowMode?.Invoke();
+    }
+
+    public Action OnEndingSlowMode;
+    public void EndingSlowMode()
+    {
+        OnEndingSlowMode?.Invoke();
+    }
+
+    public Action<GameObject> OnAddFallingObject;
+    public void AddFallingObject(GameObject obj)
+    {
+        OnAddFallingObject?.Invoke(obj);
+    }
+
+    
     #endregion
 }

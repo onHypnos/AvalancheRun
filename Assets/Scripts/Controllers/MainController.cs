@@ -33,7 +33,7 @@ public class MainController : MonoBehaviour
         //SceneManager.UnloadSceneAsync(_starterSceneName);
 
         _gameMode = new GameModeController(this);
-        _input = new InputController(this);        
+        _input = new InputController(this);
         _playerController = new PlayerController(this);
         if (_playerStarterPoint == null)
         {
@@ -47,7 +47,6 @@ public class MainController : MonoBehaviour
         _cameraMain.SetPursuedObject(_playerView.gameObject);
         _enemyController = new EnemyController(this);
         _collectables = new CollectableController(this);
-
         _uiController = new UIController(this);
         _objSpawnerController = new ObjectSpawnerController(this);
     }
@@ -59,9 +58,8 @@ public class MainController : MonoBehaviour
             if (controller is IInitialize)
             {
                 controller.Initialize();
-            }            
+            }
         }
-
         _gameMode.LoadNewScene(_starterSceneName);
     }
 
@@ -74,19 +72,19 @@ public class MainController : MonoBehaviour
             if (controller is IExecute)
             {
                 controller.Execute();
-            }            
+            }
         }        
     }
 
     private void LateUpdate()
-    {        
+    {
         foreach (BaseController controller in _controllers)
         {
             if (controller is ILateExecute)
             {
                 controller.LateExecute();
             }
-        }        
+        }
     }
 
 
