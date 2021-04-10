@@ -13,8 +13,8 @@ public class PlayerController : BaseController, IExecute
     private Vector2 _positionDelta = Vector2.zero;
     private Vector2 _positionBegan = Vector2.zero;
     private Vector3 _temp;
-    
-    
+
+
     #endregion
     #region Access Modifyers
     public Vector2 PositionDelta => _positionDelta;
@@ -41,8 +41,8 @@ public class PlayerController : BaseController, IExecute
         InputEvents.current.OnTouchMovedEvent += SetMoving;
         //GameEvents.current.OnTouchStationaryEvent += SetIdle;
         InputEvents.current.OnTouchEndedEvent += SetIdle;
-        InputEvents.current.OnTouchCancelledEvent += SetIdle;       
-        
+        InputEvents.current.OnTouchCancelledEvent += SetIdle;
+
         GameEvents.current.OnLevelEnd += PlayerWinningDance;
         GameEvents.current.OnSceneChanged += ResetPlayerState;
         GameEvents.current.OnPlayerGetHit += SetDead;
@@ -57,7 +57,7 @@ public class PlayerController : BaseController, IExecute
         {
             return;
         }
-        
+
         switch (_player.State)
         {
             case PlayerState.Idle:
@@ -67,7 +67,7 @@ public class PlayerController : BaseController, IExecute
                 }
             case PlayerState.Moving:
                 {
-                    state = _stateList[PlayerState.Moving];                    
+                    state = _stateList[PlayerState.Moving];
                     break;
                 }
             case PlayerState.Dead:
@@ -145,14 +145,21 @@ public class PlayerController : BaseController, IExecute
             _player.SetRagdoll(true);
             SetState(false);
         }
-    }     
+    }
 
 
     public void OnDoubleTouchEvent()
     {
-        if (_player.BombShieldReady)
+        if (PlayerIsActive)
         {
-            _player.ActivateBombShield();
+            if (_player.BombShieldReady)
+            {
+               // _player.ActivateBombShield();
+            }
+            if (_player.CanSlowTime)
+            {
+                _player.ActivateSlowMode();
+            }
         }
     }
 
