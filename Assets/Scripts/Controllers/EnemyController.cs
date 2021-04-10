@@ -65,7 +65,8 @@ public class EnemyController : BaseController, IExecute
         switch (state)
         {
             case EnemyStates.Finishing:
-                { 
+                {
+                    enemy.Rotation = Quaternion.LookRotation(Vector3.forward * -1f, Vector3.up);
                     enemy.Animator.SetTrigger($"Dance {Random.Range(0,6)}");
                 }
                 break;

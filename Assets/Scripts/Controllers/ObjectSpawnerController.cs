@@ -139,8 +139,10 @@ public class ObjectSpawnerController : BaseController, IExecute
     private void AddFallingObjectToDict(GameObject obj)
     {
         _temporalRig = obj.GetComponent<Rigidbody>();
+        
         if (_temporalRig != null)
         {
+            _temporalRig.AddTorque(Vector3.right * 30);
             _currentSceneObjects.Add(_temporalRig, new BodyInfo(_temporalRig.velocity, _temporalRig.angularVelocity));
         }
     }
