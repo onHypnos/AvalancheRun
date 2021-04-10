@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OtherStuff
   m_EditorClassIdentifier: 
   _objects:
-  - {fileID: 6885339259265063493, guid: 59d30a501e49de349b2ff40248470c71, type: 3}
+  - {fileID: 4939316130302820534, guid: e1db0aabd14e4b143a884ccbec1d5c84, type: 3}
   - {fileID: 1563797722527826564, guid: 58d2063d894bd5745bf109818c166040, type: 3}
   - {fileID: 2556652364366715103, guid: f825646a156b94445b6ca6cdd7e7224f, type: 3}
   - {fileID: 5320059430732353602, guid: 4b46f07d3802933478897353a77134cb, type: 3}
@@ -21,3 +21,9 @@ MonoBehaviour:
   - {fileID: 4860396661550359046, guid: 1ec9299a8af04ae44b18f15c85287394, type: 3}
   - {fileID: 4999500906354892716, guid: beff7b0fd1457b742b8bbecaef15af67, type: 3}
   - {fileID: 4166447631078253118, guid: d6d99bbebf2321c449914c135c222383, type: 3}
+  - {fileID: 3130048626173790834, guid: 52ed919ca9542bb4c8bb6a6734d46f59, type: 3}
+  - {fileID: 4166447631078253118, guid: d6d99bbebf2321c449914c135c222383, type: 3}
+  - {fileID: 864804362614088116, guid: ceed6b48068689a43b5cbea925e614f5, type: 3}
+  - {fileID: 4166447631078253118, guid: d6d99bbebf2321c449914c135c222383, type: 3}
+  - {fileID: 2019085934901876598, guid: 090e6695baed7c64b87a13d3f79fdafa, type: 3}
+  - {fileID: 2019085934901876598, guid: 090e6695baed7c64b87a13d3f79fdafa, type: 3}
