@@ -10,6 +10,7 @@ public class CollectableController : BaseController, IExecute
 
     private int _bank;
     private int _money;
+    private float _rotationSpeed = 200f;
 
 
     public int Bank => _bank;
@@ -19,16 +20,28 @@ public class CollectableController : BaseController, IExecute
     {
         _save = new SaveDataRepo();
         _bank = _save.LoadInt(SaveKeyManager.Bank);
+        _money = 0;
 
         GameEvents.current.OnAddMoney += AddMoney;
         GameEvents.current.OnRemoveMoney += RemoveMoney;
+        GameEvents.current.OnLevelComplete += CompleteLevel;
+        GameEvents.current.OnLevelStart += StartLevel;
     }
 
     public override void Execute()
     {
         base.Execute();
-        // TODO
-        // Rotate money
+
+        GameEvents.current.GetCurrentMoney(_money);
+        GameEvents.current.GetBank(_bank);
+
+        if (_collectables.Count >= 1)
+        {
+            foreach (CollectableView kostyaDollar in _collectables)
+            {
+                kostyaDollar.transform.Rotate(Vector3.up, _rotationSpeed * Time.deltaTime);
+            }
+        }
     }
 
     public void AddView(CollectableView view)
@@ -57,11 +70,22 @@ public class CollectableController : BaseController, IExecute
 
     private void AddMoney(int value)
     {
-
+        _money += value;
     }
 
     private void RemoveMoney(int value)
     {
+        _bank -= value;
+    }
 
+    private void StartLevel()
+    {
+        _money = 0;
+    }
+
+    private void CompleteLevel()
+    {
+        _bank += _money;
+        _save.SaveData(_bank, SaveKeyManager.Bank);
     }
 }

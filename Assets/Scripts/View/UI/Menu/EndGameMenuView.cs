@@ -10,6 +10,8 @@ public class EndGameMenuView : BaseMenuView
     [SerializeField] private Text _headerText;
     [SerializeField] private Button _nextLevelButton;
     [SerializeField] private Button _restartButton;
+    [SerializeField] private Image _moneyIcon;
+    [SerializeField] private Text _moneyText;
 
     // Will be needed later
     //[SerializeField] private TextMesh _moneyByLevelText;
@@ -23,6 +25,8 @@ public class EndGameMenuView : BaseMenuView
         FindMyController();
         _nextLevelButton.onClick.AddListener(UIEvents.Current.ButtonNextLevel);
         _restartButton.onClick.AddListener(UIEvents.Current.ButtonRestartGame);
+
+        GameEvents.current.OnGetCurrentMoney += SetMoneyText;
     }
 
 
@@ -46,11 +50,15 @@ public class EndGameMenuView : BaseMenuView
                 _nextLevelButton.gameObject.SetActive(true);
                 _restartButton.gameObject.SetActive(false);
                 _headerText.text = "Complete!";
+                _moneyIcon.gameObject.SetActive(true);
+                _moneyText.gameObject.SetActive(true);
                 break;
             case false:
                 _nextLevelButton.gameObject.SetActive(false);
                 _restartButton.gameObject.SetActive(true);
                 _headerText.text = "Lose :(";
+                _moneyIcon.gameObject.SetActive(false);
+                _moneyText.gameObject.SetActive(false);
                 break;
         }
     }
@@ -62,5 +70,10 @@ public class EndGameMenuView : BaseMenuView
             _controller = FindObjectOfType<MainController>().GetController<UIController>();
         }
         _controller.AddView(this);
+    }
+
+    private void SetMoneyText(int value)
+    {
+        _moneyText.text = $"{value}";
     }
 }
