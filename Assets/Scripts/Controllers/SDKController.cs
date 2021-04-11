@@ -34,7 +34,10 @@ public class SDKController : BaseController
             if (rewardEnabled)
             {
                 _ISIOSAppKey = ConfigManager.appConfig.GetString("IronSourseIOSAppKey");
+                Debug.LogWarning($"IOSKey {_ISIOSAppKey}");
                 _ISAndroidAppKey = ConfigManager.appConfig.GetString("IronSourceAndroidAppKey");
+                Debug.LogWarning($"AndroidKeyKey {_ISAndroidAppKey}");
+                
 #if UNITY_ANDROID
                 _currentAppKey = _ISAndroidAppKey;
 #elif UNITY_IPHONE
@@ -42,6 +45,7 @@ public class SDKController : BaseController
 #else
                 _currentAppKey = "unexpected_platform";
 #endif
+                
                 IronSource.Agent.validateIntegration();
                 IronSource.Agent.init(_currentAppKey, IronSourceAdUnits.REWARDED_VIDEO, IronSourceAdUnits.INTERSTITIAL, IronSourceAdUnits.OFFERWALL, IronSourceAdUnits.BANNER);
                 _isISInitialised = true;
