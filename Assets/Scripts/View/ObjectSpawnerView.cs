@@ -18,7 +18,7 @@ public class ObjectSpawnerView : BaseObjectView
         if (_controller != null)
         {            
             _controller.AddSpawnerToList(this);
-            Debug.LogWarning($"{this.gameObject.name} find controller");
+            
         }
         else 
         {
