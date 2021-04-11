@@ -6,6 +6,5 @@ public class PlayerIdleStateModel : BasePlayerStateModel
     {
         base.Execute(controller, player);
         player.Animator.SetFloat("VectorSpeedMagnitude", 0);
-        player.Rigidbody.velocity = Vector3.zero;
     }    
 }
