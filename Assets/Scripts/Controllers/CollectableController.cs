@@ -10,7 +10,7 @@ public class CollectableController : BaseController, IExecute
 
     private int _bank;
     private int _money;
-    private float _rotationSpeed;
+    private float _rotationSpeed = 200f;
 
 
     public int Bank => _bank;
@@ -35,8 +35,13 @@ public class CollectableController : BaseController, IExecute
         GameEvents.current.GetCurrentMoney(_money);
         GameEvents.current.GetBank(_bank);
 
-        // TODO
-        // Rotate money
+        if (_collectables.Count >= 1)
+        {
+            foreach (CollectableView kostyaDollar in _collectables)
+            {
+                kostyaDollar.transform.Rotate(Vector3.up, _rotationSpeed * Time.deltaTime);
+            }
+        }
     }
 
     public void AddView(CollectableView view)
