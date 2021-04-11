@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EndGameMenuView : BaseMenuView
 {
@@ -7,11 +8,11 @@ public class EndGameMenuView : BaseMenuView
     [SerializeField] private GameObject _panel;
 
     [Header("Elements")]
-    [SerializeField] private Text _headerText;
+    [SerializeField] private TextMeshProUGUI _headerText;
     [SerializeField] private Button _nextLevelButton;
     [SerializeField] private Button _restartButton;
     [SerializeField] private Image _moneyIcon;
-    [SerializeField] private Text _moneyText;
+    [SerializeField] private TextMeshProUGUI _moneyText;
 
     // Will be needed later
     //[SerializeField] private TextMesh _moneyByLevelText;

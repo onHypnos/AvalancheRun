@@ -9,8 +9,6 @@ public class MainMenuView : BaseMenuView
     [Header("Elements")]
     [SerializeField] private Button _startButton;
     [SerializeField] private Button _shopButton;
-    [SerializeField] private TextMesh _startText;
-    [SerializeField] private TextMesh _moneyText;
 
     private UIController _controller;
 

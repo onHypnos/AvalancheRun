@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InGameView : BaseMenuView
 {
@@ -8,7 +9,7 @@ public class InGameView : BaseMenuView
 
     [Header("Elements")]
     [SerializeField] private Button _pauseButton;
-    [SerializeField] private Text _moneyText;
+    [SerializeField] private TextMeshProUGUI _moneyText;
 
     private UIController _controller;
 
