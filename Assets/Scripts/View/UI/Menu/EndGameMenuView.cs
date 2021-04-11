@@ -21,15 +21,13 @@ public class EndGameMenuView : BaseMenuView
     private UIController _controller;
 
 
-    private void Start()
+    private void Awake()
     {
         FindMyController();
         _nextLevelButton.onClick.AddListener(UIEvents.Current.ButtonNextLevel);
         _restartButton.onClick.AddListener(UIEvents.Current.ButtonRestartGame);
 
         GameEvents.current.OnGetCurrentMoney += SetMoneyText;
-
-        Hide();
     }
 
 

@@ -13,13 +13,11 @@ public class MainMenuView : BaseMenuView
     private UIController _controller;
 
 
-    private void Start()
+    private void Awake()
     {
         FindMyController();
         _startButton.onClick.AddListener(UIEvents.Current.ButtonStartGame);
         //TODO обновление текста количества монет
-
-        Show();
     }
 
     public override void Hide()

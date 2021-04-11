@@ -10,14 +10,18 @@ public class UIController : BaseController, IExecute
     private EndGameMenuView _endGameMenu;
     private ShopMenuView _shopMenu;
 
-    public UIController(MainController main) : base(main) 
+    private GameObject _uiPrefab;
+
+    public UIController(MainController main, GameObject uiPrefab) : base(main) 
     {
-        
+        _uiPrefab = uiPrefab;
     }
 
     public override void Initialize()
     {
         base.Initialize();
+
+        GameObject.Instantiate(_uiPrefab);
 
         UIEvents.Current.OnButtonStartGame += StartGame;
         UIEvents.Current.OnButtonPauseGame += PauseGame;
@@ -26,6 +30,8 @@ public class UIController : BaseController, IExecute
 
         GameEvents.current.OnLevelComplete += WinGame;
         GameEvents.current.OnLevelFailed += LoseGame;
+
+        SwitchUI(UIState.MainMenu);
     }
 
     public override void Execute()
