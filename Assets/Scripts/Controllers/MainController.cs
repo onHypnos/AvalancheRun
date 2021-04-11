@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,8 +20,9 @@ public class MainController : MonoBehaviour
     private GameModeController _gameMode;
     private CollectableController _collectables;
     private UIController _uiController;
-    private ObjectSpawnerController _objSpawnerController;  
-
+    private ObjectSpawnerController _objSpawnerController;
+    private RemoteConfigController _remoteConfigController;
+    private SDKController _SDKcontroller;
 
     public bool UseMouse => _useMouse;
     public InputController Input => _input;
@@ -30,26 +30,31 @@ public class MainController : MonoBehaviour
     
     private void Awake()
     {
+        ///Services
         DontDestroyOnLoad(this.gameObject);
         //SceneManager.UnloadSceneAsync(_starterSceneName);
-
+        _SDKcontroller = new SDKController(this);
+        _remoteConfigController = new RemoteConfigController(this);
         _gameMode = new GameModeController(this);
         _input = new InputController(this);
         _playerController = new PlayerController(this);
+        _enemyController = new EnemyController(this);
+        _collectables = new CollectableController(this);
+        _uiController = new UIController(this, _uiPrefab);
+        _objSpawnerController = new ObjectSpawnerController(this);
+
+        ///SceneSettings
         if (_playerStarterPoint == null)
         {
             _playerStarterPoint = FindObjectOfType<PlayerStarterPosition>().transform;
         }
+
         _playerView = Instantiate(_playerPrefab, _playerStarterPoint.position, Quaternion.identity);
         //_playerView = _playerPrefab;
         _playerController.SetPlayer(_playerView);
         _cameraMain = new CameraController(this);
         _cameraMain.SetCamera(_mainCameraPrefab);
         _cameraMain.SetPursuedObject(_playerView.gameObject);
-        _enemyController = new EnemyController(this);
-        _collectables = new CollectableController(this);
-        _uiController = new UIController(this, _uiPrefab);
-        _objSpawnerController = new ObjectSpawnerController(this);
     }
 
     private void Start()
@@ -139,6 +144,12 @@ public class MainController : MonoBehaviour
             }
         }
         return null;
+    }
+
+
+    private void OnApplicationPause(bool pause)
+    {
+        GameEvents.current.GeneralApplicationPause(pause);
     }
 
     #region Will Replaced or Deleted
