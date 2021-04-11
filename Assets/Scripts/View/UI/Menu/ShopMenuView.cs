@@ -12,6 +12,8 @@ public class ShopMenuView : BaseMenuView
     private void Start()
     {
         FindMyController();
+
+        Hide();
     }
 
     public override void Hide()

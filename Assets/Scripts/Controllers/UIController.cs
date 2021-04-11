@@ -18,7 +18,6 @@ public class UIController : BaseController, IExecute
     public override void Initialize()
     {
         base.Initialize();
-        SwitchUI(UIState.MainMenu);
 
         UIEvents.Current.OnButtonStartGame += StartGame;
         UIEvents.Current.OnButtonPauseGame += PauseGame;

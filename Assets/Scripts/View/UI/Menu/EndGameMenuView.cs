@@ -28,6 +28,8 @@ public class EndGameMenuView : BaseMenuView
         _restartButton.onClick.AddListener(UIEvents.Current.ButtonRestartGame);
 
         GameEvents.current.OnGetCurrentMoney += SetMoneyText;
+
+        Hide();
     }
 
 

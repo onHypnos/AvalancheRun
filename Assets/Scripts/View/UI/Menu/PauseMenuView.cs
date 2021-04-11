@@ -16,6 +16,8 @@ public class PauseMenuView : BaseMenuView
     {
         FindMyController();
         _buttonResume.onClick.AddListener(UIEvents.Current.ButtonResumeGame);
+
+        Hide();
     }
 
     public override void Hide()
