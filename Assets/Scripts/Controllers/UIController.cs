@@ -12,6 +12,14 @@ public class UIController : BaseController, IExecute
 
     public UIController(MainController main) : base(main) 
     {
+        
+    }
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        SwitchUI(UIState.MainMenu);
+
         UIEvents.Current.OnButtonStartGame += StartGame;
         UIEvents.Current.OnButtonPauseGame += PauseGame;
         UIEvents.Current.OnButtonResumeGame += ResumeGame;
@@ -19,12 +27,6 @@ public class UIController : BaseController, IExecute
 
         GameEvents.current.OnLevelComplete += WinGame;
         GameEvents.current.OnLevelFailed += LoseGame;
-    }
-
-    public override void Initialize()
-    {
-        base.Initialize();
-        SwitchUI(UIState.MainMenu);
     }
 
     public override void Execute()

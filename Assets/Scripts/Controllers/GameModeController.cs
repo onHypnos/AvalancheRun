@@ -13,12 +13,17 @@ public class GameModeController : BaseController, IExecute
     private Dictionary<string, bool> _scenesList = new Dictionary<string, bool>();
     public GameModeController(MainController main) : base(main)
     {
+
+    }
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
         GameEvents.current.OnLevelStart += StartGame;
         GameEvents.current.OnGamePaused += PauseGame;
         GameEvents.current.OnGameResumed += ResumeGame;
     }
-
-    
 
     public override void Execute()
     {
