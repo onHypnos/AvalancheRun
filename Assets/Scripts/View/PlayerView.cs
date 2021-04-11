@@ -84,7 +84,7 @@ public class PlayerView : BaseObjectView
         _animator.enabled = !value;
     }
 
-    private void LevelFail()
+    public void LevelFail()
     {
         GameEvents.current.LevelFailed();
     }
