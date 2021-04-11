@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1058881425129",
+    "project_id": "avalanche-run-3339d",
+    "storage_bucket": "avalanche-run-3339d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058881425129:android:6b18bb0064125a43a1aa78",
+        "android_client_info": {
+          "package_name": "com.KeyboardGames.AvalancheRun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1058881425129-6kvscktcnp73e3u0oiok8biktcukvm4r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFwJycWRmdYkcGYIf7_unFFqXDsta3f4o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1058881425129-6kvscktcnp73e3u0oiok8biktcukvm4r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1058881425129-vgilbdndjv0gelejq0qjs8eak9v0pspq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.KeyboardGames.AvalancheRun"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

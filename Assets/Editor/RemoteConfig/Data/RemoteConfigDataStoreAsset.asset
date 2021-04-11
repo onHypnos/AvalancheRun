@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
+  m_Name: RemoteConfigDataStoreAsset
+  m_EditorClassIdentifier: 
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"6dc45711-20d2-4198-92c2-e614c8cc0bc7\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"AdmobIOS\",\r\n      \"value\": \"0\",\r\n     
+    \"type\": \"string\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"60735c77-668d-43b0-9174-7445713f12a0\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"AdmobAndroid\",\r\n      \"value\": \"1\",\r\n      \"type\":
+    \"string\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"1cd2623d-6dd3-4130-95a0-3a191775b440\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"IronSourseAndroid\",\r\n      \"value\": \"False\",\r\n      \"type\":
+    \"string\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"342f71f4-eaf5-4e9e-b34d-f9469b60bfcc\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"IronSourseIOS\",\r\n      \"value\": \"1\",\r\n      \"type\": \"string\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"c129e8cf-1a93-4181-8e7b-61916b675b8b\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"OverallShowAdvertisement\",\r\n     
+    \"value\": false,\r\n      \"type\": \"bool\"\r\n    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"6dc45711-20d2-4198-92c2-e614c8cc0bc7\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"AdmobIOS\",\r\n      \"value\": \"0\",\r\n     
+    \"type\": \"string\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"60735c77-668d-43b0-9174-7445713f12a0\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"AdmobAndroid\",\r\n      \"value\": \"1\",\r\n      \"type\":
+    \"string\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"1cd2623d-6dd3-4130-95a0-3a191775b440\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"IronSourseAndroid\",\r\n      \"value\": \"False\",\r\n      \"type\":
+    \"string\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"342f71f4-eaf5-4e9e-b34d-f9469b60bfcc\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"IronSourseIOS\",\r\n      \"value\": \"1\",\r\n      \"type\": \"string\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"c129e8cf-1a93-4181-8e7b-61916b675b8b\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"OverallShowAdvertisement\",\r\n     
+    \"value\": false,\r\n      \"type\": \"bool\"\r\n    }\r\n  }\r\n]"
+  _environments: "[\r\n  {\r\n    \"projectId\": \"0b029517-fc2d-40f4-ab97-b20610932ede\",\r\n   
+    \"name\": \"AdvertiseEnvironment\",\r\n    \"id\": \"25d3bf87-4a7f-4f5a-97e2-09bb554bd567\",\r\n   
+    \"createdAt\": \"2021-04-11T17:39:26Z\",\r\n    \"updatedAt\": \"2021-04-11T17:39:26Z\",\r\n   
+    \"isDefault\": true\r\n  }\r\n]"
+  _rulesList: "[\r\n  {\r\n    \"projectId\": \"0b029517-fc2d-40f4-ab97-b20610932ede\",\r\n   
+    \"environmentId\": \"25d3bf87-4a7f-4f5a-97e2-09bb554bd567\",\r\n    \"configId\":
+    \"082dd08d-99bc-4c14-b2da-774527fa4c1d\",\r\n    \"name\": \"Base Customers Company\",\r\n   
+    \"enabled\": false,\r\n    \"condition\": \"true\",\r\n    \"rolloutPercentage\":
+    100,\r\n    \"value\": [\r\n      {\r\n        \"id\": \"Variant 1\",\r\n       
+    \"weight\": null,\r\n        \"values\": [],\r\n        \"type\": \"variant\"\r\n     
+    }\r\n    ],\r\n    \"id\": \"6015ac9d-d7ee-4859-b2c5-d5a1582552a9\",\r\n    \"priority\":
+    500,\r\n    \"type\": \"variant\",\r\n    \"startDate\": null,\r\n    \"endDate\":
+    null,\r\n    \"metadata\": null,\r\n    \"audience\": null,\r\n    \"kpi\": null,\r\n   
+    \"createdAt\": \"2021-04-11T17:54:37Z\",\r\n    \"updatedAt\": \"2021-04-11T17:54:48Z\"\r\n 
+    }\r\n]"
+  _lastCachedRulesList: "[\r\n  {\r\n    \"projectId\": \"0b029517-fc2d-40f4-ab97-b20610932ede\",\r\n   
+    \"environmentId\": \"25d3bf87-4a7f-4f5a-97e2-09bb554bd567\",\r\n    \"configId\":
+    \"082dd08d-99bc-4c14-b2da-774527fa4c1d\",\r\n    \"name\": \"Base Customers Company\",\r\n   
+    \"enabled\": false,\r\n    \"condition\": \"true\",\r\n    \"rolloutPercentage\":
+    100,\r\n    \"value\": [\r\n      {\r\n        \"id\": \"Variant 1\",\r\n       
+    \"weight\": null,\r\n        \"values\": [],\r\n        \"type\": \"variant\"\r\n     
+    }\r\n    ],\r\n    \"id\": \"6015ac9d-d7ee-4859-b2c5-d5a1582552a9\",\r\n    \"priority\":
+    500,\r\n    \"type\": \"variant\",\r\n    \"startDate\": null,\r\n    \"endDate\":
+    null,\r\n    \"metadata\": null,\r\n    \"audience\": null,\r\n    \"kpi\": null,\r\n   
+    \"createdAt\": \"2021-04-11T17:54:37Z\",\r\n    \"updatedAt\": \"2021-04-11T17:54:48Z\"\r\n 
+    }\r\n]"
