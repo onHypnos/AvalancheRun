@@ -16,6 +16,7 @@ public class PlayerController : BaseController, IExecute
 
 
     #endregion
+
     #region Access Modifyers
     public Vector2 PositionDelta => _positionDelta;
     public Vector2 PositionBegan => _positionBegan;
@@ -23,6 +24,7 @@ public class PlayerController : BaseController, IExecute
     public PlayerView GetPlayer => _player;
 
     #endregion
+
     #region Construsctors
     public PlayerController(MainController main) : base(main)
     {
@@ -32,6 +34,7 @@ public class PlayerController : BaseController, IExecute
     }
 
     #endregion
+
     #region IInitialize
     public override void Initialize()
     {
@@ -49,6 +52,7 @@ public class PlayerController : BaseController, IExecute
         InputEvents.current.OnDoubleTouchEvent += OnDoubleTouchEvent;
     }
     #endregion
+
     #region IExecute
     public override void Execute()
     {
@@ -82,6 +86,7 @@ public class PlayerController : BaseController, IExecute
         }
     }
     #endregion
+
     /// <summary>
     /// Set player instance if it wasn't setted
     /// </summary>

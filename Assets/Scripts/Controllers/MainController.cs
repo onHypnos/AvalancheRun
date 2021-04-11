@@ -11,6 +11,7 @@ public class MainController : MonoBehaviour
     [SerializeField] private CameraView _mainCameraPrefab;
     [SerializeField] private bool _useMouse = true;
     [SerializeField] private string _starterSceneName = "";
+    [SerializeField] private GameObject _uiPrefab;
 
     private List<BaseController> _controllers = new List<BaseController>();
     private InputController _input;
@@ -47,7 +48,7 @@ public class MainController : MonoBehaviour
         _cameraMain.SetPursuedObject(_playerView.gameObject);
         _enemyController = new EnemyController(this);
         _collectables = new CollectableController(this);
-        _uiController = new UIController(this);
+        _uiController = new UIController(this, _uiPrefab);
         _objSpawnerController = new ObjectSpawnerController(this);
     }
 

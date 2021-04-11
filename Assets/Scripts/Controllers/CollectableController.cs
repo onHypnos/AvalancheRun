@@ -21,6 +21,11 @@ public class CollectableController : BaseController, IExecute
         _save = new SaveDataRepo();
         _bank = _save.LoadInt(SaveKeyManager.Bank);
         _money = 0;
+    }
+
+    public override void Initialize()
+    {
+        base.Initialize();
 
         GameEvents.current.OnAddMoney += AddMoney;
         GameEvents.current.OnRemoveMoney += RemoveMoney;

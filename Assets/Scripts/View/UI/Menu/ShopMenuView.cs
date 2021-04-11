@@ -9,7 +9,7 @@ public class ShopMenuView : BaseMenuView
     private UIController _controller;
 
 
-    private void Start()
+    private void Awake()
     {
         FindMyController();
     }

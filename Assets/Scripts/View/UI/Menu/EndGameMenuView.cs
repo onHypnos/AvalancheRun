@@ -21,7 +21,7 @@ public class EndGameMenuView : BaseMenuView
     private UIController _controller;
 
 
-    private void Start()
+    private void Awake()
     {
         FindMyController();
         _nextLevelButton.onClick.AddListener(UIEvents.Current.ButtonNextLevel);
