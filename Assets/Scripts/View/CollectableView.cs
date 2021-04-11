@@ -2,39 +2,32 @@
 using UnityEngine;
 
 
+[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Rigidbody))]
 public class CollectableView : BaseObjectView
 {
-    [SerializeField] public Rigidbody Rigidbody { get; private set; }
     [SerializeField] private int _value = 100;
     private static CollectableController _controller;
-    public bool IsCollected = false;
-    private bool _CanTouchDelay = false;
-    public bool ColliderIsTrigger = false;
-    public int Value => _value;
+
+
     public void Start()
     {
-        if (Rigidbody == null)
-        {
-            Rigidbody = GetComponent<Rigidbody>();
-        }
         FindMyController();
-        Invoke("GetSpawnDelay", 0.2f);
+        GetComponent<Collider>().isTrigger = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_CanTouchDelay)
+        if (other.gameObject.CompareTag(TagManager.Player))
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                GameEvents.current.AddMoney(Value);
-                GameObject.Destroy(this.gameObject, 0f);
-                SetCollected();
-                Debug.Log($"Added {Value} dollars ");
-            }
+            GameEvents.current.AddMoney(_value);
+            Destroy(gameObject, 0f);
+#if UNITY_EDITOR
+            Debug.Log($"Added {_value} dollars ");
+#endif
         }
     }
-    
+
     public void FindMyController()
     {
         if (_controller == null)
@@ -44,30 +37,8 @@ public class CollectableView : BaseObjectView
         _controller.AddView(this);
     }
 
-    public void SetCollected(float time)
-    {
-        Invoke("CollectedStateTrue", time);
-    }
-    public void SetCollected()
-    {
-        SetCollected(0f);
-    }
-
-    private void CollectedState(bool value)
-    {
-        IsCollected = value;
-    }
-    private void CollectedStateTrue()
-    {
-        CollectedState(true);
-    }
     private void OnDestroy()
     {
         _controller.RemoveView(this);
-    }
-    public void SetColliderTrigger()
-    {
-
-        GetComponent<Collider>().isTrigger = true;
     }
 }

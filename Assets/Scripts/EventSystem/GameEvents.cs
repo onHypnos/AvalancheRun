@@ -84,6 +84,16 @@ public class GameEvents : MonoBehaviour
     {
         OnRemoveMoney?.Invoke(value);
     }
+    public Action<int> OnGetCurrentMoney;
+    public void GetCurrentMoney(int money)
+    {
+        OnGetCurrentMoney?.Invoke(money);
+    }
+    public Action<int> OnGetBank;
+    public void GetBank(int bank)
+    {
+        OnGetBank?.Invoke(bank);
+    }    
     #endregion
 
     #region Camera events

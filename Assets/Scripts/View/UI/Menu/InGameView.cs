@@ -8,7 +8,7 @@ public class InGameView : BaseMenuView
 
     [Header("Elements")]
     [SerializeField] private Button _pauseButton;
-    [SerializeField] private TextMesh _moneyText;
+    [SerializeField] private Text _moneyText;
 
     private UIController _controller;
 
@@ -17,7 +17,7 @@ public class InGameView : BaseMenuView
     {
         FindMyController();
         _pauseButton.onClick.AddListener(UIEvents.Current.ButtonPauseGame);
-        GameEvents.current.OnAddMoney += UpdateMoneyText;
+        GameEvents.current.OnGetCurrentMoney += UpdateMoneyText;
     }
 
     public override void Hide()
@@ -45,6 +45,6 @@ public class InGameView : BaseMenuView
 
     private void UpdateMoneyText(int value)
     {
-
+        _moneyText.text = $"{value}";
     }
 }
