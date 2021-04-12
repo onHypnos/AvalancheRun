@@ -20,7 +20,7 @@ public class UIController : BaseController, IExecute
     public override void Initialize()
     {
         base.Initialize();
-        _uiPrefab = Resources.Load<GameObject>("UIPrefabs/Ui");
+        /*_uiPrefab = Resources.Load<GameObject>("UIPrefabs/Ui");
         if (_uiPrefab != null)
         {
             GameObject.Instantiate(_uiPrefab,_main.transform);
@@ -28,9 +28,9 @@ public class UIController : BaseController, IExecute
         else
         {
             Debug.LogError("Cant load UI prefab");
-            Application.Quit();
-        }
-
+            //Application.Quit();
+        }*/
+        GameObject.Instantiate(Resources.Load<GameObject>("UIPrefabs/Ui"));
         UIEvents.Current.OnButtonStartGame += StartGame;
         UIEvents.Current.OnButtonPauseGame += PauseGame;
         UIEvents.Current.OnButtonResumeGame += ResumeGame;

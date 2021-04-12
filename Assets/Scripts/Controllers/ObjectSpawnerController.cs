@@ -13,7 +13,7 @@ public class ObjectSpawnerController : BaseController, IExecute
 
     private SaveDataRepo _saveData;
     private int _difficulty;
-    private int _maxDifficulty = 4;
+    private int _maxDifficulty = 3;
     private int _minDifficulty = 0;
 
     #region TemporalFields
@@ -24,7 +24,7 @@ public class ObjectSpawnerController : BaseController, IExecute
     public ObjectSpawnerController(MainController main) : base(main)
     {
         _saveData = new SaveDataRepo();
-        _difficulty = _saveData.LoadInt(SaveKeyManager.Difficulty);
+        _difficulty = Mathf.Clamp(_saveData.LoadInt(SaveKeyManager.Difficulty),_minDifficulty,_maxDifficulty);        
     }
 
     public override void Initialize()
