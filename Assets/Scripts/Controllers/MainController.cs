@@ -10,7 +10,6 @@ public class MainController : MonoBehaviour
     [SerializeField] private CameraView _mainCameraPrefab;
     [SerializeField] private bool _useMouse = true;
     [SerializeField] private string _starterSceneName = "";
-    [SerializeField] private GameObject _uiPrefab;
 
     private List<BaseController> _controllers = new List<BaseController>();
     private InputController _input;
