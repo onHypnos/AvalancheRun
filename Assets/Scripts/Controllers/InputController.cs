@@ -8,7 +8,7 @@ public class InputController : BaseController, IExecute
     private bool _countQueue = true;
     private Queue<Vector2> _queue = new Queue<Vector2>();
     private float _temporalMagnitude = 0;
-    private float _firstTime = 0;
+    
     /// <summary>
     /// 
     /// </summary>
@@ -46,12 +46,7 @@ public class InputController : BaseController, IExecute
                 {
                     case TouchPhase.Began:
                         {
-                            InputEvents.current.TouchBeganEvent(_touch.position);
-                            if (Time.time - _firstTime < 0.3f && Time.time - _firstTime > 0.1f)
-                            {
-                                InputEvents.current.DoubleTouchEvent();
-                            }
-                            _firstTime = Time.time;
+                            InputEvents.current.TouchBeganEvent(_touch.position);                            
                             break;
                         }
                     case TouchPhase.Canceled:

@@ -239,7 +239,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: O:/[Unity]/projects/[github]/Avalanche.keystore
+  AndroidKeystoreName: C:/Users/Hypnos/Documents/Keystore Android/user1.keystore
   AndroidKeyaliasName: avalancherun
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectSpawnerView : BaseObjectView
 {
     [SerializeField] private FallingObjectsCSO _objects;
-    [SerializeField] private FallingObjectsCSO[] _objectsPacks = new FallingObjectsCSO[5];
+    [SerializeField] private FallingObjectsCSO[] _objectsPacks = new FallingObjectsCSO[4];
 
     private ObjectSpawnerController _controller;
 
@@ -16,6 +16,7 @@ public class ObjectSpawnerView : BaseObjectView
     public void Awake()
     {        
         FindMyController();
+
     }
 
     private void FindMyController()

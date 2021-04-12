@@ -13,7 +13,10 @@ public class PlayerController : BaseController, IExecute
     private Vector2 _positionDelta = Vector2.zero;
     private Vector2 _positionBegan = Vector2.zero;
     private Vector3 _temp;
+    #region DoubleTouch
+    private float _firstTime;
 
+    #endregion
 
     #endregion
 
@@ -31,6 +34,8 @@ public class PlayerController : BaseController, IExecute
         _stateList.Add(PlayerState.Idle, new PlayerIdleStateModel());
         _stateList.Add(PlayerState.Moving, new PlayerMovingStateModel());
         _stateList.Add(PlayerState.Dead, new PlayerDeadStateModel());
+
+        _firstTime = float.MaxValue * 0.2f;
     }
 
     #endregion
@@ -38,7 +43,7 @@ public class PlayerController : BaseController, IExecute
     #region IInitialize
     public override void Initialize()
     {
-        base.Initialize();
+        base.Initialize();        
         PlayerIsActive = false;
         InputEvents.current.OnTouchBeganEvent += SetBeganPosition;
         InputEvents.current.OnTouchMovedEvent += SetMoving;
@@ -120,7 +125,12 @@ public class PlayerController : BaseController, IExecute
         if (PlayerIsActive)
         {
             _positionBegan = position;
-        }
+            if (Time.time - _firstTime < 0.3f && Time.time - _firstTime > 0.1f)
+            {
+                InputEvents.current.DoubleTouchEvent();
+            }
+            _firstTime = Time.time;
+        }        
     }
     /// <summary>
     /// Set PlayerState Idle
