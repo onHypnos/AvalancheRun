@@ -11,6 +11,9 @@ public class ObjectSpawnerController : BaseController, IExecute
     private bool _slowTime = false;
     private float _slowTimeFactor = 0.15f;
 
+    private SaveDataRepo _saveData;
+    private int _difficulty;
+
     #region TemporalFields
     private Vector3 _acceleration;
     private Vector3 _angularAcceleration;
@@ -18,7 +21,8 @@ public class ObjectSpawnerController : BaseController, IExecute
     #endregion
     public ObjectSpawnerController(MainController main) : base(main)
     {
-
+        _saveData = new SaveDataRepo();
+        _difficulty = _saveData.LoadInt(SaveKeyManager.Difficulty);
     }
 
     public override void Initialize()
@@ -92,12 +96,14 @@ public class ObjectSpawnerController : BaseController, IExecute
         {
             foreach (ObjectSpawnerView view in _spawners)
             {
-                SpawnObjectsPool(view, view.ObjectList, 0.35f);
+                SpawnObjectsPool(view, view.ObjectsPacks[_difficulty], 0.35f);
             }
         }
         else
         {
+#if UNITY_EDITOR
             Debug.LogWarning($"ObjectSpawnerController Haven't spawners available");
+#endif
         }
     }
 
