@@ -146,7 +146,6 @@ public class MainController : MonoBehaviour
         return null;
     }
 
-
     private void OnApplicationPause(bool pause)
     {
         GameEvents.current.GeneralApplicationPause(pause);

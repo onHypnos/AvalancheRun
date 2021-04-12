@@ -7,8 +7,12 @@ public class VirtualCameraView : MonoBehaviour
 {
     private CinemachineVirtualCamera _camera;
     private int _basePriority;
+    private Vector3 _startPosition;
+
     public void Start()
     {
+        _startPosition = transform.position;
+
         _camera = GetComponent<CinemachineVirtualCamera>();
         _basePriority = _camera.Priority;
         GameEvents.current.OnSettingActiveCamera += SetActiveCamera;
@@ -25,7 +29,6 @@ public class VirtualCameraView : MonoBehaviour
             _camera.Priority = _basePriority;
         }
     }
-    
 
     private void OnDestroy()
     {
