@@ -5,7 +5,11 @@ public class GameModeController : BaseController, IExecute
 {
     #region Fields
     private GameMode _gameMode;
-    private int _maxLevelIndex = 11;
+    private SaveDataRepo _saveData;
+
+    private string _levelNamePrefix = "Level";
+    private int _maxLevelIndex = 10;
+    private int _curretLevelIndex;
     #endregion
 
     #region Acсess Modifyers
@@ -16,7 +20,8 @@ public class GameModeController : BaseController, IExecute
     private Dictionary<string, bool> _scenesList = new Dictionary<string, bool>();
     public GameModeController(MainController main) : base(main)
     {
-
+        _saveData = new SaveDataRepo();
+        _curretLevelIndex = _saveData.LoadInt(SaveKeyManager.LevelNumber);
     }
 
     public override void Initialize()
@@ -26,6 +31,9 @@ public class GameModeController : BaseController, IExecute
         GameEvents.current.OnLevelStart += StartGame;
         GameEvents.current.OnGamePaused += PauseGame;
         GameEvents.current.OnGameResumed += ResumeGame;
+        GameEvents.current.OnLevelComplete += LevelComplete;
+        GameEvents.current.OnNextLevel += LoadLevel;
+        GameEvents.current.OnLevelRestart += LoadLevel;
     }
 
     public override void Execute()
@@ -101,6 +109,23 @@ public class GameModeController : BaseController, IExecute
         GameEvents.current.SetActiveCamera("Up-to-up Virtual Camera");
         GameEvents.current.SceneChanged();
         Time.timeScale = 0;
+    }
+
+    public void LoadLevel()
+    {
+        LoadNewScene($"{_levelNamePrefix}{_curretLevelIndex}");
+    }
+
+    private void LevelComplete()
+    {
+        _curretLevelIndex++;
+        
+        if (_curretLevelIndex > _maxLevelIndex)
+        {
+            _curretLevelIndex = 0;
+        }
+
+        _saveData.SaveData(_curretLevelIndex, SaveKeyManager.LevelNumber);
     }
 
     private void StartGame()

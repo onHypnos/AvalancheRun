@@ -77,9 +77,7 @@ public class MainController : MonoBehaviour
                 controller.Initialize();
             }
         }
-        _gameMode.LoadNewScene(_starterSceneName);
-
-
+        _gameMode.LoadLevel();
     }
 
     
