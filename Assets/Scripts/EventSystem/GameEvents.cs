@@ -146,6 +146,12 @@ public class GameEvents : MonoBehaviour
     }
     #endregion
 
+    public Action<bool> OnPlayerControllerSetActive;
+    public void PlayerControllerSetActive(bool value)
+    {
+        OnPlayerControllerSetActive?.Invoke(value);
+    }
+
     #region Enemy events
     public Action<EnemyView> OnEnemyGetDamage;
     public void EnemyGetDamage(EnemyView enemy)

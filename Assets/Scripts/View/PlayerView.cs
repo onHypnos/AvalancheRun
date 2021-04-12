@@ -31,12 +31,21 @@ public class PlayerView : BaseObjectView
     public Rigidbody Rigidbody => _playerRigidbody;
 
     #endregion
-    public void Start()
+    public void Awake()
     {
         if (_playerRigidbody == null)
             _playerRigidbody = GetComponent<Rigidbody>();
 
         SetRagdoll(false);
+        
+    }
+    public void Start()
+    {
+        if (_canSlowTime)
+        {
+            _canSlowTime = false;
+            Invoke("SetSlowTimeTrue", 3f);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -87,5 +96,16 @@ public class PlayerView : BaseObjectView
     public void LevelFail()
     {
         GameEvents.current.LevelFailed();
+    }
+
+    public void SetSlowTimeAbilityAvailable(bool value)
+    {
+        _canSlowTime = value;
+    }
+
+    private void SetSlowTimeTrue()
+    {
+        SetSlowTimeAbilityAvailable(true);
+
     }
 }

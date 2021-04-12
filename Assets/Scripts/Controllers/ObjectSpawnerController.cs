@@ -34,7 +34,7 @@ public class ObjectSpawnerController : BaseController, IExecute
         GameEvents.current.OnAddFallingObject += AddFallingObjectToDict;
         GameEvents.current.OnStartSlowMode += OnSlowModeStart;
         GameEvents.current.OnEndingSlowMode += OnSlowModeEnd;
-        GameEvents.current.OnLevelEnd += ClearFallingObjectsList;
+        //GameEvents.current.OnLevelStart += ClearFallingObjectsList;
 
         GameEvents.current.OnLevelComplete += IncreaseDifficulty;
         GameEvents.current.OnLevelFailed += ReduceDifficulty;
@@ -97,6 +97,7 @@ public class ObjectSpawnerController : BaseController, IExecute
 
     public void CallSpawners()
     {
+        ClearFallingObjectsList();
         if (_spawners.Count > 0)
         {
             foreach (ObjectSpawnerView view in _spawners)
@@ -153,7 +154,7 @@ public class ObjectSpawnerController : BaseController, IExecute
         
         if (_temporalRig != null)
         {
-            _temporalRig.AddTorque(Vector3.right * 30);
+            _temporalRig.AddTorque(Vector3.right * -30f);
             _currentSceneObjects.Add(_temporalRig, new BodyInfo(_temporalRig.velocity, _temporalRig.angularVelocity));
         }
     }
