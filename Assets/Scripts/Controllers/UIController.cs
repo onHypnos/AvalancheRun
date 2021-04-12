@@ -53,6 +53,7 @@ public class UIController : BaseController, IExecute
     private void StartGame()
     {
         SwitchUI(UIState.InGame);
+        GameEvents.current.PlayerControllerSetActive(true);
         GameEvents.current.LevelStart();
     }
     private void PauseGame()

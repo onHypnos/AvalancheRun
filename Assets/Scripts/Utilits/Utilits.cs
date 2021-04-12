@@ -27,9 +27,11 @@ public static class Utilits
     */
     public static IEnumerator CreatingObjects(GameObject[] objects, Transform transform, float deltaTime)
     {
+        
+        
         for (int i = 0; i < objects.Length; i++)
         {
-            _temp = transform.position + Vector3.right * (i % 4)* 1.6f * (Mathf.Pow(-1, i));            
+            _temp = transform.position + Vector3.right * (i % 4)* 1.6f * (Mathf.Pow(-1, i));
             GameEvents.current.AddFallingObject(GameObject.Instantiate(objects[i], _temp, Quaternion.identity, transform));
             yield return new WaitForSecondsRealtime(deltaTime);
         }
