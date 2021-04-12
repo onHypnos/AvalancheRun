@@ -13,6 +13,8 @@ public class ObjectSpawnerController : BaseController, IExecute
 
     private SaveDataRepo _saveData;
     private int _difficulty;
+    private int _maxDifficulty = 4;
+    private int _minDifficulty = 0;
 
     #region TemporalFields
     private Vector3 _acceleration;
@@ -33,6 +35,9 @@ public class ObjectSpawnerController : BaseController, IExecute
         GameEvents.current.OnStartSlowMode += OnSlowModeStart;
         GameEvents.current.OnEndingSlowMode += OnSlowModeEnd;
         GameEvents.current.OnLevelEnd += ClearFallingObjectsList;
+
+        GameEvents.current.OnLevelComplete += IncreaseDifficulty;
+        GameEvents.current.OnLevelFailed += ReduceDifficulty;
     }
 
     public override void Execute()
@@ -156,5 +161,24 @@ public class ObjectSpawnerController : BaseController, IExecute
     private void ClearFallingObjectsList()
     {
         _currentSceneObjects.Clear();
+    }
+
+    private void IncreaseDifficulty()
+    {
+        _difficulty++;
+        if (_difficulty > _maxDifficulty)
+        {
+            _difficulty = _maxDifficulty;
+        }
+        _saveData.SaveData(_difficulty, SaveKeyManager.Difficulty);
+    }
+    private void ReduceDifficulty()
+    {
+        _difficulty--;
+        if (_difficulty < _minDifficulty)
+        {
+            _difficulty = _minDifficulty;
+        }
+        _saveData.SaveData(_difficulty, SaveKeyManager.Difficulty);
     }
 }
