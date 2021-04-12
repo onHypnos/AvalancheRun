@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class MainController : MonoBehaviour
 {
+    public bool IsDermische;
+
     [SerializeField] private Transform _playerStarterPoint;
     [SerializeField] private PlayerView _playerPrefab;
     [SerializeField] private PlayerView _playerView;
