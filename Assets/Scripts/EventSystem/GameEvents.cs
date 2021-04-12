@@ -12,6 +12,13 @@ public class GameEvents : MonoBehaviour
 
 
     #region General events
+
+    public Action<bool> OnGeneralApplicationPause;
+    public void GeneralApplicationPause(bool isPaused)
+    {
+        OnGeneralApplicationPause?.Invoke(isPaused);
+    }
+    
     /// <summary>
     /// When added new scene to other
     /// </summary>
@@ -189,6 +196,15 @@ public class GameEvents : MonoBehaviour
         OnAddFallingObject?.Invoke(obj);
     }
 
-    
+
+    #endregion
+
+    #region SDKEvents
+
+    public Action<bool> OnUpdateIronSourceParameters;
+    public void UpdateIronSourceParameters(bool value)
+    {
+        OnUpdateIronSourceParameters.Invoke(value);
+    }
     #endregion
 }
