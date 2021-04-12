@@ -38,10 +38,7 @@ public class MainController : MonoBehaviour
         _gameMode = new GameModeController(this);
         _input = new InputController(this);
         _playerController = new PlayerController(this);
-        _enemyController = new EnemyController(this);
-        _collectables = new CollectableController(this);
-        _uiController = new UIController(this, _uiPrefab);
-        _objSpawnerController = new ObjectSpawnerController(this);
+        
 
         ///SceneSettings
         if (_playerStarterPoint == null)
@@ -55,6 +52,12 @@ public class MainController : MonoBehaviour
         _cameraMain = new CameraController(this);
         _cameraMain.SetCamera(_mainCameraPrefab);
         _cameraMain.SetPursuedObject(_playerView.gameObject);
+
+        _enemyController = new EnemyController(this);
+        _collectables = new CollectableController(this);
+        _uiController = new UIController(this);
+        _objSpawnerController = new ObjectSpawnerController(this);
+
     }
 
     private void Start()
