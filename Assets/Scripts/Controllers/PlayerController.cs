@@ -172,6 +172,7 @@ public class PlayerController : BaseController, IExecute
     {
         ResetPlayerAnimatorState();
         Transform.position = GameObject.FindObjectOfType<PlayerStarterPosition>().transform.position;
+        Transform.rotation = Quaternion.identity;
         PlayerIsActive = true;
     }
 
