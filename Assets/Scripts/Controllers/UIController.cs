@@ -34,6 +34,7 @@ public class UIController : BaseController, IExecute
         UIEvents.Current.OnButtonStartGame += StartGame;
         UIEvents.Current.OnButtonPauseGame += PauseGame;
         UIEvents.Current.OnButtonResumeGame += ResumeGame;
+        UIEvents.Current.OnButtonNextLevel += NextLevel;
         UIEvents.Current.OnButtonRestartGame += RestartGame;
 
         GameEvents.current.OnLevelComplete += WinGame;
@@ -77,7 +78,7 @@ public class UIController : BaseController, IExecute
     private void NextLevel()
     {
         SwitchUI(UIState.MainMenu);
-        // Next level event
+        GameEvents.current.NextLevel();
     }
     private void RestartGame()
     {

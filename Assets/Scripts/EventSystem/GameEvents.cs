@@ -73,6 +73,12 @@ public class GameEvents : MonoBehaviour
         OnGameResumed?.Invoke();
     }
 
+    public Action OnNextLevel;
+    public void NextLevel()
+    {
+        OnNextLevel?.Invoke();
+    }
+
     public Action OnLevelRestart;
     public void LevelRestart()
     {
