@@ -6,7 +6,6 @@ public class FallingObjectsCSO : ScriptableObject
 {
     [Tooltip("Пул объектов")]
     [SerializeField] private GameObject[] _objects;
-    public GameObject[] Objects => _objects;    
-    
 
+    public GameObject[] Objects => _objects;
 }

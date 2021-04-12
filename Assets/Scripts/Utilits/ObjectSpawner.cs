@@ -21,7 +21,6 @@ public class ObjectSpawner : MonoBehaviour
 
     public void CreateObjectsInTime(GameObject[] objects, ObjectSpawnerView spawnerView, float deltaTime)
     {
-        
         StartCoroutine(Utilits.CreatingObjects(objects, spawnerView.transform, deltaTime)); 
     }
 
@@ -29,6 +28,4 @@ public class ObjectSpawner : MonoBehaviour
     {
         transform.position = position;
     }
-
-    
 }

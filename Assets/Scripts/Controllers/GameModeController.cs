@@ -5,10 +5,13 @@ public class GameModeController : BaseController, IExecute
 {
     #region Fields
     private GameMode _gameMode;
+    private int _maxLevelIndex = 11;
     #endregion
+
     #region Acсess Modifyers
     public GameMode GameMode => _gameMode;
     #endregion
+
 
     private Dictionary<string, bool> _scenesList = new Dictionary<string, bool>();
     public GameModeController(MainController main) : base(main)
@@ -34,7 +37,7 @@ public class GameModeController : BaseController, IExecute
         }
     }
 
-    public void LoadAsyncScene(string sceneName)
+    private void LoadAsyncScene(string sceneName)
     {
         if (_scenesList.ContainsKey(sceneName))
         {
@@ -56,7 +59,7 @@ public class GameModeController : BaseController, IExecute
         }
     }
     
-    public void UnloadAsyncScene(string sceneName)
+    private void UnloadAsyncScene(string sceneName)
     {
         if (_scenesList.ContainsKey(sceneName))
         {

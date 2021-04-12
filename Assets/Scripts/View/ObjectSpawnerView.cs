@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class ObjectSpawnerView : BaseObjectView
 {
-    private ObjectSpawnerController _controller;
     [SerializeField] private FallingObjectsCSO _objects;
+    [SerializeField] private FallingObjectsCSO[] _objectsPacks = new FallingObjectsCSO[5];
+
+    private ObjectSpawnerController _controller;
+
     public FallingObjectsCSO ObjectList => _objects;
+    public FallingObjectsCSO[] ObjectsPacks => _objectsPacks;
+
+
     public void Awake()
     {        
         FindMyController();
