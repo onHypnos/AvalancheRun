@@ -2,7 +2,7 @@
 
 
 
-public class CameraController : BaseController, IExecute
+public class CameraController : BaseController, IExecute, ILateExecute
 {
     private CameraView _camera;
     private Vector3 _position;
@@ -17,6 +17,16 @@ public class CameraController : BaseController, IExecute
         GameEvents.current.OnLevelStart += ActivateBaseCamera;
     }
     public override void Execute()
+    {
+        
+
+    }
+    public void SetCameraChanging()
+    {
+        _camera.SetObjectChangingState(true);
+    }
+
+    public override void LateExecute()
     {
         if (_camera.ObjectChanging)
         {
@@ -36,16 +46,6 @@ public class CameraController : BaseController, IExecute
             _position.z = _camera.PursuedObject.transform.position.z; // сохраняем Z координату камеры
             _camera.transform.position = Vector3.Lerp(_camera.transform.position, _position, _camera.Smooth);
         }
-
-    }
-    public void SetCameraChanging()
-    {
-        _camera.SetObjectChangingState(true);
-    }
-
-    public override void LateExecute()
-    {
-
     }
 
     public void ActivateBaseCamera()
