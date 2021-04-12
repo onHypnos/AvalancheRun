@@ -443,6 +443,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objects: {fileID: 11400000, guid: 1863c755782809b49bd92f5d1b344dc1, type: 2}
+  _objectsPacks:
+  - {fileID: 11400000, guid: 2d5d99196decc7047ba407f6540dc343, type: 2}
+  - {fileID: 11400000, guid: 994b66861328b0041ace5ca98c2ae0f6, type: 2}
+  - {fileID: 11400000, guid: 8569f753e62fe9b45a79de41a79d9ff7, type: 2}
+  - {fileID: 11400000, guid: f4e168ec10d1ba9468defda1381f9dc1, type: 2}
 --- !u!4 &182818776
 Transform:
   m_ObjectHideFlags: 0

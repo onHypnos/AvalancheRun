@@ -51,7 +51,7 @@ public class GameModeController : BaseController, IExecute
         {
             if (_scenesList[sceneName] == false)
             {
-                SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+                SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
                 Debug.Log($"Scene {sceneName} was loaded");
                 _scenesList[sceneName] = true;
             }
