@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameModeController : BaseController, IExecute
 {
     #region Fields
+    private MainController _main;
     private GameMode _gameMode;
     private SaveDataRepo _saveData;
 
@@ -20,6 +21,7 @@ public class GameModeController : BaseController, IExecute
     private Dictionary<string, bool> _scenesListTemp = new Dictionary<string, bool>();
     public GameModeController(MainController main) : base(main)
     {
+        _main = main;
         _saveData = new SaveDataRepo();
         _curretLevelIndex = _saveData.LoadInt(SaveKeyManager.LevelNumber);
     }
@@ -124,6 +126,7 @@ public class GameModeController : BaseController, IExecute
         
         if (_curretLevelIndex > _maxLevelIndex)
         {
+            _main.IsDermische = true;
             _curretLevelIndex = 0;
         }
 
