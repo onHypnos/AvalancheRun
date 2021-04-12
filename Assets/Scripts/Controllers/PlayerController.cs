@@ -39,7 +39,7 @@ public class PlayerController : BaseController, IExecute
     public override void Initialize()
     {
         base.Initialize();
-        PlayerIsActive = true;
+        PlayerIsActive = false;
         InputEvents.current.OnTouchBeganEvent += SetBeganPosition;
         InputEvents.current.OnTouchMovedEvent += SetMoving;
         //GameEvents.current.OnTouchStationaryEvent += SetIdle;
@@ -49,6 +49,7 @@ public class PlayerController : BaseController, IExecute
         GameEvents.current.OnLevelEnd += PlayerWinningDance;
         GameEvents.current.OnSceneChanged += ResetPlayerState;
         GameEvents.current.OnPlayerGetHit += SetDead;
+        GameEvents.current.OnPlayerControllerSetActive += SetState;
         InputEvents.current.OnDoubleTouchEvent += OnDoubleTouchEvent;
     }
     #endregion
@@ -87,6 +88,10 @@ public class PlayerController : BaseController, IExecute
     }
     #endregion
 
+    protected override void SetState(bool state)
+    {
+        PlayerIsActive = state;
+    }
     /// <summary>
     /// Set player instance if it wasn't setted
     /// </summary>
@@ -172,13 +177,20 @@ public class PlayerController : BaseController, IExecute
     {
         ResetPlayerAnimatorState();
         Transform.position = GameObject.FindObjectOfType<PlayerStarterPosition>().transform.position;
+        
         Transform.rotation = Quaternion.identity;
+        _player.SetSlowTimeAbilityAvailable(true);
         PlayerIsActive = true;
     }
 
     public void ResetPlayerAnimatorState()
     {
         _player.Animator.SetTrigger("Reset");
+        _player.Animator.SetFloat("VectorSpeedMagnitude", 0);
+        _player.Animator.enabled = true;
+        _player.Animator.gameObject.transform.localPosition = Vector3.zero;
+        _player.SetRagdoll(false);
+        
     }
 
     public void PlayerWinningDance()
