@@ -512,6 +512,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objects: {fileID: 11400000, guid: 1863c755782809b49bd92f5d1b344dc1, type: 2}
+  _objectsPacks:
+  - {fileID: 11400000, guid: b98f7ade7ed3e204081f9bdd28fdb2a0, type: 2}
+  - {fileID: 11400000, guid: d4fdfa8703e430141ad989d4844fb176, type: 2}
+  - {fileID: 11400000, guid: 7259a4311af9e174b82b50b22fd12a5c, type: 2}
+  - {fileID: 11400000, guid: d22d658076b045445b6855fed4bd95b6, type: 2}
 --- !u!4 &182818776
 Transform:
   m_ObjectHideFlags: 0
