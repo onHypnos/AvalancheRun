@@ -16,8 +16,8 @@ public class GameModeController : BaseController, IExecute
     public GameMode GameMode => _gameMode;
     #endregion
 
-
     private Dictionary<string, bool> _scenesList = new Dictionary<string, bool>();
+    private Dictionary<string, bool> _scenesListTemp = new Dictionary<string, bool>();
     public GameModeController(MainController main) : base(main)
     {
         _saveData = new SaveDataRepo();
@@ -75,13 +75,10 @@ public class GameModeController : BaseController, IExecute
             {
                 SceneManager.UnloadSceneAsync(sceneName);
                 Debug.Log($"Scene {sceneName} was unloaded");
-                _scenesList[sceneName] = true;
+                _scenesList[sceneName] = false;
             }
         }
-        else
-        {
-            AddSceneToList(sceneName);
-        }
+        
     }
     /// <summary>
     /// Add new scene in scene name
@@ -98,11 +95,16 @@ public class GameModeController : BaseController, IExecute
     /// <param name="sceneName"></param>
     public void LoadNewScene(string sceneName)
     {
+        _scenesListTemp.Clear();
         foreach (KeyValuePair<string, bool> entry in _scenesList)
-        {            
+        {
+            _scenesListTemp.Add(entry.Key, entry.Value);
+        }
+        foreach (KeyValuePair<string, bool> entry in _scenesListTemp)
+        {       
             if (entry.Value)
             {
-                UnloadAsyncScene(entry.Key);
+                UnloadAsyncScene(entry.Key);                
             }
         }
         LoadAsyncScene(sceneName);
