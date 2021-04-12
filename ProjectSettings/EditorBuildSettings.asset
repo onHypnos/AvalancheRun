@@ -9,9 +9,36 @@ EditorBuildSettings:
     path: Assets/Scenes/Services And Player.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Levels/Level00.unity
+    path: Assets/Scenes/Levels/Level0.unity
+    guid: 8445e89c00694e648aa57e57141820b4
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1.unity
+    guid: 4bf6958cee9befd4e9714f123984f5bf
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level2.unity
+    guid: 5b89cd4db1798374cb1dcb7e0ac1da1c
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level3.unity
+    guid: db30fb7ca86e4a040aa6a414e0293d7f
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level4.unity
     guid: 6f4c1c70d90cea44a82990abe353ccc2
   - enabled: 1
-    path: Assets/Scenes/Levels/Level01.unity
-    guid: 12392fce9218c604f9e7dccfeec877c1
+    path: Assets/Scenes/Levels/Level5.unity
+    guid: 54c186fa90d39264489f95f4d264b2a5
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level6.unity
+    guid: 76037211d3ab28542b9c4821bfeb0b61
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level7.unity
+    guid: 3bcbe88371c527a4ea64d130df6b4dec
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level8.unity
+    guid: 8b208a10c525b3942a547dbe1bcd8f06
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level9.unity
+    guid: cba7ea59994dbe947b329e01d7b1a6af
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level10.unity
+    guid: 8f1a35ed7f0bf124cab2838ac18a497e
   m_configObjects: {}
