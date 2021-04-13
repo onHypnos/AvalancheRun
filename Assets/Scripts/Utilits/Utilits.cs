@@ -31,6 +31,11 @@ public static class Utilits
         
         for (int i = 0; i < objects.Length; i++)
         {
+            if(transform == null)
+            {
+                yield break;
+                Debug.LogWarning($"{i} номер индекса");
+            }
             _temp = transform.position + Vector3.right * (i % 4)* 1.6f * (Mathf.Pow(-1, i));
             GameEvents.current.AddFallingObject(GameObject.Instantiate(objects[i], _temp, Quaternion.identity, transform));
             yield return new WaitForSecondsRealtime(deltaTime);
