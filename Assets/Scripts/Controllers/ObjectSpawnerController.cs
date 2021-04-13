@@ -34,8 +34,8 @@ public class ObjectSpawnerController : BaseController, IExecute
         GameEvents.current.OnAddFallingObject += AddFallingObjectToDict;
         GameEvents.current.OnStartSlowMode += OnSlowModeStart;
         GameEvents.current.OnEndingSlowMode += OnSlowModeEnd;
-        //GameEvents.current.OnLevelStart += ClearFallingObjectsList;
-
+        GameEvents.current.OnLevelStart += ClearFallingObjectsList;
+        GameEvents.current.OnLevelEnd += ClearFallingObjectsList;
         GameEvents.current.OnLevelComplete += IncreaseDifficulty;
         GameEvents.current.OnLevelFailed += ReduceDifficulty;
     }
