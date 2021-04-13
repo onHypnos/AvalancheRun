@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Unity.RemoteConfig;
+using Facebook.Unity;
+
 //using GameAnalyticsSDK;
 
 public class SDKController : BaseController
@@ -24,8 +26,57 @@ public class SDKController : BaseController
         SubscribeInterstitialEvents();
         SubscribeRewardedEvents();
         GameEvents.current.OnUpdateIronSourceParameters += InitializeIronSource;
+        FacebookInitialize();
     }
 
+    #region GameAnalytics
+    private void GameAnalyticsInitialize()
+    {
+        //GameAnalytics.Initialize();
+    }
+    #endregion
+    #region FacebookSDK
+    private void FacebookInitialize()
+    {
+        if (!FB.IsInitialized)
+        {
+            // Initialize the Facebook SDK
+            FB.Init(InitCallback, OnHideUnity);
+        }
+        else
+        {
+            // Already initialized, signal an app activation App Event
+            FB.ActivateApp();
+        }
+    }
+    private void InitCallback()
+    {
+        if (FB.IsInitialized)
+        {
+            // Signal an app activation App Event
+            FB.ActivateApp();
+            // Continue with Facebook SDK
+            // ...
+        }
+        else
+        {
+            Debug.LogWarning("Failed to Initialize the Facebook SDK");
+        }
+    }
+    private void OnHideUnity(bool isGameShown)
+    {
+        if (!isGameShown)
+        {
+            // Pause the game - we will need to hide
+            Time.timeScale = 0;
+        }
+        else
+        {
+            // Resume the game - we're getting focus again
+            Time.timeScale = 1;
+        }
+    }
+    #endregion
     #region InitializeIronSourseSDK
     private void InitializeIronSource(bool rewardEnabled)//подписать этот метод чтобы узнать работает реклама или нет сейчас
     {
