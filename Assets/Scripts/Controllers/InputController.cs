@@ -8,21 +8,24 @@ public class InputController : BaseController, IExecute
     private bool _countQueue = true;
     private Queue<Vector2> _queue = new Queue<Vector2>();
     private float _temporalMagnitude = 0;
+
+
+    private Vector2 _mouseStartPosition;
+    private Vector2 _mouseOldPosition;
+    private Vector2 _mousePosition;
     
+
     /// <summary>
     /// 
     /// </summary>
-    public float TemporalMagnitude = 0;    
+    public float TemporalMagnitude = 0;
     private int counter = 0;
     private Touch _touch;
 
     public override void Initialize()
     {
         base.Initialize();
-        for (int i = 0; i < 4; i++)
-        {
-            _queue.Enqueue(Vector2.zero);
-        }
+
 
     }
 
@@ -38,15 +41,11 @@ public class InputController : BaseController, IExecute
             if (Input.touchCount > 0)
             {
                 _touch = Input.GetTouch(0);
-                if (_countQueue)
-                {
-                    CountSlide(_touch.deltaPosition);
-                }
                 switch (_touch.phase)
                 {
                     case TouchPhase.Began:
                         {
-                            InputEvents.current.TouchBeganEvent(_touch.position);                            
+                            InputEvents.current.TouchBeganEvent(_touch.position);
                             break;
                         }
                     case TouchPhase.Canceled:
@@ -61,7 +60,7 @@ public class InputController : BaseController, IExecute
                         }
                     case TouchPhase.Ended:
                         {
-                            InputEvents.current.TouchEndedEvent();                            
+                            InputEvents.current.TouchEndedEvent();
                             break;
                         }
                     case TouchPhase.Stationary:
@@ -75,13 +74,34 @@ public class InputController : BaseController, IExecute
         }
         else
         {
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(0))
             {
-                InputEvents.current.OnTeleportEvent();
-                Debug.Log("Keyboard Teleport");
+                _mousePosition =_mouseOldPosition = _mouseStartPosition = Input.mousePosition * .01f;             
+                InputEvents.current.TouchBeganEvent(_mouseStartPosition);
+            }
+            if (Input.GetMouseButton(0))
+            {
+                _mousePosition = Input.mousePosition * .01f;
+                if (_mousePosition == _mouseOldPosition)
+                {
+                    InputEvents.current.TouchStationaryEvent();
+                }
+                else
+                {
+                    _mousePosition = _mousePosition - _mouseOldPosition;
+                    InputEvents.current.TouchMovedEvent(_mousePosition);
+                }
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                InputEvents.current.TouchEndedEvent();
+
             }
         }
     }
+
+
+
 
     private void CountSlide(Vector2 deltaPosition)
     {
