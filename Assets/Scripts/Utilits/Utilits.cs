@@ -5,13 +5,13 @@ public static class Utilits
 {
     private static Vector3 _temp;
 
-    public static IEnumerator MoveToTarget(Transform obj, Vector3 target)
+    public static IEnumerator MoveToTarget(Transform obj, Vector3 target, float speed)
     {        
         if (obj == null) yield break;
 
         while (obj.position != target)
         {
-            obj.position = Vector3.MoveTowards(obj.position, target, Time.deltaTime);
+            obj.position = Vector3.MoveTowards(obj.position, target, Time.deltaTime * speed);
             yield return null;
         }
     }
