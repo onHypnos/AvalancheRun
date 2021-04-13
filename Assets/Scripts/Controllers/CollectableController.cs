@@ -57,7 +57,9 @@ public class CollectableController : BaseController, IExecute
         }
         else
         {
+#if UNITY_EDITOR
             Debug.Log($"Object {view} was already added to update list");
+#endif
         }
     }
 
@@ -69,7 +71,9 @@ public class CollectableController : BaseController, IExecute
         }
         else
         {
+#if UNITY_EDITOR
             Debug.Log($"Object {view} was already removed from update list");
+#endif
         }
     }
 
