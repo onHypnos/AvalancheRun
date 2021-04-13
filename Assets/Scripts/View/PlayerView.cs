@@ -5,7 +5,7 @@ public class PlayerView : BaseObjectView
     #region Fields
     [SerializeField] private PlayerState _state = PlayerState.Idle;
     
-    [SerializeField, Range(5f, 10f)] private float _movementSpeed = 5.0f;  
+    [SerializeField, Range(3f, 10f)] private float _movementSpeed = 3.0f;  
     [SerializeField] private Animator _animator;
     [SerializeField] private Rigidbody _playerRigidbody;
     [SerializeField] public GameObject _bombShield;

@@ -34,8 +34,8 @@ public class ObjectSpawnerController : BaseController, IExecute
         GameEvents.current.OnAddFallingObject += AddFallingObjectToDict;
         GameEvents.current.OnStartSlowMode += OnSlowModeStart;
         GameEvents.current.OnEndingSlowMode += OnSlowModeEnd;
-        GameEvents.current.OnLevelStart += ClearFallingObjectsList;
-        GameEvents.current.OnLevelEnd += ClearFallingObjectsList;
+        //GameEvents.current.OnLevelStart += ClearFallingObjectsList;
+        GameEvents.current.OnLevelEnd += OnLevelEnd;
         GameEvents.current.OnLevelComplete += IncreaseDifficulty;
         GameEvents.current.OnLevelFailed += ReduceDifficulty;
     }
@@ -97,12 +97,16 @@ public class ObjectSpawnerController : BaseController, IExecute
 
     public void CallSpawners()
     {
+        _slowTime = false;
         ClearFallingObjectsList();
         if (_spawners.Count > 0)
         {
             foreach (ObjectSpawnerView view in _spawners)
             {
-                SpawnObjectsPool(view, view.ObjectsPacks[_difficulty], 0.35f);
+                if (view != null)
+                    SpawnObjectsPool(view, view.ObjectsPacks[_difficulty], 0.6f-_difficulty*0.07f);
+                else
+                    RemoveSpawnerFromList(view);
             }
         }
         else
@@ -180,5 +184,11 @@ public class ObjectSpawnerController : BaseController, IExecute
             _difficulty = _minDifficulty;
         }
         _saveData.SaveData(_difficulty, SaveKeyManager.Difficulty);
+    }
+
+    private void OnLevelEnd()
+    {
+        ClearFallingObjectsList();
+        OnSlowModeEnd();
     }
 }

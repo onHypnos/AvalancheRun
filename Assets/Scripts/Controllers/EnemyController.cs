@@ -6,6 +6,7 @@ public class EnemyController : BaseController, IExecute
     protected PlayerView _player;
     private List<EnemyView> _enemyList = new List<EnemyView>();
     private Dictionary<EnemyStates, IEnemyState> _stateList = new Dictionary<EnemyStates, IEnemyState>();
+    private int _positionIndex = 0;
     public EnemyController(MainController main) : base(main) 
     {
         _stateList.Add(EnemyStates.Idle, new EnemyIdleStateModel());
@@ -22,6 +23,7 @@ public class EnemyController : BaseController, IExecute
         
         GameEvents.current.OnEnemyGetDamage += KillEnemy;
         GameEvents.current.OnLevelStart += SetAllEnemiesStatesMoving;
+        GameEvents.current.OnLevelStart += OnLevelStart;
         GameEvents.current.OnMemberFinish += EnemyFinishLevel;
     }
     public override void Execute()
@@ -112,5 +114,11 @@ public class EnemyController : BaseController, IExecute
     public void EnemyFinishLevel(EnemyView enemy)
     {
         SetEnemyState(enemy, EnemyStates.Finishing);
+        enemy.Position += Vector3.forward + Vector3.left + Vector3.right * _positionIndex++;
+    }
+
+    public void OnLevelStart()
+    {
+        _positionIndex = 0;
     }
 }
