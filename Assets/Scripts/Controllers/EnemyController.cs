@@ -83,7 +83,6 @@ public class EnemyController : BaseController, IExecute
         {
             _enemyList.Add(enemy);
             SetEnemyState(enemy, EnemyStates.Idle);
-            Debug.Log($"{enemy} was added to update list");
         }
     }
     /// <summary>

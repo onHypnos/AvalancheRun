@@ -3,8 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameModeController : BaseController, IExecute
 {
-    #region Fields
-    private MainController _main;
+    #region Fields    
     private GameMode _gameMode;
     private SaveDataRepo _saveData;
 
