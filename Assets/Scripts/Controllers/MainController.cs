@@ -22,6 +22,8 @@ public class MainController : MonoBehaviour
     private CollectableController _collectables;
     private UIController _uiController;
     private ObjectSpawnerController _objSpawnerController;
+    private SkinController _skinController;
+
     private RemoteConfigController _remoteConfigController;
     private SDKController _SDKcontroller;
 
@@ -58,7 +60,7 @@ public class MainController : MonoBehaviour
         _collectables = new CollectableController(this);
         _uiController = new UIController(this);
         _objSpawnerController = new ObjectSpawnerController(this);
-
+        _skinController = new SkinController(this);
     }
 
     private void Start()
