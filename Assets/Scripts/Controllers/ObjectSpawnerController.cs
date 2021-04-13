@@ -127,8 +127,7 @@ public class ObjectSpawnerController : BaseController, IExecute
     {
         if (!_spawners.Contains(view))
         {
-            _spawners.Add(view);
-            Debug.Log($"{view.gameObject.name} was added in list");
+            _spawners.Add(view);            
         }
         else
         {
