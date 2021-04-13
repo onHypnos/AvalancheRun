@@ -63,15 +63,6 @@ public class MainController : MonoBehaviour
 
     private void Start()
     {
-        
-        if (RemoteSettings.GetBool("OverallShowAdvertisement"))
-        {
-            Debug.LogWarning("Say, Show advertise");
-        }
-        else 
-        {
-            Debug.LogWarning("DebugMode");
-        }
         foreach (BaseController controller in _controllers)
         {
             if (controller is IInitialize)

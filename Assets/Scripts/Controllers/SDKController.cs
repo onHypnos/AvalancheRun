@@ -2,8 +2,7 @@
 using UnityEngine;
 using Unity.RemoteConfig;
 using Facebook.Unity;
-
-//using GameAnalyticsSDK;
+using GameAnalyticsSDK;
 
 public class SDKController : BaseController
 {
@@ -32,7 +31,7 @@ public class SDKController : BaseController
     #region GameAnalytics
     private void GameAnalyticsInitialize()
     {
-        //GameAnalytics.Initialize();
+        GameAnalytics.Initialize();
     }
     #endregion
     #region FacebookSDK
