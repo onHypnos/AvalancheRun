@@ -32,11 +32,7 @@ public class SkinController : BaseController
         switch (view.gameObject.tag)
         {
             case TagManager.Member:
-                for (int i = 0; i < view.Skins.Length; i++)
-                {
-                    view.Skins[i].SetActive(false);
-                }
-                view.Skins[Random.Range(0, view.Skins.Length)].SetActive(true);
+                view.SelectRandomSkin();
                 break;
             case TagManager.Player:
                 //TODO
