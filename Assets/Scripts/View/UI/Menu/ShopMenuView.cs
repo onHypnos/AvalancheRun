@@ -9,6 +9,9 @@ public class ShopMenuView : BaseMenuView
     [Header("Shop items")]
     [SerializeField] private ShopItemUIView[] _shopItems;
 
+    [Header("Button close")]
+    [SerializeField] private Button _buttonClose;
+
     private PlayerSkinUIView[] _skins;
     private UIController _controller;
 
@@ -17,7 +20,14 @@ public class ShopMenuView : BaseMenuView
     {
         FindMyController();
 
+        _buttonClose.onClick.AddListener(UIEvents.Current.ButtonMainMenu);
+
         _skins = _controller.Player.gameObject.GetComponentsInChildren<PlayerSkinUIView>(true);
+        SortSkins();
+
+        SetupItems();
+
+        //TODO отображение бабла
     }
 
     public override void Hide()
@@ -76,7 +86,15 @@ public class ShopMenuView : BaseMenuView
         //Cycle 2
         for (int i = count + 1; i < _skins.Length; i++)
         {
-
+            //Rare skins
+            if (_skins[i].Rarity == SkinRarity.Rare)
+            {
+                count++;
+                if (i > count)
+                {
+                    Swap(ref _skins[i], ref _skins[count]);
+                }
+            }
         }
     }
 
@@ -85,5 +103,13 @@ public class ShopMenuView : BaseMenuView
         PlayerSkinUIView temp = skin1;
         skin1 = skin2;
         skin2 = temp;
+    }
+
+    private void SetupItems()
+    {
+        for (int i = 0; i < _shopItems.Length; i ++)
+        {
+            _shopItems[i].SetupItem(_skins[i]);
+        }
     }
 }

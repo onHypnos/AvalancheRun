@@ -5,6 +5,10 @@ using UnityEngine.UI;
 public class ShopItemUIView : MonoBehaviour
 {
     [SerializeField] private Button _button;
+    [SerializeField] private Image _skinImage;
+
+    [Header("Advertise icon")]
+    [SerializeField] private Image _advertiseIcon;
 
     [Header("Button sprites")]
     [SerializeField] private Sprite _spriteLocked;
@@ -13,11 +17,17 @@ public class ShopItemUIView : MonoBehaviour
     [SerializeField] private Sprite _spriteSelect;
     [SerializeField] private Sprite _spriteSelected;
 
+    [Header("Background sprites")]
+    [SerializeField] private Sprite _commonBG;
+    [SerializeField] private Sprite _rareBG;
+    [SerializeField] private Sprite _legendaryBG;
+
     private SaveDataRepo _saveData;
 
 
-    public void SetButton(PlayerSkinUIView skin)
+    public void SetupItem(PlayerSkinUIView skin)
     {
+        //Button
         switch (skin.State)
         {
             case SkinState.Locked:
@@ -27,10 +37,12 @@ public class ShopItemUIView : MonoBehaviour
                         _button.GetComponent<Image>().sprite = _spriteLocked;
                         _button.GetComponentInChildren<TextMeshProUGUI>().text = "LOCKED";
                         _button.interactable = false;
+                        _advertiseIcon.gameObject.SetActive(false);
                         break;
                     case SkinType.KostyaDollar:
                         _button.GetComponent<Image>().sprite = _spriteBuy;
                         _button.GetComponentInChildren<TextMeshProUGUI>().text = $"{skin.Price}";
+                        _advertiseIcon.gameObject.SetActive(false);
 
                         //TODO AddListener to buying skin
 
@@ -48,6 +60,7 @@ public class ShopItemUIView : MonoBehaviour
                         _button.GetComponent<Image>().sprite = _spriteGetForReward;
                         _button.GetComponentInChildren<TextMeshProUGUI>().text = "GET";
                         _button.interactable = true;
+                        _advertiseIcon.gameObject.SetActive(true);
 
                         //TODO AddListener to reward video
 
@@ -59,6 +72,7 @@ public class ShopItemUIView : MonoBehaviour
                 _button.GetComponent<Image>().sprite = _spriteSelect;
                 _button.GetComponentInChildren<TextMeshProUGUI>().text = "SELECT";
                 _button.interactable = true;
+                _advertiseIcon.gameObject.SetActive(false);
 
                 //TODO AddListener to select skin
 
@@ -68,7 +82,25 @@ public class ShopItemUIView : MonoBehaviour
                 _button.GetComponent<Image>().sprite = _spriteSelected;
                 _button.GetComponentInChildren<TextMeshProUGUI>().text = "SELECTED";
                 _button.interactable = false;
+                _advertiseIcon.gameObject.SetActive(false);
                 break;
         }
+
+        //Background
+        switch (skin.Rarity)
+        {
+            case SkinRarity.Common:
+                GetComponent<Image>().sprite = _commonBG;
+                break;
+            case SkinRarity.Rare:
+                GetComponent<Image>().sprite = _rareBG;
+                break;
+            case SkinRarity.Legendary:
+                GetComponent<Image>().sprite = _legendaryBG;
+                break;
+        }
+
+        //Skin image
+        _skinImage.sprite = skin.ScreenShot;
     }
 }
