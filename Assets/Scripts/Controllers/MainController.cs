@@ -58,7 +58,7 @@ public class MainController : MonoBehaviour
 
         _enemyController = new EnemyController(this);
         _collectables = new CollectableController(this);
-        _uiController = new UIController(this);
+        _uiController = new UIController(this, _playerView);
         _objSpawnerController = new ObjectSpawnerController(this);
         _skinController = new SkinController(this);
     }

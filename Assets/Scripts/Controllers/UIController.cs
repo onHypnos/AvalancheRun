@@ -10,11 +10,15 @@ public class UIController : BaseController, IExecute
     private EndGameMenuView _endGameMenu;
     private ShopMenuView _shopMenu;
 
+    private PlayerView _player;
     private GameObject _uiPrefab;
 
-    public UIController(MainController main) : base(main)
+    public PlayerView Player => _player;
+
+
+    public UIController(MainController main, PlayerView player) : base(main)
     {
-        
+        _player = player;
     }
 
     public override void Initialize()
