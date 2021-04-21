@@ -22,6 +22,7 @@ public class ShopItemUIView : MonoBehaviour
     [SerializeField] private Sprite _rareBG;
     [SerializeField] private Sprite _legendaryBG;
 
+    private PlayerSkinUIView _skin;
     private SaveDataRepo _saveData;
 
 
@@ -30,6 +31,21 @@ public class ShopItemUIView : MonoBehaviour
         //Button
         switch (skin.State)
         {
+            case SkinState.Selected:
+                _button.GetComponent<Image>().sprite = _spriteSelected;
+                _button.GetComponentInChildren<TextMeshProUGUI>().text = "SELECTED";
+                _button.interactable = false;
+                _advertiseIcon.gameObject.SetActive(false);
+                break;
+            case SkinState.Unlocked:
+                _button.GetComponent<Image>().sprite = _spriteSelect;
+                _button.GetComponentInChildren<TextMeshProUGUI>().text = "SELECT";
+                _button.interactable = true;
+                _advertiseIcon.gameObject.SetActive(false);
+
+                //TODO AddListener to select skin
+
+                break;
             case SkinState.Locked:
                 switch (skin.Type)
                 {
@@ -66,23 +82,6 @@ public class ShopItemUIView : MonoBehaviour
 
                         break;
                 }
-                break;
-
-            case SkinState.Unlocked:
-                _button.GetComponent<Image>().sprite = _spriteSelect;
-                _button.GetComponentInChildren<TextMeshProUGUI>().text = "SELECT";
-                _button.interactable = true;
-                _advertiseIcon.gameObject.SetActive(false);
-
-                //TODO AddListener to select skin
-
-                break;
-
-            case SkinState.Selected:
-                _button.GetComponent<Image>().sprite = _spriteSelected;
-                _button.GetComponentInChildren<TextMeshProUGUI>().text = "SELECTED";
-                _button.interactable = false;
-                _advertiseIcon.gameObject.SetActive(false);
                 break;
         }
 

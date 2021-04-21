@@ -61,17 +61,18 @@ public class ShopMenuView : BaseMenuView
             //For state SELECTED
             if (_skins[i].State == SkinState.Selected)
             {
-                for (int j = i + 1; j < _skins.Length; j++)
-                {
-                    if (_skins[j].State == SkinState.Selected)
-                    {
-                        _skins[j].ChangeState(SkinState.Unlocked);
-                    }
-                }
-
                 Swap(ref _skins[i], ref _skins[0]);
             }
 
+        }
+        //Cycle 2
+        for (int i = count + 1; i < _skins.Length; i++)
+        {
+            //One more selected insurance
+            if (_skins[i].State == SkinState.Selected)
+            {
+                _skins[i].ChangeState(SkinState.Unlocked);
+            }
             //Common skins
             if (_skins[i].Rarity == SkinRarity.Common)
             {
@@ -82,8 +83,7 @@ public class ShopMenuView : BaseMenuView
                 }
             }
         }
-
-        //Cycle 2
+        //Cycle 3
         for (int i = count + 1; i < _skins.Length; i++)
         {
             //Rare skins
@@ -107,7 +107,7 @@ public class ShopMenuView : BaseMenuView
 
     private void SetupItems()
     {
-        for (int i = 0; i < _shopItems.Length; i ++)
+        for (int i = 0; i < _shopItems.Length; i++)
         {
             _shopItems[i].SetupItem(_skins[i]);
         }

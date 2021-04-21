@@ -245,7 +245,7 @@ MonoBehaviour:
   _screenShot: {fileID: 21300000, guid: af2d62f6bcdd0804c94f13bb230669d6, type: 3}
   _rarity: 2
   _type: 0
-  _state: 1
+  _state: 2
   _price: 0
 --- !u!1 &875445608411913482
 GameObject:
