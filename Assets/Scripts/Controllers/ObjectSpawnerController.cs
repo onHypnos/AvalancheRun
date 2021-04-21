@@ -178,7 +178,7 @@ public class ObjectSpawnerController : BaseController, IExecute
     }
     private void ReduceDifficulty()
     {
-        _difficulty--;
+        _difficulty -= 2;
         if (_difficulty < _minDifficulty)
         {
             _difficulty = _minDifficulty;
