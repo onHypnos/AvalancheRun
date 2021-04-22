@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 2581786729523432463}
   - component: {fileID: 2772405331051783964}
   m_Layer: 0
-  m_Name: PlayerSkinDino
+  m_Name: SkinDino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,17 +162,17 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 5f22e609f25a56a4db02bff757925b12, type: 2}
-  - {fileID: 7757280511964768242, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
+  - {fileID: 2100000, guid: 4f66b96417730854ab770dd9785fa12a, type: 2}
   - {fileID: 2100000, guid: 907e0f9258a281547bb10b29a68e000c, type: 2}
-  - {fileID: 7779666906142842880, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -2887470539244129957, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
+  - {fileID: 2100000, guid: 513c6a37cb9a44741884f1747fa77a04, type: 2}
+  - {fileID: 2100000, guid: 7dcea282554327b49a1e4120b274b452, type: 2}
   - {fileID: 2100000, guid: 907e0f9258a281547bb10b29a68e000c, type: 2}
   - {fileID: 2100000, guid: 5512381222f5b5c4d880c27f53e131a7, type: 2}
-  - {fileID: 140420522629750780, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -4125472625351561074, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -67963609160276546, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -4942450355848952890, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -6193552456704704399, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
+  - {fileID: 2100000, guid: 9b11732a97d23194c86264d06eba64f7, type: 2}
+  - {fileID: 2100000, guid: e9d5b33545b0ef34fb9ad8f465d9e0a3, type: 2}
+  - {fileID: 2100000, guid: daed0c863ecdb364e9a830c4b60113ad, type: 2}
+  - {fileID: 2100000, guid: 4ba3b3688c1c944439919d63e920c4c4, type: 2}
+  - {fileID: 2100000, guid: 36b88e61dc1db52418a5f9e4ca7863b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 3431142536967294316}
   - component: {fileID: 3777430361862124232}
   m_Layer: 0
-  m_Name: PlayerSkinGreen
+  m_Name: SkinGreenHero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -331,13 +331,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1352114669208115421, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 8364532399979226048, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -5770616287924450720, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 6128697280039155968, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -487233989317150638, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 2363935249004610345, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 2510546214059166818, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
+  - {fileID: 2100000, guid: d1df82379fad6e842bfe5ca40c207726, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -362,7 +356,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 77c2a827db688864aadada93d1f5075f, type: 2}
+  m_Mesh: {fileID: 4168401629900714305, guid: 28f3c4c96a9590d41938c869eb9a3308, type: 3}
   m_Bones:
   - {fileID: 660333802568328360}
   - {fileID: 955048785162983227}
@@ -424,7 +418,7 @@ GameObject:
   - component: {fileID: 4256566951113306784}
   - component: {fileID: 7625092448395794007}
   m_Layer: 0
-  m_Name: PlayerSkinBrown
+  m_Name: SkinBear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -463,13 +457,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7278441609552132306, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 1542911961637731491, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 7757280511964768242, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 2148940112426277274, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 4209774602087175886, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -3813526581835559948, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -743523247520373929, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
+  - {fileID: 2100000, guid: 1492e09300d32434db2e56419da5b379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -494,7 +482,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 76e5ab9d572df6b4ab938bede8685750, type: 2}
+  m_Mesh: {fileID: -3636286887476458516, guid: 28f3c4c96a9590d41938c869eb9a3308, type: 3}
   m_Bones:
   - {fileID: 660333802568328360}
   - {fileID: 955048785162983227}
@@ -666,7 +654,7 @@ GameObject:
   - component: {fileID: 6387384633525715186}
   - component: {fileID: 1622620728439044360}
   m_Layer: 0
-  m_Name: PlayerSkinPink
+  m_Name: SkinCatPeach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -705,14 +693,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 893473968362282980, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 1922046067885503693, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 3372339419220830620, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -1753496696149159847, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 1872984744409410663, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -2540772236174059002, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -5994118485548030070, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 6058245407457045254, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
+  - {fileID: 2100000, guid: d1df82379fad6e842bfe5ca40c207726, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -737,7 +718,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: ff7bc00fc60476640bff5f726d4d531a, type: 2}
+  m_Mesh: {fileID: 6021291363866290450, guid: 28f3c4c96a9590d41938c869eb9a3308, type: 3}
   m_Bones:
   - {fileID: 660333802568328360}
   - {fileID: 955048785162983227}
@@ -978,13 +959,13 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2042675191415348905, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -2628528347973248326, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -4125472625351561074, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -2841151184755764812, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 7274037673426023978, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 6863084190328082360, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -3424978615289289495, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
+  - {fileID: 2100000, guid: 8f0a5038972266f46b3f080449c7d283, type: 2}
+  - {fileID: 2100000, guid: d7c7d4c77ce827f4180bba4adce3d84c, type: 2}
+  - {fileID: 2100000, guid: e9d5b33545b0ef34fb9ad8f465d9e0a3, type: 2}
+  - {fileID: 2100000, guid: 9db5de6403584f34ab83f3898b17c37d, type: 2}
+  - {fileID: 2100000, guid: 3534962427f15d949873f5854d4d25ca, type: 2}
+  - {fileID: 2100000, guid: a861f7e6271e111418b7bdbdb1618404, type: 2}
+  - {fileID: 2100000, guid: 0659aebc3fd040c47ad54c5f1a53e493, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1175,7 +1156,7 @@ GameObject:
   - component: {fileID: 255957967685561111}
   - component: {fileID: 2344247503975823733}
   m_Layer: 0
-  m_Name: PlayerSkinBlack
+  m_Name: SkinCatWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1214,14 +1195,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3786851064707586264, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 5760298017750764475, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -936007277846496556, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -8654504115153294729, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 6713401872510208423, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 1889820730062009080, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -1612923476446245386, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 5762420076577173705, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
+  - {fileID: 2100000, guid: 1ba232b50a69aa241a7855b159a4209d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1246,7 +1220,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: -5377695471763270599, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
+  m_Mesh: {fileID: 2114413233296381892, guid: 28f3c4c96a9590d41938c869eb9a3308, type: 3}
   m_Bones:
   - {fileID: 660333802568328360}
   - {fileID: 955048785162983227}
@@ -2409,7 +2383,7 @@ GameObject:
   - component: {fileID: 614150595101586704}
   - component: {fileID: 8580319779708673457}
   m_Layer: 0
-  m_Name: PlayerSkinBlue
+  m_Name: SkinBlueHero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2448,12 +2422,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 345798d26e236b647a776e89a054b4e1, type: 2}
-  - {fileID: -6369918885838695653, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 2100000, guid: db90914f72346924984c04ee75b7ad6b, type: 2}
-  - {fileID: 2585029289849404539, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -7078347374081178080, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -7284206498818915000, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
+  - {fileID: 2100000, guid: 1492e09300d32434db2e56419da5b379, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2478,7 +2447,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: c212257c2dd9b5342b560a6fd1bc8bf9, type: 2}
+  m_Mesh: {fileID: -8414365235274840120, guid: 28f3c4c96a9590d41938c869eb9a3308, type: 3}
   m_Bones:
   - {fileID: 660333802568328360}
   - {fileID: 955048785162983227}
@@ -2540,7 +2509,7 @@ GameObject:
   - component: {fileID: 980334067159451035}
   - component: {fileID: 4445911469962633015}
   m_Layer: 0
-  m_Name: PlayerSkinMonk
+  m_Name: SkinMonk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2579,11 +2548,11 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -176582739467545179, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -8621932180342215204, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 2585029289849404539, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 4636232740010416065, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -2005419420868389024, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
+  - {fileID: 2100000, guid: 0c436548beba7d14989d6d4cef5a20fa, type: 2}
+  - {fileID: 2100000, guid: c28a9312667d13c4a85edbd466bf8308, type: 2}
+  - {fileID: 2100000, guid: 9f118ef3fd3d2ad4eb563519ba624e55, type: 2}
+  - {fileID: 2100000, guid: 2f11588f7a1edb140b895cdab6a1908e, type: 2}
+  - {fileID: 2100000, guid: 28f09189e7351dc4f9c826621fbf5de0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2709,11 +2678,11 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7274037673426023978, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -5262558563066889018, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -2628528347973248326, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -4125472625351561074, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -2841151184755764812, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
+  - {fileID: 2100000, guid: 3534962427f15d949873f5854d4d25ca, type: 2}
+  - {fileID: 2100000, guid: 0b2e4b633b78e53449ad3aae773c4d04, type: 2}
+  - {fileID: 2100000, guid: d7c7d4c77ce827f4180bba4adce3d84c, type: 2}
+  - {fileID: 2100000, guid: e9d5b33545b0ef34fb9ad8f465d9e0a3, type: 2}
+  - {fileID: 2100000, guid: 9db5de6403584f34ab83f3898b17c37d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3570,12 +3539,12 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -205629353262513385, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 4636232740010416065, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 4386556951847565138, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 2949823977010143005, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: -176582739467545179, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
-  - {fileID: 7274037673426023978, guid: 222a83fe37338fb4b96d4fd5cbdf7261, type: 3}
+  - {fileID: 2100000, guid: 2a9499bca561f4044ace8190ae12d00c, type: 2}
+  - {fileID: 2100000, guid: 2f11588f7a1edb140b895cdab6a1908e, type: 2}
+  - {fileID: 2100000, guid: 0e6af66a6b944f54a846f4cc74541daa, type: 2}
+  - {fileID: 2100000, guid: 8cf1624511757a349a6c7bf3571baf8c, type: 2}
+  - {fileID: 2100000, guid: 0c436548beba7d14989d6d4cef5a20fa, type: 2}
+  - {fileID: 2100000, guid: 3534962427f15d949873f5854d4d25ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
