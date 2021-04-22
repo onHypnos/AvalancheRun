@@ -57,4 +57,22 @@ public class UIEvents : MonoBehaviour
     {
         OnButtonExitGame?.Invoke();
     }
+
+    public Action<PlayerSkinUIView> OnButtonBuySkin;
+    public void ButtonBuySkin(PlayerSkinUIView skin)
+    {
+        OnButtonBuySkin?.Invoke(skin);
+    }
+
+    public Action<PlayerSkinUIView> OnButtonSelectSkin;
+    public void ButtonSelectSkin(PlayerSkinUIView skin)
+    {
+        OnButtonSelectSkin?.Invoke(skin);
+    }
+
+    public Action<PlayerSkinUIView> OnButtonGetSkinByReward;
+    public void ButtonGetSkinByReward(PlayerSkinUIView skin)
+    {
+        OnButtonGetSkinByReward?.Invoke(skin);
+    }
 }

@@ -27,7 +27,7 @@ public class EndGameMenuView : BaseMenuView
         _nextLevelButton.onClick.AddListener(UIEvents.Current.ButtonNextLevel);
         _restartButton.onClick.AddListener(UIEvents.Current.ButtonRestartGame);
 
-        GameEvents.current.OnGetCurrentMoney += SetMoneyText;
+        GameEvents.Current.OnGetCurrentMoney += SetMoneyText;
     }
 
 

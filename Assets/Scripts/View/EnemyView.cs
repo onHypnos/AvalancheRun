@@ -84,7 +84,7 @@ public class EnemyView : BaseObjectView
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            GameEvents.current.EnemyGetDamage(this);
+            GameEvents.Current.EnemyGetDamage(this);
         }
     }
 

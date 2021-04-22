@@ -143,7 +143,7 @@ public class MainController : MonoBehaviour
 
     private void OnApplicationPause(bool pause)
     {
-        GameEvents.current.GeneralApplicationPause(pause);
+        GameEvents.Current.GeneralApplicationPause(pause);
     }
 
     #region Will Replaced or Deleted

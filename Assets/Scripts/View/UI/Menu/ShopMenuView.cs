@@ -1,23 +1,32 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ShopMenuView : BaseMenuView
 {
     [Header("Panel")]
     [SerializeField] private GameObject _panel;
 
-    [Header("Shop items")]
-    [SerializeField] private ShopItemUIView[] _shopItems;
+    [Header("Money")]
+    [SerializeField] private TextMeshProUGUI _textMoney;
 
     [Header("Button close")]
     [SerializeField] private Button _buttonClose;
 
+    [Header("Shop items")]
+    [SerializeField] private ShopItemUIView[] _shopItems;
+
     private PlayerSkinUIView[] _skins;
     private UIController _controller;
+    private SaveDataRepo _saveData;
+    private int _bankUI;
 
 
     private void Awake()
     {
+        _saveData = new SaveDataRepo();
+        _bankUI = _saveData.LoadInt(SaveKeyManager.Bank);
+
         FindMyController();
 
         _buttonClose.onClick.AddListener(UIEvents.Current.ButtonMainMenu);
@@ -27,7 +36,10 @@ public class ShopMenuView : BaseMenuView
 
         SetupItems();
 
-        //TODO отображение бабла
+        UpdateMoneyText();
+
+        UIEvents.Current.OnButtonBuySkin += BuyingSkin;
+        UIEvents.Current.OnButtonSelectSkin += SelectingSkin;
     }
 
     public override void Hide()
@@ -107,9 +119,66 @@ public class ShopMenuView : BaseMenuView
 
     private void SetupItems()
     {
+        int stateID;
+        SkinState state;
+
+        Debug.LogWarning("Skins debug mode. In case of release please open code below");
         for (int i = 0; i < _shopItems.Length; i++)
         {
+            ////Открыть перед релизом:
+            //stateID = _saveData.LoadInt(_skins[i].gameObject.name);
+            //switch (stateID)
+            //{
+            //    case 0:
+            //        state = SkinState.Locked;
+            //        break;
+            //    case 1:
+            //        state = SkinState.Unlocked;
+            //        break;
+            //    case 2:
+            //        state = SkinState.Selected;
+            //        break;
+            //    default:
+            //        state = SkinState.Locked;
+            //        break;
+            //}
+            //_skins[i].ChangeState(state);
+
             _shopItems[i].SetupItem(_skins[i]);
         }
+    }
+
+    private void UpdateMoneyText()
+    {
+        _textMoney.text = $"{_bankUI}";
+    }
+
+    private void BuyingSkin(PlayerSkinUIView skin)
+    {
+        _bankUI -= skin.Price;
+        UpdateMoneyText();
+
+        skin.ChangeState(SkinState.Unlocked);
+        //_saveData.SaveData(1, skin.gameObject.name);
+
+        SetupItems();
+    }
+
+    private void SelectingSkin(PlayerSkinUIView skin)
+    {
+        for (int i = 0; i < _skins.Length; i++)
+        {
+            if (_skins[i].State == SkinState.Selected)
+            {
+                _skins[i].ChangeState(SkinState.Unlocked);
+                _saveData.SaveData(1, _skins[i].gameObject.name);
+            }
+        }
+
+        skin.ChangeState(SkinState.Selected);
+        //_saveData.SaveData(2, skin.gameObject.name);
+
+        SortSkins();
+        SetupItems();
     }
 }

@@ -22,7 +22,6 @@ public class ShopItemUIView : MonoBehaviour
     [SerializeField] private Sprite _rareBG;
     [SerializeField] private Sprite _legendaryBG;
 
-    private PlayerSkinUIView _skin;
     private SaveDataRepo _saveData;
 
 
@@ -41,10 +40,8 @@ public class ShopItemUIView : MonoBehaviour
                 _button.GetComponent<Image>().sprite = _spriteSelect;
                 _button.GetComponentInChildren<TextMeshProUGUI>().text = "SELECT";
                 _button.interactable = true;
+                _button.onClick.AddListener(() => UIEvents.Current.ButtonSelectSkin(skin));
                 _advertiseIcon.gameObject.SetActive(false);
-
-                //TODO AddListener to select skin
-
                 break;
             case SkinState.Locked:
                 switch (skin.Type)
@@ -60,12 +57,11 @@ public class ShopItemUIView : MonoBehaviour
                         _button.GetComponentInChildren<TextMeshProUGUI>().text = $"{skin.Price}";
                         _advertiseIcon.gameObject.SetActive(false);
 
-                        //TODO AddListener to buying skin
-
                         _saveData = new SaveDataRepo();
                         if (_saveData.LoadInt(SaveKeyManager.Bank) >= skin.Price)
                         {
                             _button.interactable = true;
+                            _button.onClick.AddListener(() => UIEvents.Current.ButtonBuySkin(skin));
                         }
                         else
                         {
@@ -76,10 +72,8 @@ public class ShopItemUIView : MonoBehaviour
                         _button.GetComponent<Image>().sprite = _spriteGetForReward;
                         _button.GetComponentInChildren<TextMeshProUGUI>().text = "GET";
                         _button.interactable = true;
+                        _button.onClick.AddListener(() => UIEvents.Current.ButtonGetSkinByReward(skin));
                         _advertiseIcon.gameObject.SetActive(true);
-
-                        //TODO AddListener to reward video
-
                         break;
                 }
                 break;

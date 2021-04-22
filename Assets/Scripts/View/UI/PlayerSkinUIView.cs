@@ -18,25 +18,6 @@ public class PlayerSkinUIView : MonoBehaviour
     public int Price => _price;
 
 
-    private void Awake()
-    {
-        //_saveData = new SaveDataRepo();
-        //int stateNumber = _saveData.LoadInt(gameObject.name);
-
-        //switch (stateNumber)
-        //{
-        //    case 0:
-        //        ChangeState(SkinState.Locked);
-        //            break;
-        //    case 1:
-        //        ChangeState(SkinState.Unlocked);
-        //            break;
-        //    case 2:
-        //        ChangeState(SkinState.Selected);
-        //        break;
-        //}
-    }
-
     public void ChangeState(SkinState state)
     {
         _state = state;

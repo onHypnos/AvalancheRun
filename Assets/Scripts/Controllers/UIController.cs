@@ -42,9 +42,11 @@ public class UIController : BaseController, IExecute
         UIEvents.Current.OnButtonRestartGame += RestartGame;
         UIEvents.Current.OnButtonShop += OpenShop;
         UIEvents.Current.OnButtonMainMenu += OpenMainMenu;
+        UIEvents.Current.OnButtonBuySkin += BuySkin;
+        UIEvents.Current.OnButtonSelectSkin += SelectSkin;
 
-        GameEvents.current.OnLevelComplete += WinGame;
-        GameEvents.current.OnLevelFailed += LoseGame;
+        GameEvents.Current.OnLevelComplete += WinGame;
+        GameEvents.Current.OnLevelFailed += LoseGame;
 
         SwitchUI(UIState.MainMenu);
     }
@@ -69,18 +71,18 @@ public class UIController : BaseController, IExecute
     private void StartGame()
     {
         SwitchUI(UIState.InGame);
-        GameEvents.current.PlayerControllerSetActive(true);
-        GameEvents.current.LevelStart();
+        GameEvents.Current.PlayerControllerSetActive(true);
+        GameEvents.Current.LevelStart();
     }
     private void PauseGame()
     {
         SwitchUI(UIState.Pause);
-        GameEvents.current.GamePaused();
+        GameEvents.Current.GamePaused();
     }
     private void ResumeGame()
     {
         SwitchUI(UIState.InGame);
-        GameEvents.current.GameResumed();
+        GameEvents.Current.GameResumed();
     }
     private void WinGame()
     {
@@ -95,12 +97,20 @@ public class UIController : BaseController, IExecute
     private void NextLevel()
     {
         SwitchUI(UIState.MainMenu);
-        GameEvents.current.NextLevel();
+        GameEvents.Current.NextLevel();
     }
     private void RestartGame()
     {
         SwitchUI(UIState.MainMenu);
-        GameEvents.current.LevelRestart();
+        GameEvents.Current.LevelRestart();
+    }
+    private void BuySkin(PlayerSkinUIView skin)
+    {
+        GameEvents.Current.RemoveMoney(skin.Price);
+    }
+    private void SelectSkin(PlayerSkinUIView skin)
+    {
+        GameEvents.Current.SelectSkin(skin.gameObject.name);
     }
 
     public void AddView(MainMenuView view)
