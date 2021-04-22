@@ -37,7 +37,7 @@ public static class Utilits
                 Debug.LogWarning($"{i} номер индекса");
             }
             _temp = transform.position + Vector3.right * (i % 4)* 1.6f * (Mathf.Pow(-1, i));
-            GameEvents.current.AddFallingObject(GameObject.Instantiate(objects[i], _temp, Quaternion.identity, transform));
+            GameEvents.Current.AddFallingObject(GameObject.Instantiate(objects[i], _temp, Quaternion.identity, transform));
             yield return new WaitForSecondsRealtime(deltaTime);
         }
     }
@@ -54,8 +54,8 @@ public static class Utilits
 
     public static IEnumerator CountSlowMode(float _slowModeDuration)
     {
-        GameEvents.current.StartSlowMode();
+        GameEvents.Current.StartSlowMode();
         yield return new WaitForSecondsRealtime(_slowModeDuration);
-        GameEvents.current.EndingSlowMode();
+        GameEvents.Current.EndingSlowMode();
     }
 }

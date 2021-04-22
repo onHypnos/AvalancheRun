@@ -10,6 +10,7 @@ public class CollectableController : BaseController, IExecute
 
     private int _bank;
     private int _money;
+    private int _rewardScale = 3;
     private float _rotationSpeed = 200f;
 
 
@@ -27,18 +28,17 @@ public class CollectableController : BaseController, IExecute
     {
         base.Initialize();
 
-        GameEvents.current.OnAddMoney += AddMoney;
-        GameEvents.current.OnRemoveMoney += RemoveMoney;
-        GameEvents.current.OnLevelComplete += CompleteLevel;
-        GameEvents.current.OnLevelStart += StartLevel;
+        GameEvents.Current.OnAddMoney += AddMoney;
+        GameEvents.Current.OnRemoveMoney += RemoveMoney;
+        GameEvents.Current.OnLevelStart += StartLevel;
     }
 
     public override void Execute()
     {
         base.Execute();
 
-        GameEvents.current.GetCurrentMoney(_money);
-        GameEvents.current.GetBank(_bank);
+        GameEvents.Current.GetCurrentMoney(_money);
+        GameEvents.Current.GetBank(_bank);
 
         if (_collectables.Count >= 1)
         {
@@ -80,11 +80,14 @@ public class CollectableController : BaseController, IExecute
     private void AddMoney(int value)
     {
         _money += value;
+        _bank += value;
+        _save.SaveData(_bank, SaveKeyManager.Bank);
     }
 
     private void RemoveMoney(int value)
     {
         _bank -= value;
+        _save.SaveData(_bank, SaveKeyManager.Bank);
     }
 
     private void StartLevel()
@@ -92,9 +95,10 @@ public class CollectableController : BaseController, IExecute
         _money = 0;
     }
 
-    private void CompleteLevel()
+    private void EndLevelReward()
     {
-        _bank += _money;
+        _money *= _rewardScale;
+        _bank += _money * (_rewardScale - 1);
         _save.SaveData(_bank, SaveKeyManager.Bank);
     }
 }

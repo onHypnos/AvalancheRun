@@ -21,10 +21,10 @@ public class EnemyController : BaseController, IExecute
         base.Initialize();
         _player = Main.GetController<PlayerController>().GetPlayer;
         
-        GameEvents.current.OnEnemyGetDamage += KillEnemy;
-        GameEvents.current.OnLevelStart += SetAllEnemiesStatesMoving;
-        GameEvents.current.OnLevelStart += OnLevelStart;
-        GameEvents.current.OnMemberFinish += EnemyFinishLevel;
+        GameEvents.Current.OnEnemyGetDamage += KillEnemy;
+        GameEvents.Current.OnLevelStart += SetAllEnemiesStatesMoving;
+        GameEvents.Current.OnLevelStart += OnLevelStart;
+        GameEvents.Current.OnMemberFinish += EnemyFinishLevel;
     }
     public override void Execute()
     {
@@ -107,7 +107,7 @@ public class EnemyController : BaseController, IExecute
             enemy.RagdollState(true);
             SetEnemyState(enemy, EnemyStates.Dead);
             enemy.tag = "DeadEnemy";
-            GameEvents.current.EnemyKilled(enemy);
+            GameEvents.Current.EnemyKilled(enemy);
         }
     }
 

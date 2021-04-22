@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class GameEvents : MonoBehaviour
 {
-    public static GameEvents current;
+    public static GameEvents Current;
 
     private void Awake()
     {
-        current = this;
+        Current = this;
     }
 
 
@@ -143,6 +143,12 @@ public class GameEvents : MonoBehaviour
     public void PlayerAttackEnd()
     {
         OnPlayerAttackEnd?.Invoke();
+    }
+
+    public Action<string> OnSelectSkin;
+    public void SelectSkin(string skinName)
+    {
+        OnSelectSkin?.Invoke(skinName);
     }
     #endregion
 

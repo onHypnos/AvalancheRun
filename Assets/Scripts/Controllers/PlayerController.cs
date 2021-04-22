@@ -51,10 +51,10 @@ public class PlayerController : BaseController, IExecute
         InputEvents.current.OnTouchEndedEvent += SetIdle;
         InputEvents.current.OnTouchCancelledEvent += SetIdle;
 
-        GameEvents.current.OnLevelEnd += PlayerWinningDance;
-        GameEvents.current.OnSceneChanged += ResetPlayerState;
-        GameEvents.current.OnPlayerGetHit += SetDead;
-        GameEvents.current.OnPlayerControllerSetActive += SetState;
+        GameEvents.Current.OnLevelEnd += PlayerWinningDance;
+        GameEvents.Current.OnSceneChanged += ResetPlayerState;
+        GameEvents.Current.OnPlayerGetHit += SetDead;
+        GameEvents.Current.OnPlayerControllerSetActive += SetState;
         InputEvents.current.OnDoubleTouchEvent += OnDoubleTouchEvent;
     }
     #endregion
@@ -207,7 +207,7 @@ public class PlayerController : BaseController, IExecute
     {
         _player.Rotation = Quaternion.LookRotation(Vector3.forward * -1f, Vector3.up);
         _player.Animator.SetTrigger($"Dance {Random.Range(0, 6)}");
-        GameEvents.current.SetActiveCamera("Dancing Camera");
+        GameEvents.Current.SetActiveCamera("Dancing Camera");
         PlayerIsActive = false;
     }
 }

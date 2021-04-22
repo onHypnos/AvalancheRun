@@ -14,9 +14,11 @@ public class SkinController : BaseController
     public override void Initialize()
     {
         base.Initialize();
+
+        GameEvents.Current.OnSelectSkin += SelectSkin;
     }
 
-    public void AddView (SkinView view)
+    public void AddView(SkinView view)
     {
         if (!_skinViews.Contains(view))
         {
@@ -32,11 +34,7 @@ public class SkinController : BaseController
         switch (view.gameObject.tag)
         {
             case TagManager.Member:
-                for (int i = 0; i < view.Skins.Length; i++)
-                {
-                    view.Skins[i].SetActive(false);
-                }
-                view.Skins[Random.Range(0, view.Skins.Length)].SetActive(true);
+                view.SelectRandomSkin();
                 break;
             case TagManager.Player:
                 //TODO
@@ -46,7 +44,7 @@ public class SkinController : BaseController
         }
     }
 
-    public void RemoveView (SkinView view)
+    public void RemoveView(SkinView view)
     {
         if (_skinViews.Contains(view))
         {
@@ -57,6 +55,22 @@ public class SkinController : BaseController
 #if UNITY_EDITOR
             Debug.Log($"Object {view} was already removed from update list");
 #endif
+        }
+    }
+
+    private void SelectSkin(string skinName)
+    {
+        if (_skinViews.Count <= 0)
+        {
+            return;
+        }
+
+        for (int i = 0; i < _skinViews.Count; i++)
+        {
+            if (_skinViews[i].gameObject.tag == TagManager.Player)
+            {
+                _skinViews[i].SelectSkinByName(skinName);
+            }
         }
     }
 }

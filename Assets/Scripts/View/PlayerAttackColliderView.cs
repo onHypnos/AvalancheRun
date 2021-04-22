@@ -5,7 +5,7 @@ public class PlayerAttackColliderView : BaseObjectView
     {
         if (other.CompareTag("Enemy"))
         {
-            GameEvents.current.PlayerCollideEnemy(other);
+            GameEvents.Current.PlayerCollideEnemy(other);
         }
     }
 }

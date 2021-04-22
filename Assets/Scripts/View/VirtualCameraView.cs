@@ -15,7 +15,7 @@ public class VirtualCameraView : MonoBehaviour
 
         _camera = GetComponent<CinemachineVirtualCamera>();
         _basePriority = _camera.Priority;
-        GameEvents.current.OnSettingActiveCamera += SetActiveCamera;
+        GameEvents.Current.OnSettingActiveCamera += SetActiveCamera;
     }
     
     public void SetActiveCamera(string name)
@@ -32,6 +32,6 @@ public class VirtualCameraView : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameEvents.current.OnSettingActiveCamera -= SetActiveCamera;
+        GameEvents.Current.OnSettingActiveCamera -= SetActiveCamera;
     }
 }

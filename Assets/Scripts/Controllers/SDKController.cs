@@ -24,7 +24,7 @@ public class SDKController : BaseController
         base.Initialize();
         SubscribeInterstitialEvents();
         SubscribeRewardedEvents();
-        GameEvents.current.OnUpdateIronSourceParameters += InitializeIronSource;
+        GameEvents.Current.OnUpdateIronSourceParameters += InitializeIronSource;
         FacebookInitialize();
         GameAnalyticsInitialize();
     }

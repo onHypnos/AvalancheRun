@@ -6,7 +6,7 @@ public class LeftLegAttackCollider : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            GameEvents.current.OnEnemyGetDamage(other.GetComponent<EnemyView>());
+            GameEvents.Current.OnEnemyGetDamage(other.GetComponent<EnemyView>());
         }
     }
 }

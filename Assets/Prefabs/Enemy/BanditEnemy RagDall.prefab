@@ -1180,7 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e998b5b4bd0cf46b8d7e022c5140fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skins:
+  _skins:
   - {fileID: 1726496018593236812}
   - {fileID: 6361801636438418344}
   - {fileID: 2788308582615442453}

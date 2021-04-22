@@ -26,7 +26,7 @@ public class RemoteConfigController : BaseController
         bool showAdvertise = ConfigManager.appConfig.GetBool("OverallShowAdvertisement");
         if (showAdvertise)
         {
-            GameEvents.current.UpdateIronSourceParameters(showAdvertise);            
+            GameEvents.Current.UpdateIronSourceParameters(showAdvertise);            
         }
     }
 
