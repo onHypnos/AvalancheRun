@@ -225,4 +225,21 @@ public class GameEvents : MonoBehaviour
         OnUpdateIronSourceParameters.Invoke(value);
     }
     #endregion
+
+    #region RewardEvents
+    public Action<PlayerSkinUIView> OnUnlockSkinEvent;
+    public void UnlockSkinEvent(PlayerSkinUIView skin)
+    {
+        OnUnlockSkinEvent?.Invoke(skin);
+    }
+
+    //ивент к которому ui будет пробрасывать гетревард инстанс для вызова рекламы, на него подпишется 
+    //метод вызова рекламы в сдк контроллере
+
+    public Action<IGetReward> OnAskingRewardedVideo;
+    public void AskingRewardedVideo(IGetReward rewardInstance)
+    {
+        OnAskingRewardedVideo?.Invoke(rewardInstance);
+    }
+    #endregion
 }

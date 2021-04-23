@@ -47,6 +47,7 @@ public class SkinView : BaseObjectView
 
     private void OnDestroy()
     {
+        if(this.isActiveAndEnabled)
         _controller.RemoveView(this);
     }
 }

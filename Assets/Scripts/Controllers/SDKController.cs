@@ -27,8 +27,10 @@ public class SDKController : BaseController
         GameEvents.Current.OnUpdateIronSourceParameters += InitializeIronSource;
         FacebookInitialize();
         GameAnalyticsInitialize();
+
     }
 
+    
     #region GameAnalytics
     private void GameAnalyticsInitialize()
     {
@@ -181,7 +183,6 @@ public class SDKController : BaseController
     }
     #endregion
     #region Rewarded
-
     private void SubscribeRewardedEvents()
     {
         IronSourceEvents.onRewardedVideoAdOpenedEvent += RewardedVideoAdOpenedEvent;
@@ -190,6 +191,7 @@ public class SDKController : BaseController
         IronSourceEvents.onRewardedVideoAdStartedEvent += RewardedVideoAdStartedEvent;
         IronSourceEvents.onRewardedVideoAdEndedEvent += RewardedVideoAdEndedEvent;
         IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
+        GameEvents.Current.OnAskingRewardedVideo += AskingShowReward;
         IronSourceEvents.onRewardedVideoAdShowFailedEvent += RewardedVideoAdShowFailedEvent;
         IronSourceEvents.onRewardedVideoAdClickedEvent += RewardedVideoAdClickedEvent;
     }
@@ -205,7 +207,7 @@ public class SDKController : BaseController
         }
     }
 
-    public void ButtonRewardClick(IGetReward instance)
+    public void AskingShowReward(IGetReward instance)
     {
         SetRewardInstance(instance);
         ShowRewardedVideo();

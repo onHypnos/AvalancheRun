@@ -44,7 +44,7 @@ public class UIController : BaseController, IExecute
         UIEvents.Current.OnButtonMainMenu += OpenMainMenu;
         UIEvents.Current.OnButtonBuySkin += BuySkin;
         UIEvents.Current.OnButtonSelectSkin += SelectSkin;
-
+        UIEvents.Current.OnButtonGetSkinByReward += AskReward;
         GameEvents.Current.OnLevelComplete += WinGame;
         GameEvents.Current.OnLevelFailed += LoseGame;
 
@@ -132,6 +132,11 @@ public class UIController : BaseController, IExecute
     public void AddView(ShopMenuView view)
     {
         _shopMenu = view;
+    }
+
+    public void AskReward(PlayerSkinUIView skin)
+    {
+        GameEvents.Current.AskingRewardedVideo(new SkinRewardModel(skin));
     }
 
     private void SwitchUI(UIState state)

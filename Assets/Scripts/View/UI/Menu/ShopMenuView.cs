@@ -40,6 +40,7 @@ public class ShopMenuView : BaseMenuView
 
         UIEvents.Current.OnButtonBuySkin += BuyingSkin;
         UIEvents.Current.OnButtonSelectSkin += SelectingSkin;
+        GameEvents.Current.OnUnlockSkinEvent += UnlockSkin;
     }
 
     public override void Hide()
@@ -179,6 +180,15 @@ public class ShopMenuView : BaseMenuView
         //_saveData.SaveData(2, skin.gameObject.name);
 
         SortSkins();
+        SetupItems();
+    }
+
+    private void UnlockSkin(PlayerSkinUIView skin)
+    {
+
+        skin.ChangeState(SkinState.Unlocked);
+        //_saveData.SaveData(1, skin.gameObject.name);
+
         SetupItems();
     }
 }

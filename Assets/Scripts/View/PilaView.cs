@@ -8,6 +8,7 @@ public class PilaView : MonoBehaviour
     [SerializeField] private Transform _startPosition;
     [SerializeField] private Transform _endPosition;
     [SerializeField] private float _speed = 5f;
+    [SerializeField] private float _rotatingSpeed = 5f;
     private bool _moveToEnd = true;
 
     public void Awake()
@@ -18,7 +19,7 @@ public class PilaView : MonoBehaviour
 
     public void Update()
     {
-        transform.Rotate(0, 0, 15);
+        transform.Rotate(0, 1f * _rotatingSpeed, 0);
         if (_moveToEnd)
         {
             transform.position = Vector3.MoveTowards(transform.position, _endPosition.position, Time.deltaTime * _speed);
