@@ -52,7 +52,7 @@ public class PlayerView : BaseObjectView
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            GameEvents.current.OnPlayerGetHit();
+            GameEvents.Current.OnPlayerGetHit();
             Invoke("LevelFail", 1f);
         }
     }
@@ -95,7 +95,7 @@ public class PlayerView : BaseObjectView
 
     public void LevelFail()
     {
-        GameEvents.current.LevelFailed();
+        GameEvents.Current.LevelFailed();
     }
 
     public void SetSlowTimeAbilityAvailable(bool value)

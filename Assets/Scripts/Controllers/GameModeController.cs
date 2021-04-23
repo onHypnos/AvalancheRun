@@ -29,12 +29,12 @@ public class GameModeController : BaseController, IExecute
     {
         base.Initialize();
 
-        GameEvents.current.OnLevelStart += StartGame;
-        GameEvents.current.OnGamePaused += PauseGame;
-        GameEvents.current.OnGameResumed += ResumeGame;
-        GameEvents.current.OnLevelComplete += LevelComplete;
-        GameEvents.current.OnNextLevel += LoadLevel;
-        GameEvents.current.OnLevelRestart += LoadLevel;
+        GameEvents.Current.OnLevelStart += StartGame;
+        GameEvents.Current.OnGamePaused += PauseGame;
+        GameEvents.Current.OnGameResumed += ResumeGame;
+        GameEvents.Current.OnLevelComplete += LevelComplete;
+        GameEvents.Current.OnNextLevel += LoadLevel;
+        GameEvents.Current.OnLevelRestart += LoadLevel;
     }
 
     public override void Execute()
@@ -109,9 +109,9 @@ public class GameModeController : BaseController, IExecute
             }
         }
         LoadAsyncScene(sceneName);
-        GameEvents.current.SetActiveCamera("Up-to-up Virtual Camera");
-        GameEvents.current.SceneChanged();
-        GameEvents.current.PlayerControllerSetActive(false);
+        GameEvents.Current.SetActiveCamera("Up-to-up Virtual Camera");
+        GameEvents.Current.SceneChanged();
+        GameEvents.Current.PlayerControllerSetActive(false);
         //Time.timeScale = 0;
     }
 

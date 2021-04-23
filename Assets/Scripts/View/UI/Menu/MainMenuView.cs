@@ -17,7 +17,7 @@ public class MainMenuView : BaseMenuView
     {
         FindMyController();
         _startButton.onClick.AddListener(UIEvents.Current.ButtonStartGame);
-        //TODO обновление текста количества монет
+        _shopButton.onClick.AddListener(UIEvents.Current.ButtonShop);
     }
 
     public override void Hide()

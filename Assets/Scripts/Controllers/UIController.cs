@@ -10,11 +10,15 @@ public class UIController : BaseController, IExecute
     private EndGameMenuView _endGameMenu;
     private ShopMenuView _shopMenu;
 
+    private PlayerView _player;
     private GameObject _uiPrefab;
 
-    public UIController(MainController main) : base(main)
+    public PlayerView Player => _player;
+
+
+    public UIController(MainController main, PlayerView player) : base(main)
     {
-        
+        _player = player;
     }
 
     public override void Initialize()
@@ -36,9 +40,13 @@ public class UIController : BaseController, IExecute
         UIEvents.Current.OnButtonResumeGame += ResumeGame;
         UIEvents.Current.OnButtonNextLevel += NextLevel;
         UIEvents.Current.OnButtonRestartGame += RestartGame;
+        UIEvents.Current.OnButtonShop += OpenShop;
+        UIEvents.Current.OnButtonMainMenu += OpenMainMenu;
+        UIEvents.Current.OnButtonBuySkin += BuySkin;
+        UIEvents.Current.OnButtonSelectSkin += SelectSkin;
 
-        GameEvents.current.OnLevelComplete += WinGame;
-        GameEvents.current.OnLevelFailed += LoseGame;
+        GameEvents.Current.OnLevelComplete += WinGame;
+        GameEvents.Current.OnLevelFailed += LoseGame;
 
         SwitchUI(UIState.MainMenu);
     }
@@ -50,21 +58,31 @@ public class UIController : BaseController, IExecute
         //Update money on UI
     }
 
+    private void OpenMainMenu()
+    {
+        SwitchUI(UIState.MainMenu);
+    }
+
+    private void OpenShop()
+    {
+        SwitchUI(UIState.Shop);
+    }
+
     private void StartGame()
     {
         SwitchUI(UIState.InGame);
-        GameEvents.current.PlayerControllerSetActive(true);
-        GameEvents.current.LevelStart();
+        GameEvents.Current.PlayerControllerSetActive(true);
+        GameEvents.Current.LevelStart();
     }
     private void PauseGame()
     {
         SwitchUI(UIState.Pause);
-        GameEvents.current.GamePaused();
+        GameEvents.Current.GamePaused();
     }
     private void ResumeGame()
     {
         SwitchUI(UIState.InGame);
-        GameEvents.current.GameResumed();
+        GameEvents.Current.GameResumed();
     }
     private void WinGame()
     {
@@ -79,12 +97,20 @@ public class UIController : BaseController, IExecute
     private void NextLevel()
     {
         SwitchUI(UIState.MainMenu);
-        GameEvents.current.NextLevel();
+        GameEvents.Current.NextLevel();
     }
     private void RestartGame()
     {
         SwitchUI(UIState.MainMenu);
-        GameEvents.current.LevelRestart();
+        GameEvents.Current.LevelRestart();
+    }
+    private void BuySkin(PlayerSkinUIView skin)
+    {
+        GameEvents.Current.RemoveMoney(skin.Price);
+    }
+    private void SelectSkin(PlayerSkinUIView skin)
+    {
+        GameEvents.Current.SelectSkin(skin.gameObject.name);
     }
 
     public void AddView(MainMenuView view)
@@ -117,35 +143,35 @@ public class UIController : BaseController, IExecute
                 _inGame.Hide();
                 _pauseMenu.Hide();
                 _endGameMenu.Hide();
-                //_shopMenu.Hide();
+                _shopMenu.Hide();
                 break;
             case UIState.InGame:
                 _mainMenu.Hide();
                 _inGame.Show();
                 _pauseMenu.Hide();
                 _endGameMenu.Hide();
-                //_shopMenu.Hide();
+                _shopMenu.Hide();
                 break;
             case UIState.Pause:
                 _mainMenu.Hide();
                 _inGame.Hide();
                 _pauseMenu.Show();
                 _endGameMenu.Hide();
-                //_shopMenu.Hide();
+                _shopMenu.Hide();
                 break;
             case UIState.EndGame:
                 _mainMenu.Hide();
                 _inGame.Hide();
                 _pauseMenu.Hide();
                 _endGameMenu.Show();
-                //_shopMenu.Hide();
+                _shopMenu.Hide();
                 break;
             case UIState.Shop:
                 _mainMenu.Hide();
                 _inGame.Hide();
                 _pauseMenu.Hide();
                 _endGameMenu.Hide();
-                //_shopMenu.Show();
+                _shopMenu.Show();
                 break;
         }
     }

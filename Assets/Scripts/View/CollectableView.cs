@@ -20,7 +20,7 @@ public class CollectableView : BaseObjectView
     {
         if (other.gameObject.CompareTag(TagManager.Player))
         {
-            GameEvents.current.AddMoney(_value);
+            GameEvents.Current.AddMoney(_value);
             Destroy(gameObject, 0f);
 #if UNITY_EDITOR
             Debug.Log($"Added {_value} dollars ");

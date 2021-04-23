@@ -30,14 +30,14 @@ public class ObjectSpawnerController : BaseController, IExecute
     public override void Initialize()
     {
         base.Initialize();
-        GameEvents.current.OnLevelStart += CallSpawners;
-        GameEvents.current.OnAddFallingObject += AddFallingObjectToDict;
-        GameEvents.current.OnStartSlowMode += OnSlowModeStart;
-        GameEvents.current.OnEndingSlowMode += OnSlowModeEnd;
+        GameEvents.Current.OnLevelStart += CallSpawners;
+        GameEvents.Current.OnAddFallingObject += AddFallingObjectToDict;
+        GameEvents.Current.OnStartSlowMode += OnSlowModeStart;
+        GameEvents.Current.OnEndingSlowMode += OnSlowModeEnd;
         //GameEvents.current.OnLevelStart += ClearFallingObjectsList;
-        GameEvents.current.OnLevelEnd += OnLevelEnd;
-        GameEvents.current.OnLevelComplete += IncreaseDifficulty;
-        GameEvents.current.OnLevelFailed += ReduceDifficulty;
+        GameEvents.Current.OnLevelEnd += OnLevelEnd;
+        GameEvents.Current.OnLevelComplete += IncreaseDifficulty;
+        GameEvents.Current.OnLevelFailed += ReduceDifficulty;
     }
 
     public override void Execute()

@@ -14,9 +14,9 @@ public class CameraController : BaseController, IExecute, ILateExecute
     {
         base.Initialize();
 
-        GameEvents.current.OnLevelStart += ActivateBaseCamera;
-        GameEvents.current.OnNextLevel += ActivateStartPositionCamera;
-        GameEvents.current.OnLevelRestart += ActivateStartPositionCamera;
+        GameEvents.Current.OnLevelStart += ActivateBaseCamera;
+        GameEvents.Current.OnNextLevel += ActivateStartPositionCamera;
+        GameEvents.Current.OnLevelRestart += ActivateStartPositionCamera;
     }
     public override void Execute()
     {
@@ -52,11 +52,11 @@ public class CameraController : BaseController, IExecute, ILateExecute
 
     private void ActivateBaseCamera()
     {
-        GameEvents.current.SetActiveCamera("BaseVirtualCamera");
+        GameEvents.Current.SetActiveCamera("BaseVirtualCamera");
     }
     private void ActivateStartPositionCamera()
     {
-        GameEvents.current.SetActiveCamera("Start Position Camera");
+        GameEvents.Current.SetActiveCamera("Start Position Camera");
     }
 
     public void SetCamera(CameraView camera)

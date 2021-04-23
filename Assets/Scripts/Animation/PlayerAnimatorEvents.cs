@@ -6,12 +6,12 @@ public class PlayerAnimatorEvents : MonoBehaviour
 {
     public void OnPlayerAttackStart()
     {
-        GameEvents.current.PlayerAttackStart();
+        GameEvents.Current.PlayerAttackStart();
     }
 
     public void OnPlayerAttackEnd()
     {
-        GameEvents.current.PlayerAttackEnd();
+        GameEvents.Current.PlayerAttackEnd();
     }
 
 }
