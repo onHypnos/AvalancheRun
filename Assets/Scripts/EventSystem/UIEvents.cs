@@ -75,4 +75,10 @@ public class UIEvents : MonoBehaviour
     {
         OnButtonGetSkinByReward?.Invoke(skin);
     }
+
+    public Action OnButtonAddMoneyByReward;
+    public void ButtonAddMoneyByReward()
+    {
+        OnButtonAddMoneyByReward?.Invoke();
+    }
 }
