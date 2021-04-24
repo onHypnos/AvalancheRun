@@ -13,10 +13,7 @@ public class EndGameMenuView : BaseMenuView
     [SerializeField] private Button _restartButton;
     [SerializeField] private Image _moneyIcon;
     [SerializeField] private TextMeshProUGUI _moneyText;
-
-    // Will be needed later
-    //[SerializeField] private TextMesh _moneyByLevelText;
-    //[SerializeField] private Button _scaleForAdButton;
+    [SerializeField] private Button _scaleMoneyButton;
 
     private UIController _controller;
 
@@ -43,9 +40,9 @@ public class EndGameMenuView : BaseMenuView
         _panel.gameObject.SetActive(true);
         IsShow = true;
     }
-    public void ActivateState(bool inLevelComplete)
+    public void ActivateState(bool isLevelComplete)
     {
-        switch (inLevelComplete)
+        switch (isLevelComplete)
         {
             case true:
                 _nextLevelButton.gameObject.SetActive(true);

@@ -40,7 +40,6 @@ public class ShopMenuView : BaseMenuView
 
         UIEvents.Current.OnButtonBuySkin += BuyingSkin;
         UIEvents.Current.OnButtonSelectSkin += SelectingSkin;
-        GameEvents.Current.OnUnlockSkinEvent += UnlockSkin;
     }
 
     public override void Hide()
@@ -160,7 +159,7 @@ public class ShopMenuView : BaseMenuView
         UpdateMoneyText();
 
         skin.ChangeState(SkinState.Unlocked);
-        //_saveData.SaveData(1, skin.gameObject.name);
+        SaveSkinState(SkinState.Unlocked, skin.gameObject.name);
 
         SetupItems();
     }
@@ -177,18 +176,31 @@ public class ShopMenuView : BaseMenuView
         }
 
         skin.ChangeState(SkinState.Selected);
-        //_saveData.SaveData(2, skin.gameObject.name);
+        SaveSkinState(SkinState.Selected, skin.gameObject.name);
 
         SortSkins();
         SetupItems();
     }
 
-    private void UnlockSkin(PlayerSkinUIView skin)
+    private void SaveSkinState(SkinState state, string skinName)
     {
-
-        skin.ChangeState(SkinState.Unlocked);
-        //_saveData.SaveData(1, skin.gameObject.name);
-
-        SetupItems();
+        Debug.LogWarning("Debug mode. Skins state are not savin now. Please open code below and delete this log");
+//        switch (state)
+//        {
+//            case SkinState.Locked:
+//                _saveData.SaveData(0, skinName);
+//                break;
+//            case SkinState.Unlocked:
+//                _saveData.SaveData(1, skinName);
+//                break;
+//            case SkinState.Selected:
+//                _saveData.SaveData(2, skinName);
+//                break;
+//            default:
+//#if UNITY_EDITOR
+//                Debug.LogWarning("An impossible error occurred while saving SkinState");
+//#endif
+//                break;
+//        }
     }
 }

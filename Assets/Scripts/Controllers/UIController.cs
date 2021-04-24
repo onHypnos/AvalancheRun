@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIController : BaseController, IExecute
@@ -9,9 +7,11 @@ public class UIController : BaseController, IExecute
     private PauseMenuView _pauseMenu;
     private EndGameMenuView _endGameMenu;
     private ShopMenuView _shopMenu;
+    private TutorialUIView _tutorial;
 
     private PlayerView _player;
     private GameObject _uiPrefab;
+    private SaveDataRepo _saveData;
 
     public PlayerView Player => _player;
 
@@ -19,6 +19,7 @@ public class UIController : BaseController, IExecute
     public UIController(MainController main, PlayerView player) : base(main)
     {
         _player = player;
+        _saveData = new SaveDataRepo();
     }
 
     public override void Initialize()
@@ -48,14 +49,17 @@ public class UIController : BaseController, IExecute
         GameEvents.Current.OnLevelComplete += WinGame;
         GameEvents.Current.OnLevelFailed += LoseGame;
 
+        if (IsNewDay())
+        {
+            GameEvents.Current.OnLevelStart += ShowTutorial;
+        }
+
         SwitchUI(UIState.MainMenu);
     }
 
     public override void Execute()
     {
         base.Execute();
-        //TODO
-        //Update money on UI
     }
 
     private void OpenMainMenu()
@@ -133,6 +137,10 @@ public class UIController : BaseController, IExecute
     {
         _shopMenu = view;
     }
+    public void AddView(TutorialUIView view)
+    {
+        _tutorial = view;
+    }
 
     public void AskReward(PlayerSkinUIView skin)
     {
@@ -179,5 +187,36 @@ public class UIController : BaseController, IExecute
                 _shopMenu.Show();
                 break;
         }
+    }
+
+    private bool IsNewDay()
+    {
+        if (System.DateTime.Now.Day == _saveData.LoadInt(SaveKeyManager.DayNumber))
+        {
+            return false;
+        }
+        else
+        {
+            _saveData.SaveData(System.DateTime.Now.Day, SaveKeyManager.DayNumber);
+            return true;
+        }
+    }
+
+    private void ShowTutorial()
+    {
+        if (_tutorial != null)
+        {
+            _tutorial.Show();
+            GameEvents.Current.GamePaused();
+            GameEvents.Current.OnLevelStart -= ShowTutorial;
+            InputEvents.current.OnTouchBeganEvent += CloseTutorial;
+        }
+    }
+
+    private void CloseTutorial(Vector2 huita)
+    {
+        _tutorial.Hide();
+        GameEvents.Current.GameResumed();
+        InputEvents.current.OnTouchBeganEvent -= CloseTutorial;
     }
 }
