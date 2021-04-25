@@ -136,7 +136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261680904965186058}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5087320269700233579}
@@ -2063,7 +2063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6037034840894450806
 Transform:
   m_ObjectHideFlags: 0
@@ -2171,7 +2171,7 @@ MonoBehaviour:
   _rarity: 0
   _type: 0
   _state: 1
-  _price: 0
+  _price: 100
 --- !u!1 &5295874679886044633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2979,10 +2979,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _screenShot: {fileID: 21300000, guid: 3dbe1823f173c0649b286009bb245cf3, type: 3}
-  _rarity: 2
+  _rarity: 1
   _type: 0
   _state: 0
-  _price: 0
+  _price: 500
 --- !u!1 &6851782265307003688
 GameObject:
   m_ObjectHideFlags: 0
@@ -3107,8 +3107,8 @@ MonoBehaviour:
   _screenShot: {fileID: 21300000, guid: 74192d8468c4dbf4893bcba657b263bf, type: 3}
   _rarity: 0
   _type: 0
-  _state: 1
-  _price: 0
+  _state: 0
+  _price: 100
 --- !u!1 &7059697308350675935
 GameObject:
   m_ObjectHideFlags: 0
@@ -3851,7 +3851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6194753994819367498
 Transform:
   m_ObjectHideFlags: 0
