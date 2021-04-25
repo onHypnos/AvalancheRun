@@ -17,7 +17,7 @@ public class PilaView : MonoBehaviour
 
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         transform.Rotate(0, 1f * _rotatingSpeed, 0);
         if (_moveToEnd)

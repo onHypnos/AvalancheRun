@@ -40,6 +40,17 @@ public class ShopMenuView : BaseMenuView
 
         UIEvents.Current.OnButtonBuySkin += BuyingSkin;
         UIEvents.Current.OnButtonSelectSkin += SelectingSkin;
+        GameEvents.Current.OnUnlockSkinEvent += UnlockSkin;
+    }
+
+    private void UnlockSkin(PlayerSkinUIView skin)
+    {
+        if (skin.State != SkinState.Unlocked)
+        {
+            skin.ChangeState(SkinState.Unlocked);
+            SaveSkinState(SkinState.Unlocked, skin.gameObject.name);
+            SetupItems();
+        }
     }
 
     public override void Hide()
@@ -185,22 +196,22 @@ public class ShopMenuView : BaseMenuView
     private void SaveSkinState(SkinState state, string skinName)
     {
         Debug.LogWarning("Debug mode. Skins state are not savin now. Please open code below and delete this log");
-//        switch (state)
-//        {
-//            case SkinState.Locked:
-//                _saveData.SaveData(0, skinName);
-//                break;
-//            case SkinState.Unlocked:
-//                _saveData.SaveData(1, skinName);
-//                break;
-//            case SkinState.Selected:
-//                _saveData.SaveData(2, skinName);
-//                break;
-//            default:
-//#if UNITY_EDITOR
-//                Debug.LogWarning("An impossible error occurred while saving SkinState");
-//#endif
-//                break;
-//        }
+        //        switch (state)
+        //        {
+        //            case SkinState.Locked:
+        //                _saveData.SaveData(0, skinName);
+        //                break;
+        //            case SkinState.Unlocked:
+        //                _saveData.SaveData(1, skinName);
+        //                break;
+        //            case SkinState.Selected:
+        //                _saveData.SaveData(2, skinName);
+        //                break;
+        //            default:
+        //#if UNITY_EDITOR
+        //                Debug.LogWarning("An impossible error occurred while saving SkinState");
+        //#endif
+        //                break;
+        //        }
     }
 }

@@ -190,22 +190,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Center: {x: 0, y: -0.00000071525574, z: 0}
---- !u!114 &3059055499827194805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5822667282498622245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0329f4a4cc7337b4db410331fb5b9848, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _startPosition: {fileID: 8690761187760701224}
-  _endPosition: {fileID: 3811133001867640385}
-  _speed: 15
-  _rotatingSpeed: 3
 --- !u!54 &2486312987533667199
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -236,6 +220,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5680873250619466769, guid: 5c987a6427050c943b360ddadb5f0ce9, type: 3}
+--- !u!114 &3059055499827194805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5822667282498622245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0329f4a4cc7337b4db410331fb5b9848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startPosition: {fileID: 8690761187760701224}
+  _endPosition: {fileID: 3811133001867640385}
+  _speed: 15
+  _rotatingSpeed: 10
 --- !u!1 &7859715197609123503
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +342,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5c987a6427050c943b360ddadb5f0ce9,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5c987a6427050c943b360ddadb5f0ce9,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5c987a6427050c943b360ddadb5f0ce9,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c987a6427050c943b360ddadb5f0ce9,
         type: 3}

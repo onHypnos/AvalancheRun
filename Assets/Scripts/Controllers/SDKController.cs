@@ -14,6 +14,8 @@ public class SDKController : BaseController
     private string _ISIOSAppKey = null;
     private string _ISAndroidAppKey = null;
     private string _currentAppKey = null;
+
+    private float _lastInterstitialTime;
     public SDKController(MainController main) : base(main)
     {
 
@@ -22,9 +24,11 @@ public class SDKController : BaseController
     public override void Initialize()
     {
         base.Initialize();
+        _lastInterstitialTime = Time.time;
         SubscribeInterstitialEvents();
         SubscribeRewardedEvents();
         GameEvents.Current.OnUpdateIronSourceParameters += InitializeIronSource;
+        GameEvents.Current.OnNextLevel += StartInterstitialOnLevelEnding;
         FacebookInitialize();
         GameAnalyticsInitialize();
 
@@ -112,6 +116,14 @@ public class SDKController : BaseController
 
     #region Interstitial
 
+    private void StartInterstitialOnLevelEnding()
+    {
+        if (Time.time - _lastInterstitialTime > 40f)
+        {
+            ShowInterstitial();
+        }
+    }
+
     private void LoadInterstitial()
     {
         if (IsRewardAdvertismentEnbaled)
@@ -128,6 +140,7 @@ public class SDKController : BaseController
             {
                 IronSource.Agent.showInterstitial();
                 //GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "IronSource", "NoPlacement");
+                _lastInterstitialTime = Time.time;
             }
             else
             {

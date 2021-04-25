@@ -104,7 +104,7 @@ public class ObjectSpawnerController : BaseController, IExecute
             foreach (ObjectSpawnerView view in _spawners)
             {
                 if (view != null)
-                    SpawnObjectsPool(view, view.ObjectsPacks[_difficulty], 0.6f-_difficulty*0.07f);
+                    SpawnObjectsPool(view, view.ObjectsPacks[_difficulty], 0.8f-_difficulty*0.12f);
                 else
                     RemoveSpawnerFromList(view);
             }

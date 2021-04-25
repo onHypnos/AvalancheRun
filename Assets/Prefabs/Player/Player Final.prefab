@@ -235,7 +235,7 @@ MonoBehaviour:
   _rarity: 2
   _type: 1
   _state: 0
-  _price: 0
+  _price: 777
 --- !u!1 &328486253323178709
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +361,7 @@ MonoBehaviour:
   _rarity: 2
   _type: 0
   _state: 0
-  _price: 0
+  _price: 2000
 --- !u!1 &343119088868386049
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,9 +485,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _screenShot: {fileID: 21300000, guid: 417921d2dcc07e64089f23b7d32978de, type: 3}
   _rarity: 1
-  _type: 1
+  _type: 0
   _state: 0
-  _price: 0
+  _price: 1500
 --- !u!1 &875445608411913482
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,8 +755,8 @@ MonoBehaviour:
   _screenShot: {fileID: 21300000, guid: 300487787685b644b867e7063c3ad500, type: 3}
   _rarity: 1
   _type: 0
-  _state: 1
-  _price: 0
+  _state: 0
+  _price: 1200
 --- !u!1 &2428850088978702729
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,10 +879,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _screenShot: {fileID: 21300000, guid: 6f776d03f32cd0748a39ea47ce8f0363, type: 3}
-  _rarity: 0
-  _type: 0
-  _state: 1
-  _price: 0
+  _rarity: 2
+  _type: 1
+  _state: 0
+  _price: 2000
 --- !u!1 &2441605736043358051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,8 +1147,8 @@ MonoBehaviour:
   _screenShot: {fileID: 21300000, guid: 8ae5ebc7b1509c548b1d680eeb4e77ce, type: 3}
   _rarity: 2
   _type: 0
-  _state: 1
-  _price: 0
+  _state: 0
+  _price: 2000
 --- !u!1 &3075705980217895830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,8 +1380,8 @@ MonoBehaviour:
   _screenShot: {fileID: 21300000, guid: cb982d0347e52a04d8b4fb7ff8d89679, type: 3}
   _rarity: 1
   _type: 0
-  _state: 1
-  _price: 0
+  _state: 0
+  _price: 1200
 --- !u!1 &3990516872363617092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2043,8 +2043,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _screenShot: {fileID: 21300000, guid: ce5fe6372851c00459a5cbcba537a02f, type: 3}
   _rarity: 1
-  _type: 0
-  _state: 1
+  _type: 1
+  _state: 0
   _price: 0
 --- !u!1 &5167598433962525817
 GameObject:
@@ -2063,7 +2063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6037034840894450806
 Transform:
   m_ObjectHideFlags: 0
@@ -2170,8 +2170,8 @@ MonoBehaviour:
   _screenShot: {fileID: 21300000, guid: 5d3ddcf11b7565f4fad13d3bed9441e2, type: 3}
   _rarity: 0
   _type: 0
-  _state: 1
-  _price: 100
+  _state: 0
+  _price: 500
 --- !u!1 &5295874679886044633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,8 +2296,8 @@ MonoBehaviour:
   _screenShot: {fileID: 21300000, guid: 75c63ae80d0dc6445be74d56018eb56e, type: 3}
   _rarity: 2
   _type: 0
-  _state: 1
-  _price: 0
+  _state: 0
+  _price: 2500
 --- !u!1 &5382960000391879366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2422,8 +2422,8 @@ MonoBehaviour:
   _screenShot: {fileID: 21300000, guid: cec9ddcc4ac280d4cba54eb31284d3e8, type: 3}
   _rarity: 2
   _type: 0
-  _state: 1
-  _price: 0
+  _state: 0
+  _price: 666
 --- !u!1 &5617696505501285853
 GameObject:
   m_ObjectHideFlags: 0
@@ -2980,9 +2980,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _screenShot: {fileID: 21300000, guid: 3dbe1823f173c0649b286009bb245cf3, type: 3}
   _rarity: 1
-  _type: 0
+  _type: 1
   _state: 0
-  _price: 500
+  _price: 1000
 --- !u!1 &6851782265307003688
 GameObject:
   m_ObjectHideFlags: 0
@@ -3108,7 +3108,7 @@ MonoBehaviour:
   _rarity: 0
   _type: 0
   _state: 0
-  _price: 100
+  _price: 300
 --- !u!1 &7059697308350675935
 GameObject:
   m_ObjectHideFlags: 0
@@ -3233,8 +3233,8 @@ MonoBehaviour:
   _screenShot: {fileID: 21300000, guid: f0999f758d8712749b0e2a39b4eb1a57, type: 3}
   _rarity: 0
   _type: 0
-  _state: 1
-  _price: 0
+  _state: 0
+  _price: 550
 --- !u!1 &7308208561259913690
 GameObject:
   m_ObjectHideFlags: 0
@@ -3851,7 +3851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6194753994819367498
 Transform:
   m_ObjectHideFlags: 0
