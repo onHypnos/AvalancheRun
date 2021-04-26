@@ -141,6 +141,11 @@ public class ShopMenuView : BaseMenuView
                     break;
             }
             _skins[i].ChangeState(state);
+
+            if (state == SkinState.Selected)
+            {
+                SelectingSkin(_skins[i]);
+            }
         }
 
         if (_skins[0].State == SkinState.Locked)

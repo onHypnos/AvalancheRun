@@ -27,6 +27,7 @@ public class ShopItemUIView : MonoBehaviour
 
     public void SetupItem(PlayerSkinUIView skin)
     {
+        _button.onClick.RemoveAllListeners();
         //Button
         switch (skin.State)
         {
