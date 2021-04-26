@@ -201,6 +201,7 @@ public class ShopMenuView : BaseMenuView
         }
 
         skin.ChangeState(SkinState.Selected);
+        UIEvents.Current.ButtonSelectSkin(skin);
         SaveSkinState(SkinState.Selected, skin.gameObject.name);
 
         SortSkins();
