@@ -39,9 +39,9 @@ public class ShopMenuView : BaseMenuView
 
         UIEvents.Current.OnButtonBuySkin += BuyingSkin;
         UIEvents.Current.OnButtonSelectSkin += SelectingSkin;
+        UIEvents.Current.OnButtonShop += UpdateMoneyText;
+
         GameEvents.Current.OnUnlockSkinEvent += UnlockSkin;
-        GameEvents.Current.OnLevelEnd += UpdateMoneyText;
-        GameEvents.Current.OnNextLevel += UpdateMoneyText;
     }
 
     public override void Hide()
