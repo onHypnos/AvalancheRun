@@ -361,7 +361,7 @@ MonoBehaviour:
   _rarity: 2
   _type: 0
   _state: 0
-  _price: 2000
+  _price: 3000
 --- !u!1 &343119088868386049
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,7 +756,7 @@ MonoBehaviour:
   _rarity: 1
   _type: 0
   _state: 0
-  _price: 1200
+  _price: 1500
 --- !u!1 &2428850088978702729
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,7 +882,7 @@ MonoBehaviour:
   _rarity: 2
   _type: 0
   _state: 0
-  _price: 2000
+  _price: 3000
 --- !u!1 &2441605736043358051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,7 +1148,7 @@ MonoBehaviour:
   _rarity: 2
   _type: 0
   _state: 0
-  _price: 2000
+  _price: 3000
 --- !u!1 &3075705980217895830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,7 +1381,7 @@ MonoBehaviour:
   _rarity: 1
   _type: 0
   _state: 0
-  _price: 1200
+  _price: 1500
 --- !u!1 &3990516872363617092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,7 +2171,7 @@ MonoBehaviour:
   _rarity: 0
   _type: 0
   _state: 0
-  _price: 500
+  _price: 700
 --- !u!1 &5295874679886044633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,7 +2297,7 @@ MonoBehaviour:
   _rarity: 2
   _type: 0
   _state: 0
-  _price: 2500
+  _price: 3000
 --- !u!1 &5382960000391879366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2982,7 +2982,7 @@ MonoBehaviour:
   _rarity: 1
   _type: 1
   _state: 0
-  _price: 1000
+  _price: 1500
 --- !u!1 &6851782265307003688
 GameObject:
   m_ObjectHideFlags: 0
@@ -3108,7 +3108,7 @@ MonoBehaviour:
   _rarity: 0
   _type: 0
   _state: 0
-  _price: 300
+  _price: 500
 --- !u!1 &7059697308350675935
 GameObject:
   m_ObjectHideFlags: 0
@@ -3234,7 +3234,7 @@ MonoBehaviour:
   _rarity: 0
   _type: 0
   _state: 0
-  _price: 550
+  _price: 800
 --- !u!1 &7308208561259913690
 GameObject:
   m_ObjectHideFlags: 0
