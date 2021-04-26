@@ -49,25 +49,25 @@ public class SDKController : BaseController
     private void OnLevelStartEvent()
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, 
-            $"Level:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}" +
-            $"Difficulty: {_saveData.LoadInt(SaveKeyManager.Difficulty)}" +
-            $"CompletedOverall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");
+            $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}" +
+            $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}" +
+            $"Overall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");
     }
 
     private void OnLevelFailEvent()
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail,
-                $"Level:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}" +
-                $"Difficulty: {_saveData.LoadInt(SaveKeyManager.Difficulty)}" +
-                $"CompletedOverall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");
+                $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}" +
+                $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}" +
+                $"Overall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");
     }
 
     private void OnLevelCompleteEvent()
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete,
-                $"Level:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}" +
-                $"Difficulty: {_saveData.LoadInt(SaveKeyManager.Difficulty)}" +
-                $"CompletedOverall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");
+                $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}" +
+                $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}" +
+                $"Overall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");
     }
     #endregion
     #region FacebookSDK
