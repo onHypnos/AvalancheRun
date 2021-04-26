@@ -45,7 +45,9 @@ public class UIController : BaseController, IExecute
         UIEvents.Current.OnButtonMainMenu += OpenMainMenu;
         UIEvents.Current.OnButtonBuySkin += BuySkin;
         UIEvents.Current.OnButtonSelectSkin += SelectSkin;
-        UIEvents.Current.OnButtonGetSkinByReward += AskReward;
+        UIEvents.Current.OnButtonGetSkinByReward += AskRewardSkin;
+        UIEvents.Current.OnButtonAddMoneyByReward += AskRewardMoney;
+
         GameEvents.Current.OnLevelComplete += WinGame;
         GameEvents.Current.OnLevelFailed += LoseGame;
 
@@ -142,9 +144,13 @@ public class UIController : BaseController, IExecute
         _tutorial = view;
     }
 
-    public void AskReward(PlayerSkinUIView skin)
+    public void AskRewardSkin(PlayerSkinUIView skin)
     {
         GameEvents.Current.AskingRewardedVideo(new SkinRewardModel(skin));
+    }
+    public void AskRewardMoney()
+    {
+        GameEvents.Current.AskingRewardedVideo(new MoneyRewardModel());
     }
 
     private void SwitchUI(UIState state)
@@ -207,7 +213,6 @@ public class UIController : BaseController, IExecute
         if (_tutorial != null)
         {
             _tutorial.Show();
-            GameEvents.Current.GamePaused();
             GameEvents.Current.OnLevelStart -= ShowTutorial;
             InputEvents.current.OnTouchBeganEvent += CloseTutorial;
         }
@@ -216,7 +221,6 @@ public class UIController : BaseController, IExecute
     private void CloseTutorial(Vector2 huita)
     {
         _tutorial.Hide();
-        GameEvents.Current.GameResumed();
         InputEvents.current.OnTouchBeganEvent -= CloseTutorial;
     }
 }
