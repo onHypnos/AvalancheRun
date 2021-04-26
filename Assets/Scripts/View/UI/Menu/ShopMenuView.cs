@@ -39,7 +39,7 @@ public class ShopMenuView : BaseMenuView
 
         UIEvents.Current.OnButtonBuySkin += BuyingSkin;
         UIEvents.Current.OnButtonSelectSkin += SelectingSkin;
-        UIEvents.Current.OnButtonShop += UpdateMoneyText;
+        UIEvents.Current.OnButtonShop += SetupItems;
 
         GameEvents.Current.OnUnlockSkinEvent += UnlockSkin;
     }
@@ -146,7 +146,7 @@ public class ShopMenuView : BaseMenuView
 
             if (state == SkinState.Selected)
             {
-                SelectingSkin(_skins[i]);
+                UIEvents.Current.ButtonSelectSkin(_skins[i]);
             }
         }
 
@@ -201,7 +201,6 @@ public class ShopMenuView : BaseMenuView
         }
 
         skin.ChangeState(SkinState.Selected);
-        UIEvents.Current.ButtonSelectSkin(skin);
         SaveSkinState(SkinState.Selected, skin.gameObject.name);
 
         SortSkins();
