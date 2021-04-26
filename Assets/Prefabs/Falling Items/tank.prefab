@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4284900738438823710}
   - component: {fileID: 2059255317516291028}
   - component: {fileID: -1347835392597227365}
-  - component: {fileID: -4068425840784828847}
+  - component: {fileID: 2641419591385652160}
   m_Layer: 0
   m_Name: tank
   m_TagString: Enemy
@@ -99,8 +99,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &-4068425840784828847
-BoxCollider:
+--- !u!64 &2641419591385652160
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -109,6 +109,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.825365, y: 0.73700833, z: 1.5382645}
-  m_Center: {x: 0.00897909, y: -0.053972673, z: 0.76913214}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2128599272216676504, guid: 6d89409fa960b5f4c8af21f93eac176c, type: 3}

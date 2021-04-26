@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8823155071673372301}
   - component: {fileID: 1557695037420650554}
   - component: {fileID: 2123273653253723377}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: KostyaDollar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1454646731044110620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.52, y: 1.52, z: 1.52}
   m_Children:
   - {fileID: 3477562632145744067}
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 871b13e58f730f4439fcfe00946ef45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 100
+  _value: 20
 --- !u!1001 &4019587687542773544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -162,6 +162,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Konstantinollar
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 62183bcfc8f369f43ad742ffbff0e293,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62183bcfc8f369f43ad742ffbff0e293, type: 3}

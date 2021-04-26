@@ -23,8 +23,10 @@ public class EndGameMenuView : BaseMenuView
         FindMyController();
         _nextLevelButton.onClick.AddListener(UIEvents.Current.ButtonNextLevel);
         _restartButton.onClick.AddListener(UIEvents.Current.ButtonRestartGame);
+        _scaleMoneyButton.onClick.AddListener(AskingEndLevelReward);
 
         GameEvents.Current.OnGetCurrentMoney += SetMoneyText;
+        GameEvents.Current.OnRewardMoney += OnAdShowedDisableButton;
     }
 
 
@@ -50,6 +52,7 @@ public class EndGameMenuView : BaseMenuView
                 _headerText.text = "Complete!";
                 _moneyIcon.gameObject.SetActive(true);
                 _moneyText.gameObject.SetActive(true);
+                _scaleMoneyButton.gameObject.SetActive(true);
                 break;
             case false:
                 _nextLevelButton.gameObject.SetActive(false);
@@ -57,6 +60,7 @@ public class EndGameMenuView : BaseMenuView
                 _headerText.text = "Lose :(";
                 _moneyIcon.gameObject.SetActive(false);
                 _moneyText.gameObject.SetActive(false);
+                _scaleMoneyButton.gameObject.SetActive(false);
                 break;
         }
     }
@@ -73,5 +77,15 @@ public class EndGameMenuView : BaseMenuView
     private void SetMoneyText(int value)
     {
         _moneyText.text = $"{value}";
+    }
+
+    private void AskingEndLevelReward()
+    {
+        UIEvents.Current.ButtonAddMoneyByReward();        
+    }
+
+    private void OnAdShowedDisableButton()
+    {
+        _scaleMoneyButton.gameObject.SetActive(false);
     }
 }

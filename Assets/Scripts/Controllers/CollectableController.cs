@@ -10,7 +10,7 @@ public class CollectableController : BaseController, IExecute
 
     private int _bank;
     private int _money;
-    private int _rewardScale = 3;
+    private int _rewardScale = 4;
     private float _rotationSpeed = 200f;
 
 
@@ -31,6 +31,7 @@ public class CollectableController : BaseController, IExecute
         GameEvents.Current.OnAddMoney += AddMoney;
         GameEvents.Current.OnRemoveMoney += RemoveMoney;
         GameEvents.Current.OnLevelStart += StartLevel;
+        GameEvents.Current.OnRewardMoney += EndLevelReward;
     }
 
     public override void Execute()
@@ -97,8 +98,8 @@ public class CollectableController : BaseController, IExecute
 
     private void EndLevelReward()
     {
-        _money *= _rewardScale;
         _bank += _money * (_rewardScale - 1);
+        _money *= _rewardScale;
         _save.SaveData(_bank, SaveKeyManager.Bank);
     }
 }

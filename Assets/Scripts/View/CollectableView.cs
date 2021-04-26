@@ -12,8 +12,11 @@ public class CollectableView : BaseObjectView
 
     public void Start()
     {
+        transform.position = 
+            new Vector3(transform.position.x + Random.Range(-3f, 3f), transform.position.y, transform.position.z);
         FindMyController();
         GetComponent<Collider>().isTrigger = true;
+
     }
 
     private void OnTriggerEnter(Collider other)

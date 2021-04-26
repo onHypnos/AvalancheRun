@@ -14,25 +14,60 @@ public class SDKController : BaseController
     private string _ISIOSAppKey = null;
     private string _ISAndroidAppKey = null;
     private string _currentAppKey = null;
+    private SaveDataRepo _saveData;
+
+    private float _lastInterstitialTime;
     public SDKController(MainController main) : base(main)
     {
-
+        _saveData = new SaveDataRepo();
     }
 
     public override void Initialize()
     {
         base.Initialize();
+        _lastInterstitialTime = Time.time;
         SubscribeInterstitialEvents();
         SubscribeRewardedEvents();
         GameEvents.Current.OnUpdateIronSourceParameters += InitializeIronSource;
+        GameEvents.Current.OnNextLevel += StartInterstitialOnLevelEnding;
+        GameEvents.Current.OnLevelRestart += StartInterstitialOnLevelEnding;
+        GameEvents.Current.OnLevelComplete += OnLevelCompleteEvent;
+        GameEvents.Current.OnLevelStart += OnLevelStartEvent;
+        GameEvents.Current.OnLevelFailed += OnLevelFailEvent;
         FacebookInitialize();
         GameAnalyticsInitialize();
-    }
+        
 
+    }
+    
     #region GameAnalytics
     private void GameAnalyticsInitialize()
     {
         GameAnalytics.Initialize();
+    }
+
+    private void OnLevelStartEvent()
+    {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, 
+            $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}",
+            $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}",
+            $"Overall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");
+    }
+
+    private void OnLevelFailEvent()
+    {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail,
+                $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}",
+                $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}",
+                $"Overall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");
+    }
+
+    private void OnLevelCompleteEvent()
+    {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete,
+                $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}",
+                $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}",
+                $"Overall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");
     }
     #endregion
     #region FacebookSDK
@@ -85,9 +120,9 @@ public class SDKController : BaseController
             if (rewardEnabled)
             {
                 _ISIOSAppKey = ConfigManager.appConfig.GetString("IronSourseIOSAppKey");
-                Debug.LogWarning($"IOSKey {_ISIOSAppKey}");
+                //Debug.LogWarning($"IOSKey {_ISIOSAppKey}");
                 _ISAndroidAppKey = ConfigManager.appConfig.GetString("IronSourceAndroidAppKey");
-                Debug.LogWarning($"AndroidKeyKey {_ISAndroidAppKey}");
+                //Debug.LogWarning($"AndroidKeyKey {_ISAndroidAppKey}");
                 
 #if UNITY_ANDROID
                 _currentAppKey = _ISAndroidAppKey;
@@ -110,6 +145,14 @@ public class SDKController : BaseController
 
     #region Interstitial
 
+    private void StartInterstitialOnLevelEnding()
+    {
+        if (Time.time - _lastInterstitialTime > 40f)
+        {
+            ShowInterstitial();
+        }
+    }
+
     private void LoadInterstitial()
     {
         if (IsRewardAdvertismentEnbaled)
@@ -125,7 +168,8 @@ public class SDKController : BaseController
             if (IronSource.Agent.isInterstitialReady())
             {
                 IronSource.Agent.showInterstitial();
-                //GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "IronSource", "NoPlacement");
+                GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "IronSource", "EndLevel");
+                _lastInterstitialTime = Time.time;
             }
             else
             {
@@ -181,7 +225,6 @@ public class SDKController : BaseController
     }
     #endregion
     #region Rewarded
-
     private void SubscribeRewardedEvents()
     {
         IronSourceEvents.onRewardedVideoAdOpenedEvent += RewardedVideoAdOpenedEvent;
@@ -190,6 +233,7 @@ public class SDKController : BaseController
         IronSourceEvents.onRewardedVideoAdStartedEvent += RewardedVideoAdStartedEvent;
         IronSourceEvents.onRewardedVideoAdEndedEvent += RewardedVideoAdEndedEvent;
         IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
+        GameEvents.Current.OnAskingRewardedVideo += AskingShowReward;
         IronSourceEvents.onRewardedVideoAdShowFailedEvent += RewardedVideoAdShowFailedEvent;
         IronSourceEvents.onRewardedVideoAdClickedEvent += RewardedVideoAdClickedEvent;
     }
@@ -205,7 +249,7 @@ public class SDKController : BaseController
         }
     }
 
-    public void ButtonRewardClick(IGetReward instance)
+    public void AskingShowReward(IGetReward instance)
     {
         SetRewardInstance(instance);
         ShowRewardedVideo();
@@ -249,8 +293,7 @@ public class SDKController : BaseController
         if (RewardInstance != null)
         {
             RewardInstance.RewardPlayer();
-            //GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "IrnSource", "NoPlacement");
-
+            GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "IronSource", $"{RewardInstance}");
         }
         else
         {
@@ -284,6 +327,7 @@ public class SDKController : BaseController
 
     private void RewardedVideoAdClickedEvent(IronSourcePlacement placement)
     {
+        GameAnalytics.NewAdEvent(GAAdAction.Clicked, GAAdType.RewardedVideo, "IronSource", $"{RewardInstance}");
     }
     #endregion
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using GameAnalyticsSDK;
 public class GameModeController : BaseController, IExecute
 {
     #region Fields    
@@ -10,6 +11,7 @@ public class GameModeController : BaseController, IExecute
     private string _levelNamePrefix = "Level";
     private int _maxLevelIndex = 10;
     private int _curretLevelIndex;
+    private int _completedLevelValue;
     #endregion
 
     #region Acсess Modifyers
@@ -23,6 +25,7 @@ public class GameModeController : BaseController, IExecute
         _main = main;
         _saveData = new SaveDataRepo();
         _curretLevelIndex = _saveData.LoadInt(SaveKeyManager.LevelNumber);
+        _completedLevelValue = _saveData.LoadInt(SaveKeyManager.ComplitedLevelValue);
     }
 
     public override void Initialize()
@@ -112,7 +115,7 @@ public class GameModeController : BaseController, IExecute
         GameEvents.Current.SetActiveCamera("Up-to-up Virtual Camera");
         GameEvents.Current.SceneChanged();
         GameEvents.Current.PlayerControllerSetActive(false);
-        //Time.timeScale = 0;
+        
     }
 
     public void LoadLevel()
@@ -123,14 +126,16 @@ public class GameModeController : BaseController, IExecute
     private void LevelComplete()
     {
         _curretLevelIndex++;
-        
+        _completedLevelValue++;
         if (_curretLevelIndex > _maxLevelIndex)
         {
             _main.IsDermische = true;
             _curretLevelIndex = 0;
         }
-
+        Debug.LogWarning($"{_completedLevelValue}");
         _saveData.SaveData(_curretLevelIndex, SaveKeyManager.LevelNumber);
+        _saveData.SaveData(_completedLevelValue, SaveKeyManager.ComplitedLevelValue);
+        GameAnalytics.NewDesignEvent($"LevelsCompleted: {_completedLevelValue}");
     }
 
     private void StartGame()

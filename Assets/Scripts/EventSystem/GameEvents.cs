@@ -84,6 +84,8 @@ public class GameEvents : MonoBehaviour
     {
         OnLevelRestart?.Invoke();
     }
+
+    
     #endregion
 
     #region Currency events
@@ -223,6 +225,28 @@ public class GameEvents : MonoBehaviour
     public void UpdateIronSourceParameters(bool value)
     {
         OnUpdateIronSourceParameters.Invoke(value);
+    }
+    #endregion
+
+    #region RewardEvents
+    //ивент к которому ui будет пробрасывать гетревард инстанс для вызова рекламы, на него подпишется 
+    //метод вызова рекламы в сдк контроллере
+    public Action<IGetReward> OnAskingRewardedVideo;
+    public void AskingRewardedVideo(IGetReward rewardInstance)
+    {
+        OnAskingRewardedVideo?.Invoke(rewardInstance);
+    }
+
+    public Action<PlayerSkinUIView> OnUnlockSkinEvent;
+    public void UnlockSkinEvent(PlayerSkinUIView skin)
+    {
+        OnUnlockSkinEvent?.Invoke(skin);
+    }
+
+    public Action OnRewardMoney;
+    public void RewardMoney()
+    {
+        OnRewardMoney?.Invoke();
     }
     #endregion
 }
