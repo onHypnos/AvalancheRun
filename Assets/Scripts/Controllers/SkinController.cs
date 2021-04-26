@@ -4,11 +4,11 @@ using UnityEngine;
 public class SkinController : BaseController
 {
     private List<SkinView> _skinViews = new List<SkinView>();
-
+    private SaveDataRepo _saveData;
 
     public SkinController(MainController main) : base(main)
     {
-
+        _saveData = new SaveDataRepo();
     }
 
     public override void Initialize()
@@ -37,7 +37,10 @@ public class SkinController : BaseController
                 view.SelectRandomSkin();
                 break;
             case TagManager.Player:
-                //TODO
+                if (_saveData.LoadString(SaveKeyManager.SelectedSkin) != null)
+                {
+                    view.SelectSkinByName(_saveData.LoadString(SaveKeyManager.SelectedSkin));
+                }
                 break;
             default:
                 break;

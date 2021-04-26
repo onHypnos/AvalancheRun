@@ -9,4 +9,6 @@
     public const string Bank = "Bank";
 
     public const string DayNumber = "DayNumber";
+
+    public const string SelectedSkin = "SelectedSkin";
 }

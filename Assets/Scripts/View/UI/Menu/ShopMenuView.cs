@@ -143,11 +143,6 @@ public class ShopMenuView : BaseMenuView
                     break;
             }
             _skins[i].ChangeState(state);
-
-            if (state == SkinState.Selected)
-            {
-                UIEvents.Current.ButtonSelectSkin(_skins[i]);
-            }
         }
 
         if (_skins[0].State == SkinState.Locked)
@@ -219,6 +214,7 @@ public class ShopMenuView : BaseMenuView
                 break;
             case SkinState.Selected:
                 _saveData.SaveData(2, skinName);
+                _saveData.SaveData(skinName, SaveKeyManager.SelectedSkin);
                 break;
             default:
 #if UNITY_EDITOR

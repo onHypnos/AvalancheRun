@@ -98,8 +98,8 @@ public class CollectableController : BaseController, IExecute
 
     private void EndLevelReward()
     {
-        _money *= _rewardScale;
         _bank += _money * (_rewardScale - 1);
+        _money *= _rewardScale;
         _save.SaveData(_bank, SaveKeyManager.Bank);
     }
 }

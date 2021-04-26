@@ -23,7 +23,7 @@ public class EndGameMenuView : BaseMenuView
         FindMyController();
         _nextLevelButton.onClick.AddListener(UIEvents.Current.ButtonNextLevel);
         _restartButton.onClick.AddListener(UIEvents.Current.ButtonRestartGame);
-        _scaleMoneyButton.onClick.AddListener(UIEvents.Current.ButtonAddMoneyByReward);
+        _scaleMoneyButton.onClick.AddListener(AskingEndLevelReward);
 
         GameEvents.Current.OnGetCurrentMoney += SetMoneyText;
     }
@@ -76,5 +76,11 @@ public class EndGameMenuView : BaseMenuView
     private void SetMoneyText(int value)
     {
         _moneyText.text = $"{value}";
+    }
+
+    private void AskingEndLevelReward()
+    {
+        UIEvents.Current.ButtonAddMoneyByReward();
+        _scaleMoneyButton.gameObject.SetActive(false);
     }
 }
