@@ -880,7 +880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _screenShot: {fileID: 21300000, guid: 6f776d03f32cd0748a39ea47ce8f0363, type: 3}
   _rarity: 2
-  _type: 1
+  _type: 0
   _state: 0
   _price: 2000
 --- !u!1 &2441605736043358051

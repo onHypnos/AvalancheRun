@@ -10,7 +10,7 @@ public class CollectableController : BaseController, IExecute
 
     private int _bank;
     private int _money;
-    private int _rewardScale = 3;
+    private int _rewardScale = 4;
     private float _rotationSpeed = 200f;
 
 
