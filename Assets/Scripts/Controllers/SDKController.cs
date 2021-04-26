@@ -92,9 +92,9 @@ public class SDKController : BaseController
             if (rewardEnabled)
             {
                 _ISIOSAppKey = ConfigManager.appConfig.GetString("IronSourseIOSAppKey");
-                Debug.LogWarning($"IOSKey {_ISIOSAppKey}");
+                //Debug.LogWarning($"IOSKey {_ISIOSAppKey}");
                 _ISAndroidAppKey = ConfigManager.appConfig.GetString("IronSourceAndroidAppKey");
-                Debug.LogWarning($"AndroidKeyKey {_ISAndroidAppKey}");
+                //Debug.LogWarning($"AndroidKeyKey {_ISAndroidAppKey}");
                 
 #if UNITY_ANDROID
                 _currentAppKey = _ISAndroidAppKey;
