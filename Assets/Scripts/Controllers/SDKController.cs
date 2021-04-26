@@ -14,11 +14,12 @@ public class SDKController : BaseController
     private string _ISIOSAppKey = null;
     private string _ISAndroidAppKey = null;
     private string _currentAppKey = null;
+    private SaveDataRepo _saveData;
 
     private float _lastInterstitialTime;
     public SDKController(MainController main) : base(main)
     {
-
+        _saveData = new SaveDataRepo();
     }
 
     public override void Initialize()
@@ -30,16 +31,43 @@ public class SDKController : BaseController
         GameEvents.Current.OnUpdateIronSourceParameters += InitializeIronSource;
         GameEvents.Current.OnNextLevel += StartInterstitialOnLevelEnding;
         GameEvents.Current.OnLevelRestart += StartInterstitialOnLevelEnding;
+        GameEvents.Current.OnLevelComplete += OnLevelCompleteEvent;
+        GameEvents.Current.OnLevelStart += OnLevelStartEvent;
+        GameEvents.Current.OnLevelFailed += OnLevelFailEvent;
         FacebookInitialize();
         GameAnalyticsInitialize();
+        
 
     }
-
     
     #region GameAnalytics
     private void GameAnalyticsInitialize()
     {
         GameAnalytics.Initialize();
+    }
+
+    private void OnLevelStartEvent()
+    {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, 
+            $"Level:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}" +
+            $"Difficulty: {_saveData.LoadInt(SaveKeyManager.Difficulty)}" +
+            $"CompletedOverall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");
+    }
+
+    private void OnLevelFailEvent()
+    {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail,
+                $"Level:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}" +
+                $"Difficulty: {_saveData.LoadInt(SaveKeyManager.Difficulty)}" +
+                $"CompletedOverall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");
+    }
+
+    private void OnLevelCompleteEvent()
+    {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete,
+                $"Level:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}" +
+                $"Difficulty: {_saveData.LoadInt(SaveKeyManager.Difficulty)}" +
+                $"CompletedOverall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");
     }
     #endregion
     #region FacebookSDK
