@@ -49,24 +49,24 @@ public class SDKController : BaseController
     private void OnLevelStartEvent()
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, 
-            $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}" +
-            $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}" +
+            $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}",
+            $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}",
             $"Overall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");
     }
 
     private void OnLevelFailEvent()
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail,
-                $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}" +
-                $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}" +
+                $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}",
+                $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}",
                 $"Overall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");
     }
 
     private void OnLevelCompleteEvent()
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete,
-                $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}" +
-                $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}" +
+                $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}",
+                $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}",
                 $"Overall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");
     }
     #endregion
@@ -327,6 +327,7 @@ public class SDKController : BaseController
 
     private void RewardedVideoAdClickedEvent(IronSourcePlacement placement)
     {
+        GameAnalytics.NewAdEvent(GAAdAction.Clicked, GAAdType.RewardedVideo, "IronSource", $"{RewardInstance}");
     }
     #endregion
 }

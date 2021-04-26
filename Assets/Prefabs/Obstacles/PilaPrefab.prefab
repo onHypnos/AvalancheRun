@@ -234,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startPosition: {fileID: 8690761187760701224}
   _endPosition: {fileID: 3811133001867640385}
-  _speed: 15
+  _speed: 20
   _rotatingSpeed: 10
 --- !u!1 &7859715197609123503
 GameObject:
@@ -346,17 +346,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5c987a6427050c943b360ddadb5f0ce9,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 33
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c987a6427050c943b360ddadb5f0ce9,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 33
+      value: 48.52663
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c987a6427050c943b360ddadb5f0ce9,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 33
+      value: 48.52663
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c987a6427050c943b360ddadb5f0ce9,
         type: 3}

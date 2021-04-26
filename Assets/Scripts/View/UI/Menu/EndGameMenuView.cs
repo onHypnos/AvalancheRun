@@ -26,6 +26,7 @@ public class EndGameMenuView : BaseMenuView
         _scaleMoneyButton.onClick.AddListener(AskingEndLevelReward);
 
         GameEvents.Current.OnGetCurrentMoney += SetMoneyText;
+        GameEvents.Current.OnRewardMoney += OnAdShowedDisableButton;
     }
 
 
@@ -80,7 +81,11 @@ public class EndGameMenuView : BaseMenuView
 
     private void AskingEndLevelReward()
     {
-        UIEvents.Current.ButtonAddMoneyByReward();
+        UIEvents.Current.ButtonAddMoneyByReward();        
+    }
+
+    private void OnAdShowedDisableButton()
+    {
         _scaleMoneyButton.gameObject.SetActive(false);
     }
 }
