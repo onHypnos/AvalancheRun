@@ -29,6 +29,7 @@ public class SDKController : BaseController
         SubscribeRewardedEvents();
         GameEvents.Current.OnUpdateIronSourceParameters += InitializeIronSource;
         GameEvents.Current.OnNextLevel += StartInterstitialOnLevelEnding;
+        GameEvents.Current.OnLevelRestart += StartInterstitialOnLevelEnding;
         FacebookInitialize();
         GameAnalyticsInitialize();
 
@@ -139,7 +140,7 @@ public class SDKController : BaseController
             if (IronSource.Agent.isInterstitialReady())
             {
                 IronSource.Agent.showInterstitial();
-                //GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "IronSource", "NoPlacement");
+                GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "IronSource", "EndLevel");
                 _lastInterstitialTime = Time.time;
             }
             else
@@ -264,8 +265,7 @@ public class SDKController : BaseController
         if (RewardInstance != null)
         {
             RewardInstance.RewardPlayer();
-            //GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "IrnSource", "NoPlacement");
-
+            GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "IronSource", $"{RewardInstance}");
         }
         else
         {

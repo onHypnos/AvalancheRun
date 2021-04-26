@@ -12,4 +12,9 @@
     {
         GameEvents.Current.UnlockSkinEvent(Skin);
     }
+
+    public override string ToString()
+    {
+        return Skin.gameObject.name;
+    }
 }
