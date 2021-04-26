@@ -31,6 +31,7 @@ public class CollectableController : BaseController, IExecute
         GameEvents.Current.OnAddMoney += AddMoney;
         GameEvents.Current.OnRemoveMoney += RemoveMoney;
         GameEvents.Current.OnLevelStart += StartLevel;
+        GameEvents.Current.OnRewardMoney += EndLevelReward;
     }
 
     public override void Execute()

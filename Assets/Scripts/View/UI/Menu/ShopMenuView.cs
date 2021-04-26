@@ -32,25 +32,14 @@ public class ShopMenuView : BaseMenuView
         _buttonClose.onClick.AddListener(UIEvents.Current.ButtonMainMenu);
 
         _skins = _controller.Player.gameObject.GetComponentsInChildren<PlayerSkinUIView>(true);
+        LoadSkins();
         SortSkins();
 
         SetupItems();
 
-        UpdateMoneyText();
-
         UIEvents.Current.OnButtonBuySkin += BuyingSkin;
         UIEvents.Current.OnButtonSelectSkin += SelectingSkin;
         GameEvents.Current.OnUnlockSkinEvent += UnlockSkin;
-    }
-
-    private void UnlockSkin(PlayerSkinUIView skin)
-    {
-        if (skin.State != SkinState.Unlocked)
-        {
-            skin.ChangeState(SkinState.Unlocked);
-            SaveSkinState(SkinState.Unlocked, skin.gameObject.name);
-            SetupItems();
-        }
     }
 
     public override void Hide()
@@ -128,51 +117,69 @@ public class ShopMenuView : BaseMenuView
         skin2 = temp;
     }
 
-    private void SetupItems()
+    private void LoadSkins()
     {
         int stateID;
         SkinState state;
 
-        Debug.LogWarning("Skins debug mode. In case of release please open code below");
+        for (int i = 0; i < _skins.Length; i++)
+        {
+            stateID = _saveData.LoadInt(_skins[i].gameObject.name);
+            switch (stateID)
+            {
+                case 0:
+                    state = SkinState.Locked;
+                    break;
+                case 1:
+                    state = SkinState.Unlocked;
+                    break;
+                case 2:
+                    state = SkinState.Selected;
+                    break;
+                default:
+                    state = SkinState.Locked;
+                    break;
+            }
+            _skins[i].ChangeState(state);
+        }
+
+        if (_skins[0].State == SkinState.Locked)
+        {
+            _skins[0].ChangeState(SkinState.Selected);
+        }
+    }
+
+    private void SetupItems()
+    {
         for (int i = 0; i < _shopItems.Length; i++)
         {
-            ////Открыть перед релизом:
-            //stateID = _saveData.LoadInt(_skins[i].gameObject.name);
-            //switch (stateID)
-            //{
-            //    case 0:
-            //        state = SkinState.Locked;
-            //        break;
-            //    case 1:
-            //        state = SkinState.Unlocked;
-            //        break;
-            //    case 2:
-            //        state = SkinState.Selected;
-            //        break;
-            //    default:
-            //        state = SkinState.Locked;
-            //        break;
-            //}
-            //_skins[i].ChangeState(state);
-
             _shopItems[i].SetupItem(_skins[i]);
         }
+        UpdateMoneyText();
     }
 
     private void UpdateMoneyText()
     {
+        _bankUI = _saveData.LoadInt(SaveKeyManager.Bank);
         _textMoney.text = $"{_bankUI}";
     }
 
     private void BuyingSkin(PlayerSkinUIView skin)
     {
-        _bankUI -= skin.Price;
-        UpdateMoneyText();
-
         skin.ChangeState(SkinState.Unlocked);
         SaveSkinState(SkinState.Unlocked, skin.gameObject.name);
 
         SetupItems();
+    }
+
+    private void UnlockSkin(PlayerSkinUIView skin)
+    {
+        if (skin.State != SkinState.Unlocked)
+        {
+            skin.ChangeState(SkinState.Unlocked);
+            SaveSkinState(SkinState.Unlocked, skin.gameObject.name);
+            SetupItems();
+        }
     }
 
     private void SelectingSkin(PlayerSkinUIView skin)
@@ -195,23 +202,22 @@ public class ShopMenuView : BaseMenuView
 
     private void SaveSkinState(SkinState state, string skinName)
     {
-        Debug.LogWarning("Debug mode. Skins state are not savin now. Please open code below and delete this log");
-        //        switch (state)
-        //        {
-        //            case SkinState.Locked:
-        //                _saveData.SaveData(0, skinName);
-        //                break;
-        //            case SkinState.Unlocked:
-        //                _saveData.SaveData(1, skinName);
-        //                break;
-        //            case SkinState.Selected:
-        //                _saveData.SaveData(2, skinName);
-        //                break;
-        //            default:
-        //#if UNITY_EDITOR
-        //                Debug.LogWarning("An impossible error occurred while saving SkinState");
-        //#endif
-        //                break;
-        //        }
+        switch (state)
+        {
+            case SkinState.Locked:
+                _saveData.SaveData(0, skinName);
+                break;
+            case SkinState.Unlocked:
+                _saveData.SaveData(1, skinName);
+                break;
+            case SkinState.Selected:
+                _saveData.SaveData(2, skinName);
+                break;
+            default:
+#if UNITY_EDITOR
+                Debug.LogWarning("An impossible error occurred while saving SkinState");
+#endif
+                break;
+        }
     }
 }
