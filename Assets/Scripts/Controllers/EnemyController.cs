@@ -7,6 +7,9 @@ public class EnemyController : BaseController, IExecute
     private List<EnemyView> _enemyList = new List<EnemyView>();
     private Dictionary<EnemyStates, IEnemyState> _stateList = new Dictionary<EnemyStates, IEnemyState>();
     private int _positionIndex = 0;
+
+    public PlayerView Player => _player;
+
     public EnemyController(MainController main) : base(main) 
     {
         _stateList.Add(EnemyStates.Idle, new EnemyIdleStateModel());
@@ -15,7 +18,7 @@ public class EnemyController : BaseController, IExecute
         _stateList.Add(EnemyStates.Moving, new EnemyMovingStateModel());
         _stateList.Add(EnemyStates.Finishing, new EnemyFinishingStateModel());
     }
-    public PlayerView Player => _player;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -26,6 +29,8 @@ public class EnemyController : BaseController, IExecute
         GameEvents.Current.OnLevelStart += OnLevelStart;
         GameEvents.Current.OnMemberFinish += EnemyFinishLevel;
     }
+
+
     public override void Execute()
     {
         base.Execute();
