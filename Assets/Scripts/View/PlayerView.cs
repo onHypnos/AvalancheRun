@@ -57,6 +57,14 @@ public class PlayerView : BaseObjectView
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("ToHorizontalCam"))
+        {
+            GameEvents.Current.SetActiveCamera("HorizontalCamera");
+        }
+    }
+
     public void OnDestroy()
     {
         
