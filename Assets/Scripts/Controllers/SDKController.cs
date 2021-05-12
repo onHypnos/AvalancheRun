@@ -130,8 +130,7 @@ public class SDKController : BaseController
                 _currentAppKey = _ISIOSAppKey;
 #else
                 _currentAppKey = "unexpected_platform";
-#endif
-                
+#endif                
                 IronSource.Agent.validateIntegration();
                 IronSource.Agent.init(_currentAppKey, IronSourceAdUnits.REWARDED_VIDEO, IronSourceAdUnits.INTERSTITIAL, IronSourceAdUnits.OFFERWALL, IronSourceAdUnits.BANNER);
                 _isISInitialised = true;
@@ -140,6 +139,8 @@ public class SDKController : BaseController
         }
         isRewardAdvertismentEnbaled = rewardEnabled;
     }
+    
+    
 
     #endregion
 

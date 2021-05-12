@@ -11,7 +11,8 @@ public class MainController : MonoBehaviour
     [SerializeField] private PlayerView _playerView;
     [SerializeField] private CameraView _mainCameraPrefab;
     [SerializeField] private bool _useMouse = true;
-    [SerializeField] private string _starterSceneName = "";
+    [SerializeField] private bool _debugTestingScene = false;
+    [SerializeField] private string _testingSceneName = "";
 
     private List<BaseController> _controllers = new List<BaseController>();
     private InputController _input;
@@ -72,7 +73,14 @@ public class MainController : MonoBehaviour
                 controller.Initialize();
             }
         }
-        _gameMode.LoadLevel();
+        if (_debugTestingScene && _testingSceneName != "")
+        {
+            _gameMode.LoadLevel(_testingSceneName);
+        }
+        else
+        { 
+            _gameMode.LoadLevel();
+        }
     }
 
     

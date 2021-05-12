@@ -14,6 +14,8 @@ public class EnemyView : BaseObjectView
     [SerializeField] private Animator _animator;
     [SerializeField] private GameObject _finishPoint;
     [SerializeField] private float _movementSpeed = 5.0f;
+    [SerializeField] private float _minMovementSpeed = 3.0f;
+    [SerializeField] private float _maxMovementSpeed = 6.0f;
     [SerializeField] private Rigidbody _rigidbody;
     #endregion
     #region Access modifiers
@@ -25,7 +27,8 @@ public class EnemyView : BaseObjectView
     public Rigidbody Rigidbody => _rigidbody;
     #endregion
 
-
+    
+    /*
     public void CheckDead()
     {
         if (IsDead)
@@ -35,7 +38,8 @@ public class EnemyView : BaseObjectView
                 gameObject.tag = "DeadEnemy";
             }
         }
-    }
+    }*/
+
     public void Awake()
     {
         if (_rigidbody == null)
@@ -43,6 +47,7 @@ public class EnemyView : BaseObjectView
             _rigidbody = GetComponent<Rigidbody>();
         }
         RagdollState(false);
+        _movementSpeed = Random.Range(_minMovementSpeed, _maxMovementSpeed);
 
     }
     public void Start()
