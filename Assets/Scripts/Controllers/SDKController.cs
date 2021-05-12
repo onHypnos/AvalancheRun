@@ -15,6 +15,7 @@ public class SDKController : BaseController
     private string _ISIOSAppKey = "f5a151b9";
     private string _ISAndroidAppKey = "f5a151b9";
     private string _currentAppKey = null;
+    private float _startTime;
     #endregion
 
     #region GAFields
@@ -58,16 +59,20 @@ public class SDKController : BaseController
         LevelDifficulty = _saveData.LoadInt(SaveKeyManager.Difficulty);
         LevelOverall = _saveData.LoadInt(SaveKeyManager.ComplitedLevelValue);
         GameAnalytics.NewDesignEvent($"Level:{LevelNumber}:{LevelDifficulty}:{LevelOverall}:Start");
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, LevelNumber.ToString());
+        _startTime = Time.time;
     }
 
     private void OnLevelFailEvent()
     {        
         GameAnalytics.NewDesignEvent($"Level:{LevelNumber}:{LevelDifficulty}:{LevelOverall}:Failed");
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, LevelNumber.ToString());
     }
 
     private void OnLevelCompleteEvent()
     {
         GameAnalytics.NewDesignEvent($"Level:{LevelNumber}:{LevelDifficulty}:{LevelOverall}:Complete");
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, LevelNumber.ToString());
     }
     #endregion
     #region FacebookSDK
