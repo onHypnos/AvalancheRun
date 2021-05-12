@@ -735,6 +735,8 @@ MonoBehaviour:
   _animator: {fileID: 8247582068792605343}
   _finishPoint: {fileID: 0}
   _movementSpeed: 5
+  _minMovementSpeed: 3
+  _maxMovementSpeed: 6
   _rigidbody: {fileID: 0}
 --- !u!114 &7044848634313422014
 MonoBehaviour:
