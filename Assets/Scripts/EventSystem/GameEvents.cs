@@ -126,6 +126,12 @@ public class GameEvents : MonoBehaviour
         OnPlayerGetHit?.Invoke();
     }
 
+    public Action<string> OnPlayerHiterName;
+    public void PlayerHiterName(string gameObjectName)
+    {
+        OnPlayerHiterName?.Invoke(gameObjectName);
+    }
+
     /// <summary>
     /// Called When Object with Tag "Enemy" Collide with Player
     /// </summary>

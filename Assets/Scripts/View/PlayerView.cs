@@ -50,9 +50,10 @@ public class PlayerView : BaseObjectView
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag(TagManager.Enemy))
         {
             GameEvents.Current.OnPlayerGetHit();
+            GameEvents.Current.PlayerHiterName(collision.gameObject.name);
             Invoke("LevelFail", 1f);
         }
     }
