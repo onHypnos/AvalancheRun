@@ -8,7 +8,7 @@ public class PlayerView : BaseObjectView
     [SerializeField, Range(3f, 10f)] private float _movementSpeed = 3.0f;  
     [SerializeField] private Animator _animator;
     [SerializeField] private Rigidbody _playerRigidbody;
-    [SerializeField] public GameObject _bombShield;
+    [SerializeField] private GameObject _bombShield;
     [SerializeField] private bool _bombShieldReady = true;
     [SerializeField] private bool _canSlowTime = true;
     [SerializeField] private float _slowModeDuration = 3.0f;
