@@ -38,6 +38,6 @@ public abstract class BaseEnemyStateModel : IEnemyState
         {
             _magnitude = 100.0f;
         }
-        enemy.Animator.SetFloat("VectorSpeedMagnitude", _magnitude * 0.01f);
+        
     }
 }

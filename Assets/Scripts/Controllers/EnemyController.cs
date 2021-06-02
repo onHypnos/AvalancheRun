@@ -17,6 +17,8 @@ public class EnemyController : BaseController, IExecute
         _stateList.Add(EnemyStates.Dead, new EnemyDeadStateModel());
         _stateList.Add(EnemyStates.Moving, new EnemyMovingStateModel());
         _stateList.Add(EnemyStates.Finishing, new EnemyFinishingStateModel());
+        _stateList.Add(EnemyStates.Connected, new EnemyConnectedStateModel());
+        _stateList.Add(EnemyStates.MoveToConnect, new EnemyMoveToConnectStateModel());
     }
 
     public override void Initialize()
@@ -28,6 +30,8 @@ public class EnemyController : BaseController, IExecute
         GameEvents.Current.OnLevelStart += SetAllEnemiesStatesMoving;
         GameEvents.Current.OnLevelStart += OnLevelStart;
         GameEvents.Current.OnMemberFinish += EnemyFinishLevel;
+        GameEvents.Current.OnMoveConnectedEnemy += MoveConnectedEnemy;
+        GameEvents.Current.OnConnectEnemy += ConnectEnemy;
     }
 
 
@@ -43,6 +47,28 @@ public class EnemyController : BaseController, IExecute
             else
             {
                 _stateList[enemy.State].Execute(enemy, this);
+            }
+        }
+    }
+
+    public void ConnectEnemy(EnemyView enemy)
+    {
+        if (enemy.State != EnemyStates.Dead)
+        { 
+            SetEnemyState(enemy, EnemyStates.MoveToConnect);
+            
+        }
+    }
+
+    public void MoveConnectedEnemy(Quaternion rotation, Vector3 translatePosition, float vectorSpeedMagnitude)
+    {
+        foreach (EnemyView enemy in _enemyList)
+        {
+            if (enemy.State == EnemyStates.Connected)
+            {
+                enemy.Rotation = rotation;
+                enemy.Transform.Translate(translatePosition);                
+                enemy.Magnitude = vectorSpeedMagnitude;
             }
         }
     }
@@ -75,6 +101,16 @@ public class EnemyController : BaseController, IExecute
                 {
                     enemy.Rotation = Quaternion.LookRotation(Vector3.forward * -1f, Vector3.up);
                     enemy.Animator.SetTrigger($"Dance {Random.Range(0,6)}");
+                }
+                break;
+            case EnemyStates.Connected:
+                { 
+                    
+                }
+                break;
+            case EnemyStates.MoveToConnect:
+                {
+                    enemy.SetSquadPosition(new Vector3(Random.Range((int)-2, (int)2), 1, Random.Range((int)-2, (int)2)));
                 }
                 break;
             default: break;

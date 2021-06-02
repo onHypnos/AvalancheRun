@@ -17,6 +17,8 @@ public class EnemyView : BaseObjectView
     [SerializeField] private float _minMovementSpeed = 3.0f;
     [SerializeField] private float _maxMovementSpeed = 6.0f;
     [SerializeField] private Rigidbody _rigidbody;
+    private Vector3 _squadPosition;
+    public float Magnitude;
     #endregion
     #region Access modifiers
     public Animator Animator => _animator;
@@ -25,6 +27,8 @@ public class EnemyView : BaseObjectView
     public GameObject FinishPoint => _finishPoint;
     public float MovementSpeed => _movementSpeed;
     public Rigidbody Rigidbody => _rigidbody;
+
+    public Vector3 SquadPosition => _squadPosition;
     #endregion
 
     
@@ -57,6 +61,10 @@ public class EnemyView : BaseObjectView
     public void SetState(EnemyStates state)
     {
         _state = state;
+    }
+    public void SetSquadPosition(Vector3 pos)
+    {
+        _squadPosition = pos;
     }
     public void FindMyController()
     {

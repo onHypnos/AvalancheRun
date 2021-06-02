@@ -64,6 +64,10 @@ public class PlayerView : BaseObjectView
         {
             GameEvents.Current.SetActiveCamera("HorizontalCamera");
         }
+        if (other.gameObject.CompareTag("Member"))
+        {
+            GameEvents.Current.ConnectEnemy(other.GetComponent<EnemyView>());
+        }
     }
 
     public void OnDestroy()
