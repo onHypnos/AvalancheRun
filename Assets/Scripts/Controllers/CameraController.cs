@@ -48,6 +48,7 @@ public class CameraController : BaseController, IExecute, ILateExecute
         {
             _camera = camera;
         }
+        
     }
     public void SetPursuedObject(GameObject obj)
     {

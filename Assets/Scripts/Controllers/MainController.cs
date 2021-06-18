@@ -34,7 +34,7 @@ public class MainController : MonoBehaviour
     
     private void Awake()
     {
-        ///Services
+        ///----------Services-------------
         DontDestroyOnLoad(this.gameObject);
         //SceneManager.UnloadSceneAsync(_starterSceneName);
         _SDKcontroller = new SDKController(this);
@@ -44,7 +44,7 @@ public class MainController : MonoBehaviour
         _playerController = new PlayerController(this);
         
 
-        ///SceneSettings
+        ///------SceneSettings------
         if (_playerStarterPoint == null)
         {
             _playerStarterPoint = FindObjectOfType<PlayerStarterPosition>().transform;
@@ -66,11 +66,18 @@ public class MainController : MonoBehaviour
 
     private void Start()
     {
-        foreach (BaseController controller in _controllers)
+        /*foreach (BaseController controller in _controllers)
         {
             if (controller is IInitialize)
             {
                 controller.Initialize();
+            }
+        }*/
+        for (int i = 0; i < _controllers.Count; i++)
+        {
+            if (_controllers[i] is IInitialize)
+            {
+                _controllers[i].Initialize();
             }
         }
         if (_debugTestingScene && _testingSceneName != "")
@@ -83,27 +90,24 @@ public class MainController : MonoBehaviour
         }
     }
 
-    
-
     private void Update()
-    {
-        foreach (BaseController controller in _controllers)
+    {        
+        for (int i = 0; i < _controllers.Count; i++)
         {
-            if (controller is IExecute)
+            if (_controllers[i] is IExecute)
             {
-                controller.Execute();
+                _controllers[i].Execute();
             }
-            
-        }        
+        }
     }
 
     private void LateUpdate()
-    {
-        foreach (BaseController controller in _controllers)
+    {        
+        for (int i = 0; i < _controllers.Count; i++)
         {
-            if (controller is ILateExecute)
+            if (_controllers[i] is ILateExecute)
             {
-                controller.LateExecute();
+                _controllers[i].LateExecute();
             }
         }
     }

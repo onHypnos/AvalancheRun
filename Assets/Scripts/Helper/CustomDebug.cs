@@ -11,7 +11,7 @@ public sealed class CustomDebug
 #if UNITY_EDITOR || DEBUG_TARGET
             result = true;
 #elif UNITY_IOS || UNITY_ANDROID
-                result = Debug.isDebugBuild;
+            result = Debug.isDebugBuild;
 #endif
 
             return result;
